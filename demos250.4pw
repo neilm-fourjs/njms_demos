@@ -46,8 +46,6 @@
         <File filePath="ipodTree/pics/cd.jpg"/>
         <File filePath="ipodTree/pics/cd16.jpg"/>
       </VirtualFolder>
-      <File filePath="ipodTree/src/gl_db.4gl"/>
-      <File filePath="ipodTree/src/gl_lib.4gl"/>
       <File filePath="ipodTree/src/ipod.4gl"/>
       <File filePath="ipodTree/src/ipod.per"/>
       <File filePath="ipodTree/src/ipod_sax.4gl"/>
@@ -76,7 +74,7 @@
       <File compilerOptions="-Dgenero3x -DGENLIB" excludeFromCompilation="true" excludeFromLink="true" filePath="lib/gl_lookup3.4gl"/>
       <File filePath="lib/gl_xmlcfg.4gl"/>
     </Library>
-    <Application dependencies="2" environment="value:FGLIMAGEPATH=../../pics" id="-1096760640" label="picFlow">
+    <Application dependencies="2" environment="value:PICPATH=../pics" id="-1096760640" label="picFlow">
       <VirtualFolder label="etc">
         <File filePath="picFlow/etc/default.4ad"/>
         <File filePath="picFlow/etc/default.4st"/>
@@ -87,7 +85,7 @@
       </VirtualFolder>
       <File filePath="picFlow/picflow.4gl"/>
     </Application>
-    <Application dependencies="2" environment="value:DBNAME=unicode||value:FGLIMAGEPATH=$(ProjectDir)/unicode/pics" id="1151305190" label="unicode">
+    <Application dependencies="2" id="1151305190" label="unicode">
       <VirtualFolder label="etc">
         <File filePath="unicode/etc/default.4ad"/>
         <File filePath="unicode/etc/default.4st"/>
@@ -100,7 +98,6 @@
       </VirtualFolder>
       <VirtualFolder label="src">
         <File filePath="unicode/src/examples.4gl"/>
-        <File filePath="unicode/src/gl_db.4gl"/>
         <File filePath="unicode/src/unicode.4gl"/>
       </VirtualFolder>
     </Application>
