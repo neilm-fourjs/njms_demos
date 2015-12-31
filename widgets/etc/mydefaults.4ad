@@ -1,0 +1,65 @@
+<ActionDefaultList>
+	<ActionDefault name="accept" image="accept" text="OK" acceleratorName="Return" acceleratorName2="Enter"/>
+	<ActionDefault name="cancel" image="cancel" text="Cancel" acceleratorName="Escape"/>
+
+	<ActionDefault name="yes" image="accept" text="Yes" acceleratorName="y" />
+	<ActionDefault name="no" image="cancel" text="No" acceleratorName="n"/>
+
+	<ActionDefault name="insert" image="listins" text="Insert" acceleratorName="F3"/>
+	<ActionDefault name="append" image="listadd" text="Append" acceleratorName="Control-F3"/>
+	<ActionDefault name="delete" image="listdel" text="Delete" acceleratorName="F4"/>
+	<ActionDefault name="help" text="Help" acceleratorName="F1"/>
+	<ActionDefault name="close" text="Close" acceleratorName="Alt-F4" defaultView="no"/>
+	<ActionDefault name="interrupt" text="Interrupt"/>
+	<ActionDefault name="next" text="Next" image="goforw" comment="Next record"/>
+	<ActionDefault name="previous" text="Previous" image="gorev" comment="Previous record"/>
+	<ActionDefault name="first" text="First" image="gobegin" comment="First record"/>
+	<ActionDefault name="last" text="Last" image="goend" comment="Last record"/>
+	<ActionDefault name="print" text="Print" image="printer" comment="Print"/>
+	<ActionDefault name="nextfield" text="Next Field" acceleratorName="Tab"/>
+	<ActionDefault name="prevfield" text="Previous Field" acceleratorName="Shift-Tab"/>
+	<ActionDefault name="nextrow" text="Next" image="goforw" acceleratorName="Down"/>
+	<ActionDefault name="prevrow" text="Previous" image="gorev" acceleratorName="Up"/>
+	<ActionDefault name="firstrow" text="First" image="gobegin"/>
+	<ActionDefault name="lastrow" text="Last" image="goend"/>
+	<ActionDefault name="nextpage" text="Next Page" acceleratorName="Next"/>
+	<ActionDefault name="prevpage" text="Previous Page" acceleratorName="Prior"/>
+	<ActionDefault name="nexttab" text="Next Folder Tab" acceleratorName="Control-Tab"/>
+	<ActionDefault name="prevtab" text="Previous Folder Tab" acceleratorName="Control-Shift-Tab"/>
+	<!--ActionDefault name="dialogtouched" validate="no" defaultView="no" /-->
+
+	<ActionDefault name="exit"      text="Exit"     image="exit"  acceleratorName="x"/>
+
+	<ActionDefault name="be"         image="combo" comment="buttonEdit" />
+
+	<ActionDefault name="sum"       image="sum" comment="DDE Excel" />
+	<ActionDefault name="time"      image="time" comment="Canvas" />
+	<ActionDefault name="webkit"    image="chrome" comment="Webkit Demo" />
+	<ActionDefault name="f2" text="Info" image="balloon" comment="Info" acceleratorName="F2" />
+	<ActionDefault name="error" text="Error" image="attention" comment="Error Message" acceleratorName="F18" />
+	<ActionDefault name="f19" text="Question" image="quest" comment="A Question &amp; test" acceleratorName="F19" />
+
+	<ActionDefault name="f20" text="Test" comment="A Test Message" acceleratorName="F20" />
+
+	<ActionDefault name="lookup" text="Lookup" image="find"  comment="Lookup Window" />
+
+	<ActionDefault name="chg_flds" text="" comment="" acceleratorName="F12" />
+
+	<ActionDefault name="insert" text="Insert" comment="" acceleratorName="i" />
+	<ActionDefault name="delete" text="Delete" comment="" acceleratorName="d" />
+
+	<ActionDefault name="editcopy"  text="Copy"  image="copy"  comment="Copy" />
+	<ActionDefault name="editcut"   text="Cut"   image="cut"   comment="Cut" />
+	<ActionDefault name="editpaste" text="Paste" image="paste" comment="Paste" />
+	<ActionDefault name="print" text="Print" image="printer" comment="Print" />
+	<ActionDefault name="find"  text="Find" image="find"    comment="Search" />
+	<ActionDefault name="help"  text="Help Me" image="question"   comment="Help" />
+	<ActionDefault name="help2"  text="Help&#10;Me" image="question"   comment="Help" />
+	<ActionDefault name="src_per" text="Per Source" comment="Show Source" />
+	<ActionDefault name="src_4gl" text="4GL Source" comment="Show Source" />
+
+	<ActionDefault name="touchnorm2" text="Touch Norm2" comment="Set the field norm to be touched" />
+	<ActionDefault name="touchnorm" text="Touch Norm" comment="Set the field norm to be touched" />
+	<ActionDefault name="istouched" text="Is norm touched?" comment="See if norm is touched" />
+
+</ActionDefaultList>

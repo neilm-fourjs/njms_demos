@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<GRF pageWidth="max" pageLength="max" fontName="SansSerif" fontSize="10">
+    <HEADER type="any">
+        <MATCH name="stdHeader">
+            <STRIPE width="1point"/>
+            <STRIPE width="0.5point" bgColor="black"/>
+            <STRIPE width="1point"/>
+            <STRIPE width="0.5point" bgColor="black"/>
+            <STRIPE width="1point"/>
+            <STRIPE>
+                <TEXTBOX text="Company: "/>
+                <HBOX y='width("Company")' length="min">
+                    <TEXTBOX itemName="company_name"/>
+                </HBOX>
+                <TEXTBOX y="max/2" anchorY="middle" fontStyle="italic" itemName="list_title"/>
+                <HBOX fillingDirection="unnatural" y="max" anchorY="far" length="min">
+                    <PAGENOBOX/>
+                    <TEXTBOX text="Page: "/>
+                    <TEXTBOX itemName="list_date"/>
+                </HBOX>
+            </STRIPE>
+            <STRIPE>
+                <TEXTBOX text="User: "/>
+                <HBOX y='width("Company")' length="min">
+                    <TEXTBOX itemName="user_name"/>
+                </HBOX>
+                <TEXTBOX y="max/2" anchorY="middle" fontStyle="italic" itemName="list_description"/>
+            </STRIPE>
+            <STRIPE width="1point"/>
+            <STRIPE width="0.5point" bgColor="black"/>
+            <STRIPE width="1point"/>
+            <STRIPE width="0.5point" bgColor="black"/>
+            <STRIPE width="1point"/>
+        </MATCH>
+    </HEADER>
+</GRF>

@@ -1,0 +1,108 @@
+en_GB.UTF-8|Intrusion|Intrusion|||||
+en_GB.UTF-8|Alarm Communications|Alarm Communications|||||
+fr_FR.UTF-8|Intrusion|Intrusion|||||
+fr_FR.UTF-8|Alarm Communications|Communications D'Alarme|||||
+de_DE.UTF-8|Intrusion|Eindringen|||||
+de_DE.UTF-8|Alarm Communications|Warnung Kommunikationen|||||
+es_ES.utf8|Intrusion|Intrusos|||||
+es_ES.utf8|Alarm Communications|Comunicación de alarmas|||||
+pt_PT.UTF-8|Intrusion|Intrusão|||||
+pt_PT.UTF-8|Alarm Communications|Comunicações de Alarme|||||
+ru_RU.UTF-8|Intrusion|Вторжение|||||
+ru_RU.UTF-8|Alarm Communications|Связи Сигнала тр|||||
+zh_CN.UTF-8|Intrusion|侵扰|||||
+zh_CN.UTF-8|Alarm Communications|警报通讯|||||
+ko_KR.utf8|Intrusion|무전망침입|||||
+ko_KR.utf8|Alarm Communications|경보 커뮤니케이션|||||
+el_GR.UTF-8|Intrusion|Παρείσφρυση|||||
+el_GR.UTF-8|Alarm Communications|Επικοινωνίες συ|||||
+el_GR.UTF-8|Language|Γλώσσα|||||
+en_GB.UTF-8|Translation|Translation|||||
+en_GB.UTF-8|Language|Language|||||
+fr_FR.UTF-8|Language|Langue|||||
+de_DE.UTF-8|Language|Sprache|||||
+es_ES.utf8|Language|Lengua|||||
+pt_PT.UTF-8|Language|Língua|||||
+ru_RU.UTF-8|Language|Язык|||||
+zh_CN.UTF-8|Language|语言|||||
+ko_KR.utf8|Language|언어|||||
+fr_FR.UTF-8|Translation|Traduction|||||
+de_DE.UTF-8|Translation|Übersetzung|||||
+es_ES.utf8|Translation|Traducción|||||
+pt_PT.UTF-8|Translation|Tradução|||||
+ru_RU.UTF-8|Translation|Перевод|||||
+zh_CN.UTF-8|Translation|翻译|||||
+ko_KR.utf8|Translation|번역|||||
+el_GR.UTF-8|Translation|Μετάφραση|||||
+en_GB.UTF-8|English|English|||||
+fr_FR.UTF-8|English|Anglais|||||
+de_DE.UTF-8|English|Englisch|||||
+es_ES.utf8|English|Inglés|||||
+pt_PT.UTF-8|English|Inglês|||||
+ru_RU.UTF-8|English|Английско|||||
+zh_CN.UTF-8|English|英语|||||
+ko_KR.utf8|English|영어|||||
+el_GR.UTF-8|English|Αγγλικά|||||
+en_GB.UTF-8|Label|Label|||||
+fr_FR.UTF-8|Label|Étiquette|||||
+de_DE.UTF-8|Label|Aufkleber|||||
+es_ES.utf8|Label|Etiqueta|||||
+pt_PT.UTF-8|Label|Etiqueta|||||
+ru_RU.UTF-8|Label|Ярлык|||||
+zh_CN.UTF-8|Label|标签|||||
+ko_KR.utf8|Label|상표|||||
+el_GR.UTF-8|Label|Ετικέτα|||||
+en_GB.UTF-8|action.exit|Exit|||||
+fr_FR.UTF-8|action.exit|Sortie|||||
+de_DE.UTF-8|action.exit|Ausgang|||||
+es_ES.utf8|action.exit|Salida|||||
+pt_PT.UTF-8|action.exit|Saída|||||
+ru_RU.UTF-8|action.exit|Выход|||||
+zh_CN.UTF-8|action.exit|出口|||||
+ko_KR.utf8|action.exit|출구|||||
+en_GB.UTF-8|action.cancel|Cancel|||||
+fr_FR.UTF-8|action.cancel|Annulation|||||
+de_DE.UTF-8|action.cancel|Löschen|||||
+es_ES.utf8|action.cancel|Cancelación|||||
+pt_PT.UTF-8|action.cancel|Cancelamento|||||
+zh_CN.UTF-8|action.cancel|取消|||||
+ko_KR.utf8|action.cancel|취소|||||
+el_GR.UTF-8|action.cancel|Ακυρώστε|||||
+en_GB.UTF-8|action.accept|Okay|||||
+fr_FR.UTF-8|action.accept|Acceptez|||||
+de_DE.UTF-8|action.accept|O.K.|||||
+es_ES.utf8|action.accept|Acepte|||||
+pt_PT.UTF-8|action.accept|Aceite|||||
+ru_RU.UTF-8|action.accept|Примите|||||
+zh_CN.UTF-8|action.accept|受理|||||
+ko_KR.utf8|action.accept|수락|||||
+el_GR.UTF-8|action.accept|Δεχτείτε|||||
+en_GB.UTF-8|action.list|List|||||
+fr_FR.UTF-8|action.list|Liste|||||
+de_DE.UTF-8|action.list|Liste|||||
+es_ES.utf8|action.list|Lista|||||
+pt_PT.UTF-8|action.list|Lista|||||
+ru_RU.UTF-8|action.list|Список|||||
+zh_CN.UTF-8|action.list|名单|||||
+ko_KR.utf8|action.list|명부|||||
+el_GR.UTF-8|action.list|Κατάλογος|||||
+en_GB.UTF-8|action.add|New|||||
+fr_FR.UTF-8|action.add|Nouveau|||||
+de_DE.UTF-8|action.add|Neu|||||
+es_ES.utf8|action.add|Nuevo|||||
+pt_PT.UTF-8|action.add|Novo|||||
+ru_RU.UTF-8|action.add|Ново|||||
+zh_CN.UTF-8|action.add|新|||||
+ko_KR.utf8|action.add|새로운|||||
+el_GR.UTF-8|action.add|Νέος|||||
+en_GB.UTF-8|action.update|Update|||||
+fr_FR.UTF-8|action.update|Modifiez|||||
+de_DE.UTF-8|action.update|Ändern Sie|||||
+es_ES.utf8|action.update|Actualización|||||
+pt_PT.UTF-8|action.update|Emende|||||
+ru_RU.UTF-8|action.update|Уточнение|||||
+zh_CN.UTF-8|action.update|更新|||||
+ko_KR.utf8|action.update|갱신|||||
+el_GR.UTF-8|action.update|Αναπροσαρμογ|||||
+en_GB.UTF-8|action.delete|Delete|||||
+de_DE.UTF-8|action.delete|Loeschen|||||

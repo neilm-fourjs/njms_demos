@@ -1,0 +1,27 @@
+<H1 ALIGN="CENTER"><B>The Widgets Demo</B></H1>
+<BR>
+This demo is designed to show all the gui features of genero in a single program
+and form.
+<BR>
+<HR>
+<B>Features:-</B><BR>
+<LI>Toolbars
+<LI>Top Menus
+<LI>Start Menus
+<LI>Folder Tabs
+<LI>ComboBox
+<LI>CheckBox
+<LI>RadioGroup
+<LI>TextEdit
+<LI>DateEdit
+<LI>ProgressBar
+<LI>Tables
+<LI>Canvas
+<LI>Dynamically changing/hiding items
+<LI>Styles
+<LI>On Change
+<LI>On Idle
+<HR>
+<B>Driving Instructions:-</B><BR>
+to do
+<HR>

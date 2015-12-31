@@ -1,0 +1,66 @@
+
+-- CVS Header
+-- $Author: test4j $
+-- $Date: 2006/07/21 11:21:42 $
+-- $Revision: 2 $
+-- $Source: /usr/home/test4j/cvs/all/demos/widgets/forms/newwin.per,v $
+-- $Log: newwin.per,v $
+-- Revision 1.4  2006/07/21 11:21:42  test4j
+-- *** empty log message ***
+--
+-- Revision 1.1  2005/11/17 18:14:12  test4j
+-- *** empty log message ***
+--
+-- Revision 1.3  2005/05/10 14:48:12  test4j
+--
+-- Added cvs header.
+--
+
+
+LAYOUT 
+VBOX
+GROUP(text="Groups within groups and tables")
+GRID
+{
+<GROUP "test test"   ><G Second    ><G Third >
+ test [f001   ] test   [l001      ]  line1
+ test [f003         ]  [          ]  line2
+ [f002              ]  [          ]  line3
+                                     line4
+ <T tab                            > line5
+   Key   Description
+  [a001][a002                     ]
+  [a001][a002                     ]
+  [a001][a002                     ]
+
+<G Image                                     >
+ [i001                                      ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+ [                                          ]
+
+[   :"Hit 'Escape' to exit this window.":    ]
+}
+END --GRID
+END -- GROUP
+
+END --VBOX
+END --LAYOUT
+
+ATTRIBUTES
+EDIT f001 = FORMONLY.text1;
+EDIT f002 = FORMONLY.text2;
+TEXTEDIT l001 = FORMONLY.txt1;
+DATEEDIT f003 = FORMONLY.dte;
+IMAGE i001 = FORMONLY.img, AUTOSCALE;
+a001 = FORMONLY.key;
+a002 = FORMONLY.desc;
+END
+INSTRUCTIONS
+SCREEN RECORD arr[3] ( key,desc )
+END

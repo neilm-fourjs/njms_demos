@@ -1,0 +1,13 @@
+<ToolBar>
+  <ToolBarItem name="exit" text="Exit" image="exit2"/>
+  <ToolBarItem name="accept" text="Okay" image="ok2"/>
+  <ToolBarItem name="cancel" text="Cancel" image="cancel2"/>
+  <ToolBarItem name="src_4gl" text="4gl" image="debugConsole"/>
+  <ToolBarItem name="src_per" text="Per" image="debugConsole"/>
+  <ToolBarItem name="gl_lookup" image="open2"/>
+  <ToolBarItem name="time" text="Time" image="time"/>
+  <ToolBarItem name="sum" text="Sum" image="switch"/>
+  <ToolBarItem name="less" text="Less" image="delete2"/>
+  <ToolBarItem name="more" text="More" image="new2"/>
+  <ToolBarItem name="help" image="about" />
+</ToolBar>

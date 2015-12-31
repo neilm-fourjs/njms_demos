@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ANSI_X3.4-1968"?>
+<ActionDefaultList>
+  <ActionDefault name="accept" text="OK" acceleratorName="Return" acceleratorName2="Enter" />
+  <ActionDefault name="cancel" text="Cancel" acceleratorName="Escape" />
+  <ActionDefault name="insert" text="Insert" acceleratorName="F3" />
+  <ActionDefault name="append" text="Append" acceleratorName="Control-F3" />
+  <ActionDefault name="delete" text="Delete" acceleratorName="F4" />
+  <ActionDefault name="help" text="Help" acceleratorName="F1" />
+  <ActionDefault name="close" text="Close" acceleratorName="Alt-F4" defaultView="no" />
+  <ActionDefault name="interrupt" text="Interrupt" />
+  <ActionDefault name="next" text="Next" image="goforw" comment="Next record" />
+  <ActionDefault name="previous" text="Previous" image="gorev" comment="Previous record" />
+  <ActionDefault name="first" text="First" image="gobegin" comment="First record" />
+  <ActionDefault name="last" text="Last" image="goend" comment="Last record" />
+  <ActionDefault name="print" text="Print" image="printer" comment="Print" />
+  <ActionDefault name="find" text="Find" image="find" comment="Search"/>
+  <ActionDefault name="editcopy" text="Copy" image="copy" comment="Copy" acceleratorName="Control-C" />
+  <ActionDefault name="editcut" text="Cut" image="cut" comment="Cut" acceleratorName="Control-X" />
+  <ActionDefault name="editpaste" text="Paste" image="paste" comment="Paste" acceleratorName="Control-V" />
+  <ActionDefault name="nextfield" text="Next Field" acceleratorName="Tab" />
+  <ActionDefault name="prevfield" text="Previous Field" acceleratorName="Shift-Tab" />
+  <ActionDefault name="nextrow" text="Next" image="bl_arrnext" acceleratorName="Down" />
+  <ActionDefault name="prevrow" text="Previous" image="bl_arrprev" acceleratorName="Up" />
+  <ActionDefault name="firstrow" text="First" image="bl_arrfirst" acceleratorName="Home" />
+  <ActionDefault name="lastrow" text="Last" image="bl_arrlast" acceleratorName="End" />
+  <ActionDefault name="nextpage" text="Next Page" acceleratorName="Next" />
+  <ActionDefault name="prevpage" text="Previous Page" acceleratorName="Prior" />
+  <ActionDefault name="nexttab" text="Next Folder Tab" acceleratorName="Control-Tab" />
+  <ActionDefault name="prevtab" text="Previous Folder Tab" acceleratorName="Control-Shift-Tab" />
+  <ActionDefault name="dialogtouched" validate="no" defaultView="no"  />
+
+  <ActionDefault name="quit" text="Quit" image="bl_quit" acceleratorName="Escape" comment="Quit the program"/>
+</ActionDefaultList>

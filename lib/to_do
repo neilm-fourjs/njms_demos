@@ -1,0 +1,14 @@
+
+Testing SVN Tags.
+$Id: to_do 2 2009-03-25 10:17:56Z  $
+$Rev: 2 $
+$Author: $
+$Date: 2008-07-15 20:13:59 +0100 (Tue, 15 Jul 2008) $
+
+Done: Function to dynamically allow addition of new items to a combobox.
+Done: Allow press of letter to jump to rows in lookup functions
+Done: Allow press of letter to jump to rows in lookup functions
+Done: Now sets int_flag = FALSE at start.
+Done: Now handles _ as column title to hide the column.
+Jump Code should put new current row in the center of the list. Tried, doesn't work!
+

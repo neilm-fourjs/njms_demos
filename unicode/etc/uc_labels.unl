@@ -1,0 +1,176 @@
+ru_RU.UTF-8|Alarm Communications|Alarm Communications|Связи Сигнала тр|Связи Сигнала тр||||
+en_GB.UTF-8|Alarm Communications|Alarm Communications|Alarm Communications|Alarm Communications||||
+zh_CN.UTF-8|Alarm Communications|Alarm Communications|警报通讯|警报通讯||||
+fr_FR.UTF-8|Alarm Communications|Alarm Communications|Communications D'Alarme|Communications D'Alarme||||
+de_DE.UTF-8|Alarm Communications|Alarm Communications|Warnung Kommunikationen|Warnung Kommunikationen||||
+ko_KR.utf8|Alarm Communications|Alarm Communications|경보 커뮤니케이션|경보 커뮤니케이션||||
+pt_PT.UTF-8|Alarm Communications|Alarm Communications|Comunicações de Alarme|Comunicações de Alarme||||
+es_ES.utf8|Alarm Communications|Alarm Communications|Comunicación de alarmas|Comunicación de alarmas||||
+el_GR.UTF-8|Alarm Communications|Alarm Communications|Επικοινωνίες συ|Επικοινωνίες συ||||
+zh_CN.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+ru_RU.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+pt_PT.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+ko_KR.utf8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+es_ES.utf8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+el_GR.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+de_DE.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+fr_FR.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+en_GB.UTF-8|Comment|Comment / Tooltip|Comment|Comment / Tooltip||||
+zh_CN.UTF-8|English|English|英语|英语||||
+en_GB.UTF-8|English|English|English|English||||
+pt_PT.UTF-8|English|English|Inglês|Inglês||||
+de_DE.UTF-8|English|English|Englisch|Englisch||||
+el_GR.UTF-8|English|English|Αγγλικά|Αγγλικά||||
+es_ES.utf8|English|English|Inglés|Inglés||||
+ru_RU.UTF-8|English|English|Английско|Английско||||
+ko_KR.utf8|English|English|영어|영어||||
+fr_FR.UTF-8|English|English|Anglais|Anglais||||
+zh_CN.UTF-8|Image|Image|Image|Image||||
+de_DE.UTF-8|Image|Image|Image|Image||||
+es_ES.utf8|Image|Image|Image|Image||||
+en_GB.UTF-8|Image|Image|Image|Image||||
+pt_PT.UTF-8|Image|Image|Image|Image||||
+el_GR.UTF-8|Image|Image|Image|Image||||
+ru_RU.UTF-8|Image|Image|Image|Image||||
+fr_FR.UTF-8|Image|Image|Image|Image||||
+ko_KR.utf8|Image|Image|Image|Image||||
+ko_KR.utf8|Intrusion|Intrusion|무전망침입|무전망침입||||
+es_ES.utf8|Intrusion|Intrusion|Intrusos|Intrusos||||
+ru_RU.UTF-8|Intrusion|Intrusion|Вторжение|Вторжение||||
+zh_CN.UTF-8|Intrusion|Intrusion|侵扰|侵扰||||
+fr_FR.UTF-8|Intrusion|Intrusion|Intrusion|Intrusion||||
+de_DE.UTF-8|Intrusion|Intrusion|Eindringen|Eindringen||||
+en_GB.UTF-8|Intrusion|Intrusion|Intrusion|Intrusion||||
+el_GR.UTF-8|Intrusion|Intrusion|Παρείσφρυση|Παρείσφρυση||||
+pt_PT.UTF-8|Intrusion|Intrusion|Intrusão|Intrusão||||
+zh_CN.UTF-8|Label|Label|标签|标签||||
+ru_RU.UTF-8|Label|Label|Ярлык|Ярлык||||
+ko_KR.utf8|Label|Label|상표|상표||||
+en_GB.UTF-8|Label|Label|Label|Label||||
+pt_PT.UTF-8|Label|Label|Etiqueta|Etiqueta||||
+fr_FR.UTF-8|Label|Label|Étiquette|Étiquette||||
+de_DE.UTF-8|Label|Label|Aufkleber|Aufkleber||||
+el_GR.UTF-8|Label|Label|Ετικέτα|Ετικέτα||||
+es_ES.utf8|Label|Label|Etiqueta|Etiqueta||||
+en_GB.UTF-8|Language|Language|Language|Language|lingua|||
+ru_RU.UTF-8|Language|Language|Язык|Язык|lingua|||
+es_ES.utf8|Language|Language|Lengua|Lengua|lingua|||
+zh_CN.UTF-8|Language|Language|语言|语言|lingua|||
+el_GR.UTF-8|Language|Language|Γλώσσα|Γλώσσα|lingua|||
+de_DE.UTF-8|Language|Language|Sprache|Sprache|lingua|||
+ko_KR.utf8|Language|Language|언어|언어|lingua|||
+pt_PT.UTF-8|Language|Language|Língua|Língua|lingua|||
+fr_FR.UTF-8|Language|Language|Langue|Langue|lingua|||
+da_DK.UTF-8|Language|Language|Sprog|Sprog|Sprog|||
+el_GR.UTF-8|Translation|Translation|Μετάφραση|Μετάφραση||||
+zh_CN.UTF-8|Translation|Translation|翻译|翻译||||
+en_GB.UTF-8|Translation|Translation|Translation|Translation||||
+de_DE.UTF-8|Translation|Translation|Übersetzung|Übersetzung||||
+ko_KR.utf8|Translation|Translation|번역|번역||||
+ru_RU.UTF-8|Translation|Translation|Перевод|Перевод||||
+pt_PT.UTF-8|Translation|Translation|Tradução|Tradução||||
+es_ES.utf8|Translation|Translation|Traducción|Traducción||||
+fr_FR.UTF-8|Translation|Translation|Traduction|Traduction||||
+da_DK.UTF-8|Translation|Translation|Gengivelse|Gengivelse||||
+pt_PT.UTF-8|action.accept|Accept|Aceite|Aceite|accept|Return||
+de_DE.UTF-8|action.accept|Accept|O.K.|O.K.|accept|Return||
+el_GR.UTF-8|action.accept|Accept|Δεχτείτε|Δεχτείτε|accept|Return||
+ko_KR.utf8|action.accept|Accept|수락|수락|accept|Return||
+es_ES.utf8|action.accept|Accept|Acepte|Acepte|accept|Return||
+fr_FR.UTF-8|action.accept|Accept|Acceptez|Acceptez|accept|Return||
+zh_CN.UTF-8|action.accept|Accept|受理|受理|accept|Return||
+ru_RU.UTF-8|action.accept|Accept|Примите|Примите|accept|Return||
+en_GB.UTF-8|action.accept|Accept|Okay|Okay|accept|Return||
+en_GB.UTF-8|action.add|Add a Row.|New|New|new|F4||
+pt_PT.UTF-8|action.add|Add a Row.|Novo|Novo|new|F4||
+de_DE.UTF-8|action.add|Add a Row.|Neu|Neu|new|F4||
+el_GR.UTF-8|action.add|Add a Row.|Νέος|Νέος|new|F4||
+fr_FR.UTF-8|action.add|Add a Row.|Nouveau|Nouveau|new|F4||
+ru_RU.UTF-8|action.add|Add a Row.|Ново|Ново|new|F4||
+zh_CN.UTF-8|action.add|Add a Row.|新|新|new|F4||
+ko_KR.utf8|action.add|Add a Row.|새로운|새로운|new|F4||
+es_ES.utf8|action.add|Add a Row.|Nuevo|Nuevo|new|F4||
+ko_KR.utf8|action.cancel|Cancel|취소|취소|cancel|Escape||
+ru_RU.UTF-8|action.cancel|Cancel|Cancel|Cancel|cancel|Escape||
+pt_PT.UTF-8|action.cancel|Cancel|Cancelamento|Cancelamento|cancel|Escape||
+de_DE.UTF-8|action.cancel|Cancel|Löschen|Löschen|cancel|Escape||
+fr_FR.UTF-8|action.cancel|Cancel|Annulation|Annulation|cancel|Escape||
+zh_CN.UTF-8|action.cancel|Cancel|取消|取消|cancel|Escape||
+es_ES.utf8|action.cancel|Cancel|Cancelación|Cancelación|cancel|Escape||
+en_GB.UTF-8|action.cancel|Cancel|Cancel|Cancel|cancel|Escape||
+el_GR.UTF-8|action.cancel|Cancel|Ακυρώστε|Ακυρώστε|cancel|Escape||
+ko_KR.utf8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+en_GB.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+zh_CN.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+el_GR.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+fr_FR.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+de_DE.UTF-8|action.delete|Delete a Row|Loeschen|Loeschen|delete|F10||
+ru_RU.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+pt_PT.UTF-8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+es_ES.utf8|action.delete|Delete a Row|Delete|Delete|delete|F10||
+es_ES.utf8|action.exit|Exit|Salida|Salida|uplevel|Escape||
+zh_CN.UTF-8|action.exit|Exit|出口|出口|uplevel|Escape||
+ru_RU.UTF-8|action.exit|Exit|Выход|Выход|uplevel|Escape||
+en_GB.UTF-8|action.exit|Exit|Exit|Exit|uplevel|Escape||
+fr_FR.UTF-8|action.exit|Exit|Sortie|Sortie|uplevel|Escape||
+de_DE.UTF-8|action.exit|Exit|Ausgang|Ausgang|uplevel|Escape||
+ko_KR.utf8|action.exit|Exit|출구|출구|uplevel|Escape||
+el_GR.UTF-8|action.exit|Exit|Exit|Exit|uplevel|Escape||
+pt_PT.UTF-8|action.exit|Exit|Saída|Saída|uplevel|Escape||
+zh_CN.UTF-8|action.list|List the records.|名单|名单|zoom|Control-Z||
+ru_RU.UTF-8|action.list|List the records.|Список|Список|zoom|Control-Z||
+el_GR.UTF-8|action.list|List the records.|Κατάλογος|Κατάλογος|zoom|Control-Z||
+en_GB.UTF-8|action.list|List the records.|List|List|zoom|Control-Z||
+fr_FR.UTF-8|action.list|List the records.|Liste|Liste|zoom|Control-Z||
+ko_KR.utf8|action.list|List the records.|명부|명부|zoom|Control-Z||
+pt_PT.UTF-8|action.list|List the records.|Lista|Lista|zoom|Control-Z||
+es_ES.utf8|action.list|List the records.|Lista|Lista|zoom|Control-Z||
+de_DE.UTF-8|action.list|List the records.|Liste|Liste|zoom|Control-Z||
+pt_PT.UTF-8|action.update|Update a Row|Emende|Emende|pen|F5||
+es_ES.utf8|action.update|Update a Row|Actualización|Actualización|pen|F5||
+ko_KR.utf8|action.update|Update a Row|갱신|갱신|pen|F5||
+en_GB.UTF-8|action.update|Update a Row|Update|Update|pen|F5||
+ru_RU.UTF-8|action.update|Update a Row|Уточнение|Уточнение|pen|F5||
+el_GR.UTF-8|action.update|Update a Row|Αναπροσαρμογ|Αναπροσαρμογ|pen|F5||
+zh_CN.UTF-8|action.update|Update a Row|更新|更新|pen|F5||
+de_DE.UTF-8|action.update|Update a Row|Ändern Sie|Ändern Sie|pen|F5||
+fr_FR.UTF-8|action.update|Update a Row|Modifiez|Modifiez|pen|F5||
+ko_KR.UTF-8|my test text|my test text|my test text|my test text||||
+fr_FR.UTF-8|my test text|my test text|mon texte d'essai|mon texte d'essai||||
+de_DE.UTF-8|my test text|my test text|my test text|my test text||||
+da_DK.UTF-8|my test text|my test text|my test text|my test text||||
+sv_SE.UTF-8|my test text|my test text|my test text|my test text||||
+es_ES.UTF-8|my test text|my test text|my test text|my test text||||
+pt_PT.UTF-8|my test text|my test text|my test text|my test text||||
+ru_RU.UTF-8|my test text|my test text|Мой текст исп|Мой текст испытани||||
+zh_CN.UTF-8|my test text|my test text|我的測試正文|我的測試正文||||
+en_GB.UTF-8|my test text|my test text|my test text|my test text||||
+el_GR.UTF-8|my test text|my test text|το κείμενο δο|το κείμενο δοκιμής||||
+ja_JP.UTF-8|my test text|my test text|私のテストテキス|私のテストテキスト||||
+ar_AE.UTF-8|my test text|my test text|my test text|my test text||||
+en_GB.UTF-8|私のテストテキス|私のテストテキスト|my test text|私のテストテキスト||||
+fr_FR.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+de_DE.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+da_DK.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+sv_SE.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+es_ES.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+pt_PT.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+ru_RU.UTF-8|私のテストテキス|私のテストテキスト|Мой текст исп|Мой текст испытани||||
+zh_CN.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+ko_KR.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+el_GR.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+ja_JP.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+ar_AE.UTF-8|私のテストテキス|私のテストテキスト|my test text|my test text||||
+pt_PT.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+fr_FR.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+de_DE.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+da_DK.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+sv_SE.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+es_ES.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+en_GB.UTF-8|私のテストテキスト|私のテストテキスト|my test text|私のテストテキスト||||
+ru_RU.UTF-8|私のテストテキスト|私のテストテキスト|Мой текст исп|Мой текст испытани||||
+zh_CN.UTF-8|私のテストテキスト|私のテストテキスト|我的測試正文|我的測試正文||||
+ko_KR.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+el_GR.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||
+ja_JP.UTF-8|私のテストテキスト|私のテストテキスト|私のテストテキス|私のテストテキスト||||
+ar_AE.UTF-8|私のテストテキスト|私のテストテキスト|my test text|my test text||||

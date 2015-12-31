@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='ANSI_X3.4-1968'?>
+<ActionDefaultList>
+	<ActionDefault name="close" text="Close" acceleratorName="Alt-F4" defaultView="no"/>
+  <ActionDefault name="accept" image="accept" text="OK" acceleratorName="Return" acceleratorName2="Enter">
+    <LStr text="action.accept"/>
+  </ActionDefault>
+  <ActionDefault name="cancel" image="cancel" text="Cancel" acceleratorName="Escape">
+    <LStr text="action.cancel"/>
+  </ActionDefault>
+  <ActionDefault name="exit" text="Exit" image="exit" acceleratorName="x">
+    <LStr text="action.exit"/>
+  </ActionDefault>
+  <ActionDefault name="editcopy" text="Copy" image="copy" comment="Copy">
+    <LStr text="action.editcopy" comment="comment.editcopy"/>
+  </ActionDefault>
+  <ActionDefault name="editcut" text="Cut" image="cut" comment="Cut">
+    <LStr text="action.editcut" comment="comment.editcut"/>
+  </ActionDefault>
+  <ActionDefault name="editpaste" text="Paste" image="paste" comment="Paste">
+    <LStr text="action.editpaste" comment="comment.editpaste"/>
+  </ActionDefault>
+  <ActionDefault name="add" text="Add" image="new" comment="Add new label" acceleratorName="shift-f5">
+    <LStr text="action.add" comment="comment.add"/>
+  </ActionDefault>
+  <ActionDefault name="list" text="List" image="mag" comment="List View" acceleratorName="control-l">
+    <LStr text="action.list" comment="comment.list"/>
+  </ActionDefault>
+  <ActionDefault name="update" text="Update" image="pen" comment="Update Data">
+    <LStr text="action.update" comment="comment.update"/>
+  </ActionDefault>
+  <ActionDefault name="insert" text="Insert" image="new" comment="Insert Data">
+    <LStr text="action.insert" comment="comment.insert"/>
+  </ActionDefault>
+  <ActionDefault name="delete" text="delete" image="delete" comment="Delete Data">
+    <LStr text="action.delete" comment="comment.delete"/>
+  </ActionDefault>
+  <ActionDefault name="print" text="Print" image="printer" comment="Print">
+    <LStr text="action.print" comment="comment.print"/>
+  </ActionDefault>
+  <ActionDefault name="help" text="Help" image="question" comment="Help" acceleratorName="F1">
+    <LStr text="action.help" comment="comment.help"/>
+  </ActionDefault>
+  <ActionDefault name="about" text="About" image="information" comment="About">
+    <LStr text="action.about" comment="comment.about"/>
+  </ActionDefault>
+  <ActionDefault name="genstr" text="Gen Loc Strs" comment="Generate Localized actions">
+    <LStr text="action.genstr" comment="comment.genstrs"/>
+  </ActionDefault>
+  <ActionDefault name="unload" text="UnLoad" image="export" comment="UnLoad to uc_labels.unl">
+    <LStr text="action.unload" comment="comment.unload"/>
+  </ActionDefault>
+  <ActionDefault name="load" text="Load" comment="Load uc_labels.unl">
+    <LStr text="action.load" comment="comment.load"/>
+  </ActionDefault>
+  <ActionDefault name="lang" text="Language" image="gb" comment="Show all for Language">
+    <LStr text="Language" comment="comment.language"/>
+  </ActionDefault>
+</ActionDefaultList>

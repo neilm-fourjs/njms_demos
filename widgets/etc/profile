@@ -1,0 +1,13 @@
+
+#
+dbi.database.adb.source   = "g_Borodin_dfa_64"
+dbi.database.adb.driver   = "dbmads381"
+dbi.database.adb.ads.schema   = "adb"
+dbi.database.adb.username = "SYSTEM"
+dbi.database.adb.password = "SYSTEM"
+
+fglrun.localization.file.count = 2
+fglrun.localization.file.1.name = "genero_lib1"
+fglrun.localization.file.2.name = "actions"
+
+#dbi.default.driver = "dbmifx9x"

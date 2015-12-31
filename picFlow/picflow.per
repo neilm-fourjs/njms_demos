@@ -1,0 +1,96 @@
+
+LAYOUT (TEXT="Picture Flow Demo", STYLE="black", IMAGE="genero_icon_s" )
+VBOX ( SPLITTER, STYLE="black" )
+HBOX ( SPLITTER )
+
+GRID ( STYLE="img_back" )
+{
+[f000                                 ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+[                                     ]
+}
+END -- GRID
+GRID ( STYLE="black" )
+{
+[l1    |d1    ]
+[l2    |d2    ]
+[l3    |d3    ]
+[l4    |d4    ]
+[l5    |d5    ]
+[l6    |d6    ]
+}
+END -- GRID
+END -- HBOX
+TABLE (STYLE="PictureFlow")
+{
+[f001                                                     ]
+[f001                                                     ]
+[f001                                                     ]
+[f001                                                     ]
+[f001                                                     ]
+[f001                                                     ]
+}
+END
+
+GRID ( STYLE="black" )
+{
+[f003                                                     ]
+[: :f002                                     : :cur:of:max]
+[""]
+[but1          :        :b1 |b2 |b3 |b4 :             :" "]
+}
+END -- GRID
+END -- VBOX
+
+ATTRIBUTES
+-- main image view
+--IMAGE f000 = FORMONLY.img, STYLE="paleblack", AUTOSCALE , STRETCH=BOTH;
+--IMAGE f000 = FORMONLY.img, STYLE="paleblack", HEIGHT=600 PIXELS, WIDTH=600 PIXELS, STRETCH=BOTH;
+IMAGE f000 = FORMONLY.img, STYLE="img_back", AUTOSCALE, 
+	{HEIGHT=600 PIXELS, WIDTH=600 PIXELS,} STRETCH=BOTH;
+
+-- image info panel
+LABEL l1 : l1, TEXT="Name:",STYLE="black", JUSTIFY=RIGHT;
+LABEL l2 : l2, TEXT="Type:",STYLE="black", JUSTIFY=RIGHT;
+LABEL l3 : l3, TEXT="Path:",STYLE="black", JUSTIFY=RIGHT;
+LABEL l4 : l4, TEXT="Size:",STYLE="black", JUSTIFY=RIGHT;
+LABEL l5 : l5, TEXT="Modified:",STYLE="black", JUSTIFY=RIGHT;
+LABEL l6 : l6, TEXT="Permissons:",STYLE="black", JUSTIFY=RIGHT;
+LABEL d1 = FORMONLY.d1, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+LABEL d2 = FORMONLY.d2, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+LABEL d3 = FORMONLY.d3, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+LABEL d4 = FORMONLY.d4, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+LABEL d5 = FORMONLY.d5, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+LABEL d6 = FORMONLY.d6, STYLE="d_black",SIZEPOLICY=DYNAMIC;
+
+-- picFlow image
+IMAGE f001 = FORMONLY.pic, TITLE="Images";
+
+-- Lower panel
+TEXTEDIT f002 = FORMONLY.nam,STYLE="big black html", SCROLLBARS=NONE;
+LABEL cur = FORMONLY.cur, SIZEPOLICY=DYNAMIC,STYLE="big black";
+LABEL of : of, TEXT=" of ", SIZEPOLICY=DYNAMIC,STYLE="big black";
+LABEL max = FORMONLY.max,STYLE="big black", SIZEPOLICY=DYNAMIC;
+SLIDER f003 = FORMONLY.c, VALUEMIN=1, TAG="c";
+
+-- buttons
+BUTTON but1 : quit, STYLE="black", SIZEPOLICY=DYNAMIC;
+BUTTON b1 : firstrow, STYLE="black", SIZEPOLICY=DYNAMIC;
+BUTTON b2 : prevrow, STYLE="black", SIZEPOLICY=DYNAMIC;
+BUTTON b3 : nextrow, STYLE="black", SIZEPOLICY=DYNAMIC;
+BUTTON b4 : lastrow, STYLE="black", SIZEPOLICY=DYNAMIC;
+
+INSTRUCTIONS
+SCREEN RECORD pics ( pic )

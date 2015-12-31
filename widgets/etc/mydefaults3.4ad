@@ -1,0 +1,27 @@
+<ActionDefaultList>
+  <ActionDefault name="accept" text="OK" acceleratorName="Return" acceleratorName2="Enter"/>
+  <ActionDefault name="cancel"    text="Cancel" acceleratorName="Escape"/>
+
+  <ActionDefault name="exit"      text="Exit"     image="uplevel"  acceleratorName="x"/>
+
+  <ActionDefault name="sum"       image="sum" comment="DDE Excel" />
+  <ActionDefault name="time"      image="time" comment="Canvas" />
+  <ActionDefault name="f2" text="Info" image="balloon" comment="Info" acceleratorName="F2" />
+  <ActionDefault name="error" text="Error" image="attention" comment="Error Message" acceleratorName="F18" />
+  <ActionDefault name="f19" text="Question" image="quest" comment="A Question" acceleratorName="F19" />
+
+  <ActionDefault name="f20" text="Test" comment="A Test Message" acceleratorName="F20" />
+
+  <ActionDefault name="lookup" text="Lookup" image="find"  comment="Lookup Window" />
+
+  <ActionDefault name="chg_flds" text="" comment="" acceleratorName="F12" />
+
+  <ActionDefault name="editcopy"  text="Copy"  image="copy"  comment="Copy" />
+  <ActionDefault name="editcut"   text="Cut"   image="cut"   comment="Cut" />
+  <ActionDefault name="editpaste" text="Paste" image="paste" comment="Paste" />
+  <ActionDefault name="print" text="Print" image="printer" comment="Print" />
+  <ActionDefault name="find"  text="Find" image="find"    comment="Search" />
+  <ActionDefault name="help"  text="Help" image="question"   comment="Help" />
+  <ActionDefault name="src_per" text="Per Source" comment="Show Source" />
+  <ActionDefault name="src_4gl" text="4GL Source" comment="Show Source" />
+</ActionDefaultList>

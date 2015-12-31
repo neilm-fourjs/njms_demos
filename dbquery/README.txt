@@ -1,0 +1,81 @@
+-- Usage:
+-- 	If command line args are used then dbquery doesn't prompt for 
+--	database details
+--
+-- Command Line args: 
+--	-db <database name>
+--	-tn <table name>
+--	-nosplash	-	No splash screen on load.
+--	-sqlfe		- This only launches the SQL Front End
+--							If no database specified then it prompts as normal
+-- 
+-- Enviroment Variable - used as default values for database window only.
+-- DBQ_DBNAME		- Database name
+-- DBQ_DBSOURCE	- Database source
+-- DBQ_DBHOST		- Host ip/name for database
+-- DBQ_DBUSER		- User name for connection
+-- DBQ_DBPASS		- Password for connection
+-- DBQ_TABNAME	- Table name to start with selected
+--
+-- ******************************************************************
+-- Building instructions ( NOTE: Some Makefile options will fail Windows )
+-- 	make clean	- remove built objects
+-- 	make 				- builds dbquery.42r & README
+-- 	make tgz		- builds dbquery.42r & README & makes a tgz distro
+--  To enable g_dbgLev outuput:
+--		export FJS_GL_DBGLEV=3
+--		make clean
+--		make
+-- ******************************************************************
+-- Version 1.0 - 20th Jan 2003
+--		. If not passed a databse then it gives a combo of all .sch in
+--			the first directory in DBPATH and all .sch in current directory.
+--		. Can display large tables using a multitab form.
+--		. Option to show the schema for the current table.
+--		. Can display the first 6 fields on the current table in a list view.
+--		. Can generate an XML form of the current screen.
+--		. Can dump the entire XML tree to a file.
+--
+-- Version 2.0 - 14th Apr 2004
+--		. Internal change so program works from an XML schema of the db.
+--		. Can now user Environment variable as well as command line args.
+--		. Changed layout of main screen to include table list.
+--		. Option now to show the schema for ANY table.
+--		. Provides a front end to SQL entry.
+--				This includes the ability to do SELECT * FROM tabname to populate
+--				a screen TABLE. 
+--		. Handles connection strings to databases.
+--		. Can now change database from within dbquery.
+--		. Can print the first 6 fields on the current table to a report.
+--		. Can print the first 6 fields on the current table to PrintClient.
+-- Version 2.1 - 2nd Dec 2004
+--		. Added splash screen, help & about windows.
+--
+-- KNOWN ISSUES: Has problems running on Windows due to windows long directory names.
+--
+-- TODO: Ablity to add/drop/modify tables. ( STARTED 1/10/04 )
+-- ******************************************************************
+--
+-- This program using the following Genero features:-
+--		DYNAMIC ARRAYS
+--		CONSTANT
+--		STRING
+--		PRINTX
+--		StringTokenizer
+--		base.Application.getArgumentCount
+--		base.Application.getArgument
+--		ui.ComboBox
+--		om.DomNode
+--		Preprocessor
+--			#define - see dbquery.inc
+--			#include
+--			#ifdef
+--
+-- All forms, dialogs, toolbars, topmenus and styles are generated dynamically.
+--
+--	Limitations of dynamic screens & listview:-
+--	No columns beyond first 100(hard coded) are populated.
+--	Only first 150(constant) chars of a char column are read/displayed.
+--	List view only shows/prints 6(hard coded) fields.
+--
+-- The constants can be changed to increase some limits. see dbquery.inc

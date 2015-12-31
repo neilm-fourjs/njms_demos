@@ -1,0 +1,2 @@
+dbi.database.ipod.driver = "dbmads381"
+dbi.database.ipod.source = "genero_dsn"

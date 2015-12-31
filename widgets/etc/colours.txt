@@ -1,0 +1,47 @@
+1|default||Default Colour.
+1|window||Window background.
+1|windowText||Text in Windows.
+1|buttonFace||Face colour for 3d display elements.
+1|buttonText||Text on PushButtons.
+1|highLight||Item(s) selected in a control.
+1|highLightText||Text of item(s) selected in a control
+1|infoBackground||Background color for tooltip controls.
+1|infoText||Text color for tooltip controls.
+1|grayText||Grayed (disabled) text.
+1|appWorkSpace||Background color of multiple document interface.
+1|background||Desktop background.
+1|white|#FFFFFF|White
+1|black|#000000|Black
+1|darkGray|#808080|Dark Gray
+1|gray|#A9A9A9|Gray
+1|lightGray|#D3D3D3|Light Gray
+1|darkBlue|#00008B|Dark Blue
+1|blue|#0000FF|Blue
+1|lightBlue|#ADD8E6|Light Blue
+1|darkCyan|#008B8B|Dark Cyan
+1|cyan|#00FFFF|Cyan
+1|lightCyan|#E0FFFF|Light Cyan
+1|darkMagenta|#8B008B|Dark Magenta
+1|magenta|#FF00FF|Magenta
+1|lightMagenta|#FFC0FF|Light Magenta
+1|darkOlive|#505000|Dark Olive
+1|olive|#808000|Olive
+1|lightOlive|#AAAA44|Light Olive
+1|darkGreen|#008000|Dark Green
+1|green|#00FF00|Green
+1|lightGreen|#00FFB0|Light Green
+1|darkTeal|#005050|Dark Teal
+1|teal|#008080|Teal
+1|lightTeal|#33CCCC|Light Teal
+1|darkRed|#8B0000|Dark Red
+1|red|#FF0000|Red
+1|lightRed|#FF8080|Light Red
+1|darkOrange|#FF8C00|Dark Orange
+1|orange|#FFA500|Orange
+1|lightOrange|#FFCC00|Light Orange
+1|darkYellow|#AAAA00|Dark Yellow
+1|yellow|#FFFF00|Yellow
+1|lightYellow|#FFFF99|Light Yellow
+0|genero|#800080|Genero
+0|gdb|#FF9900|GeneroDB
+0|gst|#808000|GeneroStudio

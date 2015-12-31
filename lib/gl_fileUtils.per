@@ -1,0 +1,46 @@
+
+LAYOUT (STYLE="viewer")
+GRID
+{
+ [l001  :f001                       ][b1|b2]
+<T filelist                                   >
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+ [a|a001               |a002|  a003|a004     ] 
+
+ [l002][f002                       ][okay]
+ [l003][f003                       ][can ]
+}
+END -- GRID
+END -- LAYOUT
+
+ATTRIBUTES
+LABEL l001 : dir,TEXT=%"Directory:";
+LABEL l002 : fn ,TEXT=%"File Name:";
+LABEL l003 : ft ,TEXT=%"File of Type:";
+
+BUTTON b1   : back  ,TEXT="",IMAGE="prev2", COMMENT="Previous";
+BUTTON b2   : uplv  ,TEXT="",IMAGE="up", COMMENT="Up a level";
+BUTTON okay : accept,TEXT=%"Open",IMAGE="";
+BUTTON can  : cancel,TEXT=%"Cancel",IMAGE="";
+
+         f001 = FORMONLY.dirname;
+         f002 = FORMONLY.fname;
+COMBOBOX f003 = FORMONLY.ftype;
+
+IMAGE a    = FORMONLY.icon;
+      a001 = FORMONLY.name,TITLE=%"Name";
+      a002 = FORMONLY.type,TITLE=%"Type";
+      a003 = FORMONLY.size,TITLE=%"Size";
+      a004 = FORMONLY.mdte,TITLE=%"Date",SIZEPOLICY=DYNAMIC;
+END
+
+INSTRUCTIONS
+SCREEN RECORD arr [10] ( icon THRU mdte )

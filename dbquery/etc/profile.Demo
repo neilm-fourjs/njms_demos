@@ -1,0 +1,14 @@
+
+fglrun.localization.file.count = 2
+fglrun.localization.file.1.name = "genero_lib1"
+fglrun.localization.file.2.name = "actions"
+
+
+#dbi.database.officestore.driver   = "dbmifx9x"
+
+#dbi.database.officestore.driver   = "dbmmsv90"
+#dbi.database.officestore.source   = "officestore_msv"
+
+dbi.database.officestore.driver   = "dbmads380"
+dbi.database.officestore.source   = "fjs-demo"
+dbi.database.officestore.ads.schema   = "officestore"

@@ -1,0 +1,61 @@
+
+127 Changes for Makefile so build works on Windows
+
+126 Splash screen changes
+
+125 Added genero schema options.
+
+124 Added tooltips for coltype to columns.
+
+123 Fixed some bits and tidied code a little.
+
+122	Changed the debug code to use __LINE__ & __FILE__
+
+121 Fixed problem with paged array in lookup.4gl
+
+120 Changed version to 2.1 - added help & about windows
+
+119 Added splash screen and added center to dialog window style
+
+118 Extended lookup.4gl for column title and types
+
+117 Tidied xml schema(removed white space from values)
+
+116 New release.
+
+115 Change Version to 2.0 (should have been done long ago)
+		Updated README within dbquery.4gl
+		Added README extraction
+		Added -sqlfe flag
+		Added DBG for debug displays and -DDEBUG set via DBQUERYDB=1 in env
+
+114 Fixed int_flag problem after list_view
+		Fixed column length & heading in gen_rpt REPORT section.
+
+113 sqlfe: rebuilds result table so now sets size and justify correctly.
+
+112 basic file picker added to lib and used by sqlfe.
+
+111 sqlfe: database open/close/change added & titled window.
+
+110 sqlfe: handles alias in FROM sections & basic save/load to test.sql
+
+109 Now sqlfe can handle the basics of multiple tables.
+
+108 Changed so schema view change on single click off table array
+
+107 Schema view can now view different tables
+		sqlfe can call schema_view
+
+106 Now using connection info(src,usr,pwd etc) for CONNECTION
+
+105 Can now change selected database
+
+104 Change more arrays to dynamic and changed overall layout.
+
+103 Added build number to main window.
+
+102 Restructured ready for proper db connections.
+
+101 Stated doing structured release builds.
+

@@ -1,0 +1,639 @@
+
+-- CVS Header
+-- $Author: test4j $
+-- $Date: 2008/04/17 17:11:25 $
+-- $Revision: 341 $
+-- $Source: /usr/home/test4j/cvs/all/demos/widgets/forms/widgets.per,v $
+-- $Log: widgets.per,v $
+-- Revision 1.17  2008/04/17 17:11:25  test4j
+-- *** empty log message ***
+--
+-- Revision 1.16  2007/12/06 09:25:57  test4j
+-- *** empty log message ***
+--
+-- Revision 1.15  2007/11/16 10:15:21  test4j
+-- *** empty log message ***
+--
+-- Revision 1.14  2007/11/16 09:21:24  test4j
+-- *** empty log message ***
+--
+-- Revision 1.13  2007/07/12 16:43:03  test4j
+-- *** empty log message ***
+--
+-- Revision 1.12  2007/02/02 17:28:37  test4j
+-- *** empty log message ***
+--
+-- Revision 1.11  2006/10/10 08:41:21  test4j
+-- *** empty log message ***
+--
+-- Revision 1.10  2006/08/01 07:50:32  test4j
+--
+-- Added more styles.
+--
+-- Revision 1.9  2006/07/26 14:29:57  test4j
+-- *** empty log message ***
+--
+-- Revision 1.8  2006/07/21 11:21:42  test4j
+-- *** empty log message ***
+--
+-- Revision 1.6  2006/06/19 18:39:18  test4j
+-- *** empty log message ***
+--
+-- Revision 1.5  2006/06/02 12:44:38  test4j
+-- *** empty log message ***
+--
+-- Revision 1.4  2006/03/24 08:49:51  test4j
+--
+-- various little changes
+--
+-- Revision 1.3  2005/11/21 17:42:17  test4j
+-- *** empty log message ***
+--
+-- Revision 1.2  2005/11/21 15:20:29  test4j
+-- *** empty log message ***
+--
+-- Revision 1.1  2005/11/17 18:14:12  test4j
+-- *** empty log message ***
+--
+-- Revision 1.5  2005/11/03 15:37:57  test4j
+--
+-- Changed to use splash, about, progbar from genero_lib1 ( from library demo )
+--
+-- Revision 1.4  2005/05/10 14:48:12  test4j
+--
+-- Added cvs header.
+--
+
+TOPMENU
+  GROUP file (text="File")
+  	COMMAND exit (text="Exit", image="quit")
+	END
+  GROUP inps (text="Inputs")
+    COMMAND Inputs (text="Normal")
+    COMMAND inputa (text="Input Array")
+    SEPARATOR
+    COMMAND inputa2 (text="Array in Window")
+    SEPARATOR
+    COMMAND ndialog (text="Multi Dialog")
+  END
+  GROUP dsps (text="Displays")
+    COMMAND displaya (text="Display Array")
+    SEPARATOR
+    COMMAND displaya2 (text="Array in Window")
+  END
+  GROUP feat (text="Features")
+    COMMAND progbar (text="ProgressBar")
+    COMMAND progbar2 (text="ProgressBar2")
+    COMMAND dynamic (text="Dynamic")
+    COMMAND dynamictab (text="DynTable")
+    COMMAND onidle (text="OnIdle")
+    COMMAND hidden (text="Hidden Option")
+    COMMAND textedt (text="TextEdit")
+		COMMAND webkit
+    GROUP winst (text="Styles")
+    	COMMAND chgstyle0 (text="DemoDefault")
+    	COMMAND chgstyle1 (text="Style 1")
+    	COMMAND chgstyle2 (text="Style 2")
+    	GROUP winst (text="Window Styles")
+    		COMMAND winst1 (text="Normal")
+    		COMMAND winst2 (text="Main")
+    		COMMAND winst3 (text="Dialog")
+    		COMMAND winst4 (text="Naked")
+    		COMMAND winst5 (text="MyStyle")
+  		END
+  	END
+  	GROUP canv (text="Canvas")
+    	COMMAND canvas (text="Clock", image="time")
+    	COMMAND pie (text="Pie Chart")
+    	COMMAND bar (text="Bar Chart")
+    	COMMAND poly1 (text="Polygon+")
+    	COMMAND poly2 (text="Polygon-")
+    	COMMAND lines (text="Lines-")
+  	END
+  END
+  GROUP src (text="Source")
+    GROUP s4gl (text="4GL")
+    	COMMAND src_4gl (text="widgets.4gl")
+    	COMMAND src_pb (text="genero_lib1.4gl")
+    	COMMAND src_shwf (text="showfile.4gl")
+    	COMMAND src_shwt (text="editfile.4gl")
+    	SEPARATOR
+    	COMMAND src_progbar (text="Progress Bar")
+    	COMMAND src_idle (text="OnIdle")
+    	COMMAND src_winme (text="WinMessage")
+    	COMMAND src_winqu (text="WinQuestion")
+    	COMMAND src_hide (text="Dynamic Hiding")
+    	COMMAND src_md (text="Multiple Dialogs")
+		END
+    GROUP sper (text="PER")
+    	COMMAND src_per (text="widgets.per")
+    	COMMAND src_tab (text="table.per")
+    	COMMAND src_new (text="newwin.per")
+    	SEPARATOR
+    	COMMAND src_tm (text="Topmenu")
+		END
+    GROUP sxml (text="XML")
+    	COMMAND src_sm (text="StartMenu")
+    	COMMAND src_tb (text="Toolbar")
+    	COMMAND src_ad (text="Actions")
+    	COMMAND src_st (text="Styles")
+    	COMMAND src_st2 (text="Styles2")
+		END
+  END
+  GROUP help (text="Help")
+    COMMAND help (text="Help",image="quest")
+    COMMAND about (text="About",image="quest")
+    COMMAND manual (text="FGL Manual",image="quest")
+    COMMAND splash (text="Splash",image="exclamation")
+    SEPARATOR
+    COMMAND dbquery (text="DbQuery",image="find")
+  END
+END
+
+LAYOUT (STYLE="main", VERSION="$Revision: 341 $") -- Section
+
+HBOX
+GRID
+{
+<G "Normal Inputs"                      >
+ [l000      |f000                ]
+ [l001      |f001                      ]
+ [l006      |f007      ::l009:f012     ]
+ [l06a      |f07a                      ]
+ [l002      |f002                      ]
+            [                          ]
+            [                          ]
+            [                          ]
+ ["Dec:"|f006   ][: :l010:f008     :pic]
+<                                       >
+
+<G grpsp                                >
+  Type           Entry             Value
+ [l004          |f004           ] [val1]
+ [l005          |f005                  ]
+ [exp1                          ] [val2]
+ [l003          |f003        |f03a|val3]
+ [l007          |f010                  ]
+ [l008          |f011  ]
+ [f009                                 ]
+<                                       >
+}
+END -- GRID
+
+FOLDER folder1  (STYLE="bottom")
+PAGE styles (text="Styles")
+GRID
+{
+<G grpst                          >
+ [slab1]
+ [slab2]
+ [slab3]
+ [slab4]
+ [slab5]
+ [slab6]
+ [slab7]
+
+<G "Change Style"                 >
+ [   :sbut0:sbut1:sbut2:sbut3:   ]
+ [            :dteed2:           ]
+ [           :url:url2:           ]
+
+<G "Buttons"      ><G "Buttons"   >
+ [win1           ]  [     :w:    ]
+ [win3           ]  [   :win4:   ]
+ 
+}
+END -- GRID
+END -- PAGE
+
+PAGE arrays (text="Arrays")
+VBOX
+GRID
+{
+<G "Old Style Array"   >
+ [but1  |but2  |but3  ]
+ [arr1  |arr2  |arr3  ]
+ [arr1  |arr2  |arr3  ]
+ [arr1  |arr2  |arr3  ]
+ [arr1  |arr2  |arr3  ]
+ [arr1  |arr2  |arr3  ]
+}
+END -- SCROLLGRID
+GROUP (Text="Multi Line Array")
+GRID
+{
+<S sg1                 >
+ [arr4                ]
+ [arr5      |arr6     ]
+ ----------------------
+ [arr4                ]
+ [arr5      |arr6     ]
+ ----------------------
+ [arr4                ]
+ [arr5      |arr6     ]
+}
+END -- GRID
+END -- GROUP
+END -- VBOX
+END -- PAGE
+
+PAGE tables (text="Table")
+GRID
+{
+[                  :tt:                  ]
+<TABLE tab1                              >
+  No  Img  Text               Date
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+ [tc1|img|tabc2              |tabc3     ]
+
+<G "Lookups"                             >
+ [lk1       ][lk2       ][lk3       ]
+}
+END -- GRID
+END -- PAGE
+
+PAGE canvas (text="Canvas")
+GRID
+{
+<G "Features"                         >
+ [can1      ][can3      ][can5       ]
+ [can2      ][can4      ][can6       ]
+
+<G "The Canvas"                       >
+ [can                           ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [                              ]
+ [p       ][b       ][k     |k1 ]
+}
+END -- GRID
+END -- FOLDER
+
+PAGE dynamic (text="Dynamic")
+GRID
+{
+<G "Create new fields"         >
+[dlab1|d001         ] [dynam  ]
+[dlab2|d002         ] [dyntabb]
+[dlab3|d003         ] [mm     ]
+[okay:                   :canc]
+
+<G "New Fields"                >
+
+<G dyntab                      >
+}
+END -- GRID
+END -- PAGE
+
+PAGE multi (text="Multi-Dialog", HIDDEN) -- not used anymore ?
+VBOX
+GRID
+{
+<G "Test fields"                  >
+ Field1[fld1    ] Field2[fld2    ]
+}
+END -- grid
+HBOX
+TABLE
+{
+ f11     f12
+[f11    |f12     ]
+[f11    |f12     ]
+[f11    |f12     ]
+[f11    |f12     ]
+}
+END -- TABLE
+GRID
+{
+[myadd]
+[mydel]
+}
+END -- GRID
+TABLE
+{
+ f21     f22
+[f21    |f22     ]
+[f21    |f22     ]
+[f21    |f22     ]
+[f21    |f22     ]
+}
+END -- TABLE
+END -- HBOX
+END -- VBOX
+END -- PAGE
+
+PAGE colours (text="Colours")
+GRID
+{
+<G "Group 1"      ><G "Group 2"      >
+  Label   Field      Label   Field
+  ------- -------    ------- -------
+ [lab1   |col1   ]  [lab9   |col9   ]
+ [lab2   |col2   ]  [lab10  |col10  ]
+ [lab3   |col3   ]  [lab11  |col11  ]
+ [lab4   |col4   ]  [lab12  |col12  ]
+ [lab5   |col5   ]  [lab13  |col13  ]
+ [lab6   |col6   ]  [lab14  |col14  ]
+ [lab7   |col7   ]  [lab15  |col15  ]
+ [lab8   |col8   ]  [lab16  |col16  ]
+
+  text on form 
+ [njm          ]
+}
+END -- GRID
+END -- PAGE
+
+PAGE images ( text="Images/Text")
+FOLDER folder2
+PAGE ( text="Images")
+GRID
+{
+<G "JPG Image"                      >
+ [jpg                              ]
+ [                                 ]
+ [                                 ]
+ [                                 ]
+ [                                 ]
+ [                                 ]
+
+<G "From URL"                       >
+ [google                           ]
+ [                                 ]
+ [                                 ]
+}
+END -- GRID
+END -- PAGE
+PAGE ( text="Images Formats")
+GRID
+{
+<G "PNG"         ><G "BMP"          >
+ [png            ] [bmp            ]
+ [               ] [               ]
+ [               ] [               ]
+ [               ] [               ]
+ [               ] [               ]
+
+<G "SVG"         ><G "GIF"          >
+ [svg            ] [gif            ]
+ [               ] [               ]
+ [               ] [               ]
+ [               ] [               ]
+ [               ] [               ]
+}
+END -- GRID
+END -- PAGE
+
+PAGE stytab ( text="Text")
+VBOX
+GRID
+{
+<G "Layouts 1"                   >
+ [nocent                       ]
+ ["texta"::"textb"             ]
+ ["texta":    :"textb"         ]
+ ["texta":    :"textb"]
+ ["texta":             :"textb"]
+ [          :cent1:            ]
+ [        :cent2:cent3:        ]
+  1234567               1234567 
+ [                     :"Right"]
+ [                        :sig1]
+
+<G "Layouts 2"                   >
+ [                        :sig2]
+
+                          [sig3]
+}
+END -- GRID
+END -- VBOX
+END -- PAGE
+END -- FOLDER
+
+END -- GRID
+END -- PAGE
+
+END -- FOLDER
+END -- HBOX
+
+ATTRIBUTES                                                         -- Section
+GROUP grpsp : grsp, TEXT="Special Inputs", STYLE="wgt_yellow";
+GROUP grpst : grst, TEXT="Styles", STYLE="styles";
+BUTTON sbut0 : chgstyle0, TEXT="Default";
+BUTTON sbut1 : chgstyle1, TEXT="Style1";
+BUTTON sbut2 : chgstyle2, TEXT="Style2";
+BUTTON sbut3 : chgstyle3, TEXT="Style3";
+LABEL l000 : nedit, JUSTIFY=RIGHT, STYLE="njm", TEXT="Edit Field:";
+LABEL l001 : bedit, JUSTIFY=RIGHT, STYLE="njm", TEXT="ButtonEdit:";
+LABEL l002 : tedit, JUSTIFY=RIGHT, STYLE="njm", TEXT="TextEdit:";
+LABEL l003 : combo, JUSTIFY=RIGHT, STYLE="wgt_yellow", TEXT="ComboBox:";
+LABEL l004 : chkbx, JUSTIFY=RIGHT, STYLE="wgt_yellow", TEXT="CheckBox:";
+LABEL l005 : radio, JUSTIFY=RIGHT, STYLE="wgt_yellow", TEXT="RadioGroup:";
+LABEL l006 : dedit, JUSTIFY=RIGHT, STYLE="wgt_yellow", TEXT="DateEdit:";
+LABEL l06a : dtedit, JUSTIFY=RIGHT, STYLE="wgt_yellow", TEXT="DateTimeEdit:";
+LABEL l007 : labslider, JUSTIFY=RIGHT,STYLE="wgt_yellow",TEXT="Slider:";
+LABEL l008 : labspin  , JUSTIFY=RIGHT,STYLE="wgt_yellow",TEXT="SpinEdit:";
+LABEL l009 : labtime  , JUSTIFY=RIGHT,STYLE="wgt_yellow",TEXT="Time:";
+LABEL l010 : labpict  , JUSTIFY=RIGHT ,STYLE="wgt_yellow",TEXT="Picture:";
+
+-- Images
+IMAGE jpg=FORMONLY.jpg, WIDTH=243 PIXELS, HEIGHT=132 PIXELS,STRETCH=BOTH, AUTOSCALE;
+--IMAGE gif:gif, IMAGE="widgets_ani.gif", STRETCH=BOTH, AUTOSCALE;
+IMAGE gif=FORMONLY.gif, STRETCH=BOTH, AUTOSCALE;
+IMAGE bmp=FORMONLY.bmp, STRETCH=BOTH, AUTOSCALE;
+IMAGE png=FORMONLY.png, STRETCH=BOTH, AUTOSCALE;
+IMAGE svg=FORMONLY.svg, STRETCH=BOTH, AUTOSCALE;
+IMAGE google=FORMONLY.google,STRETCH=BOTH, AUTOSCALE;
+
+BUTTON win1 : f2, text="Info", image="balloon";
+BUTTON w : error, text="", image="attention"; 
+{win2 = FORMONLY.win2, WIDGET="BUTTON",CONFIG="f18";}
+BUTTON win3 : f19, text="Ask\nQuestion";
+BUTTON win4 : error2, image="exclamation";
+
+CHECKBOX k = FORMONLY.chart_key, TEXT="Legand", VALUECHECKED="1", VALUEUNCHECKED="0", NOT NULL;
+BUTTON k1 : crt,TEXT="Key", IMAGE="key";
+BUTTON b : bar, text="Bar Chart";
+BUTTON p : pie, text="Pie Chart";
+
+EDIT f000 = FORMONLY.norm, TITLE="Title:", COMMENT="Enter error to see an error.";
+-- BUTTONEDIT f001 = FORMONLY.normbe,image="circle", ACTION=lookup;
+BUTTONEDIT f001 = FORMONLY.normbe,ACTION=lookup;
+
+TEXTEDIT f002 = FORMONLY.wordw, COMMENT="Type some text and see it wrap.";
+
+f006 = FORMONLY.dec TYPE DECIMAL(6,2),INCLUDE=(0 TO 1000), FORMAT="###&.&&";
+f008 = FORMONLY.formt, UPSHIFT,	 PICTURE="XX-## AAAA", COMMENT="PICTURE='XX-## AAAA'";
+LABEL pic : pic ,TEXT="XX-## AAAA";
+COMBOBOX f003 = FORMONLY.combo, NOT NULL, INITIALIZER=init_combo,STYLE="formfield";
+COMBOBOX f03a = FORMONLY.c_year, INITIALIZER=init_combo2;
+
+CHECKBOX f004 = FORMONLY.check, TEXT="Yes/No", VALUECHECKED="Y", VALUEUNCHECKED="N",NOT NULL,REQUIRED;
+
+RADIOGROUP f005 = FORMONLY.radio, ITEMS=(("F","Ford"),("R","Renault"),("V","Vauxhall")),ORIENTATION=HORIZONTAL;
+
+DATEEDIT dteed2 = FORMONLY.dateedit2,STYLE="parttime";
+DATEEDIT f007 = FORMONLY.DATEEDIT;
+&ifdef genero3x
+DATETIMEEDIT f07a = FORMONLY.datetimeedit;
+&else
+EDIT f07a = FORMONLY.datetimeedit;
+&endif
+TIMEEDIT f012 = FORMONLY.timeedit;
+SLIDER f010 = FORMONLY.slider, VALUEMIN=0, VALUEMAX=100,STEP=5;
+SPINEDIT f011 = FORMONLY.spinedit, INCLUDE=(1 TO 100), STEP=5;
+
+PROGRESSBAR f009 = FORMONLY.progress TYPE INTEGER, TAG="Progress", VALUEMIN=0, VALUEMAX=11;
+
+EDIT val1 = FORMONLY.val1, NOENTRY,STYLE="noentry";
+EDIT val2 = FORMONLY.val2, NOENTRY,STYLE="noentry";
+EDIT val3 = FORMONLY.val3, NOENTRY,STYLE="noentry";
+
+-- Page1
+
+BUTTON but1 : f31, text="fld1";
+BUTTON but2 : f32, text="fld2";
+BUTTON but3 : f33, text="fld3";
+
+BUTTON url : url, TEXT="http://www.4js.com", STYLE="url";
+LABEL url2 : url2, TEXT="<A HREF=\"http://www.4js.com\">FourJs.com</A>", STYLE="html";
+
+-- Arrays 
+arr1 = FORMONLY.arr1 TYPE CHAR ; --, OPTIONS="-nolist";
+arr2 = FORMONLY.arr2 TYPE CHAR ; --, OPTIONS="-nolist";
+arr3 = FORMONLY.arr3 TYPE CHAR ; --, OPTIONS="-nolist";
+
+arr4 = FORMONLY.arr4 TYPE CHAR {, OPTIONS="-nolist"};
+arr5 = FORMONLY.arr5 TYPE CHAR {, OPTIONS="-nolist"};
+arr6 = FORMONLY.arr6 TYPE CHAR {, OPTIONS="-nolist"};
+
+LABEL tt : tt, TEXT="This is a table in the form",STYLE="tabtitl";
+
+TABLE tab1 : tab1, HEIGHT=15 LINES;
+--newarr
+tc1 = FORMONLY.tabc1, COLOR=BLUE;
+IMAGE img = FORMONLY.img;
+tabc2 = FORMONLY.tabc2,STYLE="col2";
+DATEEDIT tabc3 = FORMONLY.tabc3;
+
+-- Dynamic
+GROUP dyntab : dyntab, TEXT="Dynamic Table";
+d001 = FORMONLY.field_name;
+COMBOBOX d002 = FORMONLY.field_type, ITEMS=("Edit", "DateEdit", "ComboBox");
+d003 = FORMONLY.field_size,HIDDEN=USER;
+LABEL dlab1 : dlab1, TEXT="Name", JUSTIFY=RIGHT;
+LABEL dlab2 : dlab2, TEXT="Type", JUSTIFY=RIGHT;
+LABEL dlab3 : dlab3, TEXT="Size", JUSTIFY=RIGHT,HIDDEN=USER;
+BUTTON canc : cancel, TEXT="Cancel", IMAGE="cancel";
+BUTTON okay : accept, TEXT="Accept", IMAGE="accept";
+BUTTON dynam : dynamic, TEXT="Dynamic Fields";
+BUTTON dyntabb : dynamictab, TEXT="Dynamic Table";
+BUTTON mm : sze, TEXT="Size", IMAGE="forwind";
+
+BUTTON lk1 : LOOKUP1, text="Dialog";
+BUTTON lk2 : LOOKUP2, text="Naked";
+BUTTON lk3 : LOOKUP3, text="Default";
+
+-- Canvas
+CANVAS can : canv;
+
+CHECKBOX can1 = FORMONLY.chk1, TEXT="Square", VALUECHECKED="Y", VALUEUNCHECKED="N";
+CHECKBOX can2 = FORMONLY.chk2, TEXT="Rectange", VALUECHECKED="Y", VALUEUNCHECKED="N";
+CHECKBOX can3 = FORMONLY.chk3, TEXT="Oval", VALUECHECKED="Y", VALUEUNCHECKED="N";
+CHECKBOX can4 = FORMONLY.chk4, TEXT="Circle", VALUECHECKED="Y", VALUEUNCHECKED="N";
+CHECKBOX can5 = FORMONLY.chk5, TEXT="Text", VALUECHECKED="Y", VALUEUNCHECKED="N";
+CHECKBOX can6 = FORMONLY.chk6, TEXT="Lines", VALUECHECKED="Y", VALUEUNCHECKED="N";
+
+-- Multi Dialog -- not used any more ?
+fld1 = FORMONLY.field1;
+fld2 = FORMONLY.field2;
+BUTTON myadd : myadd,text="-->";
+BUTTON mydel : mydel,text="<--";
+f11=FORMONLY.f11;
+f12=FORMONLY.f12;
+f21=FORMONLY.f21;
+f22=FORMONLY.f22;
+
+-- Colours
+LABEL lab1 = FORMONLY.clab1, COLOR=red;
+LABEL lab2 = FORMONLY.clab2, COLOR=blue;
+LABEL lab3 = FORMONLY.clab3, COLOR=green;
+LABEL lab4 = FORMONLY.clab4, COLOR=yellow;
+LABEL lab5 = FORMONLY.clab5, COLOR=cyan;
+LABEL lab6 = FORMONLY.clab6, COLOR=magenta;
+LABEL lab7 = FORMONLY.clab7, COLOR=black;
+LABEL lab8 = FORMONLY.clab8, COLOR=white;
+LABEL lab9 = FORMONLY.clab9;
+LABEL lab10 = FORMONLY.clab10;
+LABEL lab11 = FORMONLY.clab11;
+LABEL lab12 = FORMONLY.clab12;
+LABEL lab13 = FORMONLY.clab13;
+LABEL lab14 = FORMONLY.clab14;
+LABEL lab15 = FORMONLY.clab15;
+LABEL lab16 = FORMONLY.clab16;
+col1 = FORMONLY.col1;
+col2 = FORMONLY.col2;
+col3 = FORMONLY.col3;
+col4 = FORMONLY.col4;
+col5 = FORMONLY.col5;
+col6 = FORMONLY.col6;
+col7 = FORMONLY.col7;
+col8 = FORMONLY.col8;
+col9 = FORMONLY.col9;
+col10 = FORMONLY.col10;
+col11 = FORMONLY.col11;
+col12 = FORMONLY.col12;
+col13 = FORMONLY.col13;
+col14 = FORMONLY.col14;
+col15 = FORMONLY.col15;
+col16 = FORMONLY.col16;
+
+LABEL slab1 : slab1, TEXT="AaBbCcDdEeFfGgHhIi Times", STYLE="special";
+LABEL slab2 : slab2, TEXT="AaBbCcDdEeFfGgHhIi Arial", STYLE="special2";
+LABEL slab3 : slab3, TEXT="AaBbCcDdEeFfGgHhIi Comic Sans MS", STYLE="style1";
+LABEL slab4 : slab4, TEXT="AaBbCcDdEeFfGgHhIi Courier New", STYLE="style2";
+LABEL slab5 : slab5, TEXT="AaBbCcDdEeFfGgHhIi Wrong", STYLE="wrong";
+LABEL slab6 : slab6, TEXT="AaBbCcDdEeFfGgHhIi SmallPrint", STYLE="smallprint";
+LABEL slab7 : slab7, TEXT="AaBbCcDdEeFfGgHhIi Another", STYLE="another";
+
+LABEL nocent : nocent, TEXT="Normal";
+LABEL cent1 : cent1, TEXT="Centered1";
+LABEL cent2 : cent2, TEXT="Centered2";
+LABEL cent3 : cent3, TEXT="Centered3";
+LABEL sig1 : sig1, TEXT="Widgets Demo by N J Martin", STYLE="sig";
+LABEL sig2 : sig2, TEXT="Widgets Demo by N J Martin", STYLE="sig";
+LABEL sig3 : sig3, TEXT="Widgets Demo by N J Martin", STYLE="sig";
+
+LABEL exp1 : expl, TEXT="This dynamically affects the ComboBox below.", STYLE="smallprint";
+
+LABEL njm : njm, TEXT="Label on form";
+
+
+INSTRUCTIONS
+	SCREEN RECORD oldarr ( arr1 THRU arr3 )
+	SCREEN RECORD arr2 ( arr4 THRU arr6 )
+	SCREEN RECORD newarr ( tabc1 THRU tabc3 )
+	SCREEN RECORD cols ( col1 THRU col16 )
+	SCREEN RECORD a1[4](f11,f12)
+	SCREEN RECORD a2[4](f21,f22)
+END

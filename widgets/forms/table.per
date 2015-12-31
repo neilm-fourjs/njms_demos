@@ -1,0 +1,56 @@
+
+-- CVS Header
+-- $Author: test4j $
+-- $Date: 2006/07/21 11:21:42 $
+-- $Revision: 299 $
+-- $Source: /usr/home/test4j/cvs/all/demos/widgets/forms/table.per,v $
+-- $Log: table.per,v $
+-- Revision 1.5  2006/07/21 11:21:42  test4j
+-- *** empty log message ***
+--
+-- Revision 1.2  2006/03/13 14:40:21  test4j
+--
+-- cvs tags
+--
+-- Revision 1.1  2005/11/17 18:14:12  test4j
+-- *** empty log message ***
+--
+-- Revision 1.3  2005/05/10 14:48:12  test4j
+--
+-- Added cvs header.
+--
+
+LAYOUT (TEXT="Lookup1", STYLE="lookup")
+VBOX
+GRID
+{
+ [                        :t:                        ]
+<T tab1                                                     >
+  No  Text  Date       Combo                   BE    Check
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+ [tc1|tabc2|tabc3     |tabc4                  |tabc5|tabc6 ]
+}
+END -- GRID
+END -- VBOX
+
+ATTRIBUTES
+LABEL t = FORMONLY.tabtitl, STYLE="tabtitl";
+tc1 = FORMONLY.tabc1, JUSTIFY=RIGHT;
+tabc2 = FORMONLY.tabc2;
+DATEEDIT tabc3 = FORMONLY.tabc3;
+COMBOBOX tabc4 = FORMONLY.tabc4, ITEMS=("Hello World!","Goodbye Cruel World","The World is not Enough!");
+BUTTONEDIT tabc5 = FORMONLY.tabc5, ACTION=be;
+CHECKBOX tabc6= FORMONLY.tabc6, TEXT="Okay", VALUECHECKED="Y", VALUEUNCHECKED="N";
+END
+
+INSTRUCTIONS
+SCREEN RECORD newarr2 ( tabc1 THRU tabc6 )
+END

@@ -1,0 +1,40 @@
+<StartMenu text="Example1">
+  <StartMenuGroup text="Widgets" image="widgetsdemo_icon">
+    <StartMenuCommand text="Widgets" exec="fglrun widgets" />
+    <StartMenuCommand text="widgets.4gl" exec="fglrun editfile ../src/widgets.4gl" />
+    <StartMenuCommand text="widgets.per" exec="fglrun editfile ../forms/widgets.per" />
+    <StartMenuCommand text="editfile.4gl" exec="fglrun editfile ../src/editfile.4gl" />
+    <StartMenuCommand text="showfile.4gl" exec="fglrun editfile ../src/showfile.4gl" />
+    <StartMenuSeparator/>
+  </StartMenuGroup>
+  <StartMenuGroup text="DbQuery" image="dbquerydemo_icon">
+    <StartMenuCommand text="Dbquery" exec="export FGLDBPATH=../dbquery/etc;export FGLIMAGEPATH=../dbquery/pics;export FGLRESOURCEPATH=../dbquery/etc;fglrun dbquery" />
+    <StartMenuCommand text="dbquery.4gl" exec="fglrun editfile ../../dbquery/src/dbquery.4gl" />
+    <StartMenuCommand text="genero_lib1.4gl" exec="fglrun editfile ../../dbquery/src/genero_lib1.4gl" />
+    <StartMenuCommand text="gl_ookup.4gl" exec="fglrun editfile ../../lib/gl_lookup.4gl" />
+  </StartMenuGroup>
+
+  <StartMenuGroup text="Library" image="librarydemo_icon">
+    <StartMenuCommand text="Library" exec="fglrun libdemo" />
+  </StartMenuGroup>
+
+  <StartMenuGroup text="ipodTree" image="cd16">
+    <StartMenuCommand text="ipodTree" exec="export FGLIMAGEPATH=../pics;cd ../ipodTree/bin23x; fglrun ipodTree" />
+  </StartMenuGroup>
+
+  <StartMenuGroup text="picFlow" image="genero_icon_s">
+    <StartMenuCommand text="picFlow" exec="export FGLIMAGEPATH=../../pics;export FGLRESOURCEPATH=../picFlow/etc; fglrun picFlow" />
+  </StartMenuGroup>
+
+  <StartMenuGroup text="Multi Dialog" image="genero_icon">
+    <StartMenuCommand text="Wizard SD"  exec="cd $BASE/../examples/wizard_sd &amp;&amp; make run" />
+    <StartMenuCommand text="Wizard MD"  exec="cd $BASE/../examples/wizard_md &amp;&amp; make run" />
+    <StartMenuCommand text="Wizard MRS"  exec="cd $BASE/../examples/wizard_mrs &amp;&amp; make run" />
+    <StartMenuCommand text="Wizard DND"  exec="cd $BASE/../examples/wizard_dnd &amp;&amp; make run" />
+
+  </StartMenuGroup>
+
+  <StartMenuGroup text="FJS Demos" image="fourjs_icon">
+    <StartMenuCommand text="UserInterface" exec="cd $FGLDIR/demo &amp;&amp; fglrun demo" />
+  </StartMenuGroup>
+</StartMenu>

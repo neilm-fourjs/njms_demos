@@ -1,0 +1,6 @@
+
+dbi.database.ipod_db.driver = "dbmads381"
+dbi.database.ipod_db.schema = "ipoddemo"
+dbi.database.ipod_db.source = "genero_dsn
+dbi.database.ipod_db.username = "ipoddemo"
+dbi.database.ipod_db.password = "ipoddemo"

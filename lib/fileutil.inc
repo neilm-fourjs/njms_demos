@@ -1,0 +1,45 @@
+
+FUNCTION fgl_file_chdir( path )
+	DEFINE path STRING
+	RETURN FALSE
+END FUNCTION
+FUNCTION fgl_file_pwd()
+	DEFINE path STRING
+	RETURN path
+END FUNCTION
+FUNCTION fgl_file_exists(path)
+	DEFINE path STRING
+	RETURN FALSE
+END FUNCTION
+FUNCTION fgl_file_isdirectory(path)
+	DEFINE path STRING
+	RETURN FALSE
+END FUNCTION
+FUNCTION fgl_file_diropen(path)
+	DEFINE path STRING
+	RETURN FALSE
+END FUNCTION
+FUNCTION fgl_file_dirnext(h)
+	DEFINE h INTEGER
+	RETURN ""
+END FUNCTION
+FUNCTION fgl_file_type( file )
+	DEFINE file STRING
+	RETURN ""
+END FUNCTION
+FUNCTION fgl_file_mtime( file )
+	DEFINE file STRING
+	RETURN ""
+END FUNCTION
+FUNCTION fgl_file_size( file )
+	DEFINE file STRING
+	RETURN 0
+END FUNCTION
+FUNCTION fgl_file_dirclose(h)
+	DEFINE h INTEGER
+END FUNCTION
+FUNCTION fgl_file_extension( file )
+	DEFINE file STRING
+	RETURN ""
+END FUNCTION
+

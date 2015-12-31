@@ -1,0 +1,199 @@
+<StyleList>
+	<Style name='*'>
+    <StyleAttribute name="border" value="none"/>
+  </Style>
+  <Style name='ToolBar'>
+    <StyleAttribute name='fontFamily' value='"Times New Roman",Times,serif' />
+    <StyleAttribute name="fontSize" value="14pt"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+    <StyleAttribute name="backgroundImage" value="tb_bg"/>
+  </Style>
+  <Style name='MenuAction'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+    <StyleAttribute name="textColor" value="blue"/>
+  </Style>
+  <Style name='Menu'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+    <StyleAttribute name="textColor" value="blue"/>
+  </Style>
+  <Style name='StatusBar'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+    <StyleAttribute name="textColor" value="blue"/>
+  </Style>
+  <Style name='.special'>
+    <StyleAttribute name='fontFamily' value='"Times New Roman",Times,serif' />
+  </Style>
+  <Style name='.special2'>
+    <StyleAttribute name='fontFamily' value='Arial' />
+  </Style>
+  <Style name='.style1'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+  </Style>
+  <Style name='.style2'>
+    <StyleAttribute name='fontFamily' value='Courier New' />
+    <StyleAttribute name="fontSize" value="10pt"/>
+  </Style>
+  <Style name='.sig'>
+    <StyleAttribute name='fontFamily' value='Palace Script MT Semi Bold' />
+    <StyleAttribute name="fontSize" value="14pt"/>
+  </Style>
+  <Style name='.another'>
+    <StyleAttribute name="fontSize" value="14pt"/>
+    <StyleAttribute name="fontStyle" value="italic"/>
+    <StyleAttribute name="textColor" value="red"/>
+    <StyleAttribute name="textDecoration" value="underline"/>
+  </Style>
+  <Style name='.wrong'>
+    <StyleAttribute name="fontWeight" value="bold"/>
+    <StyleAttribute name="fontStyle" value="italic"/>
+    <StyleAttribute name="textDecoration" value="line-through"/>
+  </Style>
+  <Style name='.smallprint'>
+    <StyleAttribute name="fontSize" value="xsmall"/>
+  </Style>
+  <Style name='.styles'>
+    <StyleAttribute name="backgroundImage" value="fourjs_watermark"/>
+  </Style>
+  <Style name='Button'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='Folder'>
+    <StyleAttribute name='fontFamily' value='Comic Sans MS' />
+    <StyleAttribute name="fontSize" value="12pt"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='StartMenuGroup'>
+    <StyleAttribute name="backgroundColor" value="#FFFFBB"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='StartMenu'>
+    <StyleAttribute name="backgroundColor" value="#FFFFBB"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='Action'>
+    <StyleAttribute name="backgroundColor" value="#FFFFBB"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='Table'>
+    <StyleAttribute name="backgroundColor" value="#FFFFBB"/>
+    <StyleAttribute name="textColor" value="darkblue"/>
+    <StyleAttribute name="highlightRowColor" value="darkgreen"/>
+  </Style>
+  <Style name='.tabtitl'>
+    <StyleAttribute name="fontSize" value="14pt"/>
+    <StyleAttribute name="fontStyle" value="bold"/>
+    <StyleAttribute name="textColor" value="blue"/>
+    <StyleAttribute name="textDecoration" value="underline"/>
+  </Style>
+  <Style name='Group'>
+    <StyleAttribute name="backgroundColor" value="#FFFFBB"/>
+  </Style>
+  <Style name='CheckBox'>
+    <StyleAttribute name="textColor" value="darkblue"/>
+  </Style>
+  <Style name='Label'>
+    <StyleAttribute name='fontFamily' value='sans-serif' />
+    <StyleAttribute name="textColor" value="darkblue"/>
+    <StyleAttribute name="fontSize" value="12pt"/>
+  </Style>
+  <Style name='Window'>
+    <StyleAttribute name="backgroundImage" value="fourjs_watermark"/>
+  </Style>
+  <Style name='Window.prompt'>
+    <StyleAttribute name='ringMenuPosition'    value='none'/>
+    <StyleAttribute name='actionPanelPosition' value='bottom'/>
+    <StyleAttribute name='hideStatusBar'       value='1'/>
+  </Style>
+  <Style name='Window.dialog'>
+    <StyleAttribute name='windowType'          value='modal' />
+    <StyleAttribute name='ringMenuPosition'    value='none' />
+    <StyleAttribute name='actionPanelPosition' value='bottom'/>
+    <StyleAttribute name='startMenuPosition'   value='none' />
+    <StyleAttribute name='toolBarPosition'     value='none'/>
+  </Style>
+  <Style name='Window.lookup'>
+    <StyleAttribute name='windowType'          value='modal' />
+    <StyleAttribute name='ringMenuPosition'    value='none' />
+    <StyleAttribute name='actionPanelPosition' value='bottom'/>
+    <StyleAttribute name='hideStatusBar'       value='1'/>
+    <StyleAttribute name='startMenuPosition'   value='none' />
+    <StyleAttribute name='toolBarPosition'     value='none'/>
+  </Style>
+  <Style name='Window.naked'>
+    <StyleAttribute name='defaultStatusBar'    value='0'/>
+    <StyleAttribute name='windowType'          value='modal' />
+    <StyleAttribute name='sizable'             value='yes' />
+    <StyleAttribute name='border'              value='tool' />
+    <StyleAttribute name='actionPanelPosition' value='none' />
+    <StyleAttribute name='showDefaultActions'  value='none'/>
+    <StyleAttribute name='ringMenuPosition'    value='none' />
+    <StyleAttribute name='startMenuPosition'   value='none' />
+    <StyleAttribute name='toolBarPosition'     value='none'/>
+    <StyleAttribute name='statusBarType'       value='none'/>
+  </Style>
+  <Style name='Window.main'>
+    <StyleAttribute name='ringMenuPosition'    value='none'/>
+    <StyleAttribute name='startMenuPosition'   value='tree' />
+    <StyleAttribute name='startMenuSize'       value='small' />
+    <StyleAttribute name='actionPanelPosition' value='none'/>
+  </Style>
+  <Style name='Window'>
+    <StyleAttribute name='ringMenuPosition'     value='right'/>
+    <StyleAttribute name='actionPanelPosition'  value='bottom'/>
+    <StyleAttribute name='border'               value='auto' />
+    <StyleAttribute name='hideStartMenu'        value='0'/>
+    <StyleAttribute name='hideStatusBar'        value='0'/>
+    <StyleAttribute name='statusBarType'        value='panels2'/>
+    <StyleAttribute name='useCommonActionFrame' value='0'/>
+    <StyleAttribute name='showDefaultActions'   value=''/>
+    <StyleAttribute name='gridCellMinSize'      value='0'/>
+    <StyleAttribute name='startMenuSize'        value='small' />
+    <StyleAttribute name='startMenuPosition'    value='tree' />
+  </Style>
+  <Style name='Window.nosb'>
+    <StyleAttribute name='statusBarType'       value='none'/>
+    <StyleAttribute name='ringMenuPosition'     value='right'/>
+    <StyleAttribute name='actionPanelPosition'  value='bottom'/>
+    <StyleAttribute name='hideStartMenu'        value='0'/>
+    <StyleAttribute name='hideStatusBar'        value='1'/>
+    <StyleAttribute name='useCommonActionFrame' value='1'/>
+    <StyleAttribute name='gridCellMinSize'      value='0'/>
+  </Style>
+  <Style name='Window.mystyle'>
+     <StyleAttribute name='windowType' value='normal' />
+     <StyleAttribute name='border' value='tool' />
+     <StyleAttribute name='toolBarPosition' value='right' />
+     <StyleAttribute name='actionPanelPosition' value='left' />
+     <StyleAttribute name='actionPanelButtonSize' value='small' />
+     <StyleAttribute name='ringMenuPosition' value='bottom' />
+     <StyleAttribute name='ringMenuButtonSize' value='large' />
+  </Style>
+  <Style name='Window.mymenu'>
+    <StyleAttribute name='ringMenuPosition'         value='bottom'/>
+    <StyleAttribute name='actionPanelPosition'     value='bottom'/>
+    <StyleAttribute name='hideStatusBar'        value='1'/>
+    <StyleAttribute name='showDefaultActions'   value=''/>
+    <StyleAttribute name='toolBarPosition' value='none' />
+    <StyleAttribute name='statusBarType'       value='none'/>
+  </Style>
+  <Style name='Window.splash'>
+    <StyleAttribute name='defaultStatusBar'    value='0'/>
+    <StyleAttribute name='windowType'          value='modal' />
+    <StyleAttribute name='sizable'             value='no' />
+    <StyleAttribute name='position'            value='center' />
+    <StyleAttribute name='border'              value='none' />
+    <StyleAttribute name='actionPanelPosition' value='none' />
+    <StyleAttribute name='showDefaultActions'  value='none'/>
+    <StyleAttribute name='ringMenuPosition'    value='none' />
+    <StyleAttribute name='startMenuPosition'   value='none' />
+    <StyleAttribute name='toolBarPosition'     value='none'/>
+    <StyleAttribute name='statusBarType'       value='none'/>
+    <StyleAttribute name="backgroundColor"     value="white"/>
+  </Style>
+</StyleList>

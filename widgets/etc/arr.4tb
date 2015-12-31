@@ -1,0 +1,22 @@
+<ToolBar>
+  <ToolBarItem name="accept" text="Accept" image="font:FontAwesome.ttf:f00c:green" />
+  <ToolBarItem name="cancel" text="Cancel" image="font:FontAwesome.ttf:f00c:red" />
+  <ToolBarSeparator/>
+  <ToolBarItem name="editcopy" text="Copy" image="copy" />
+  <ToolBarItem name="editcut" text="Cut" image="cut" />
+  <ToolBarItem name="editpaste" text="Paste" image="paste" />
+  <ToolBarSeparator/>
+  <ToolBarItem name="firstrow" text="First" image="first"/>
+  <ToolBarItem name="nextrow" text="Next" image="gorev"/>
+  <ToolBarItem name="prevrow" text="Prev" image="goforw"/>
+  <ToolBarItem name="lastrow" text="Last" image="last"/>
+  <ToolBarSeparator/>
+  <ToolBarItem name="insert" />
+  <ToolBarItem name="append" />
+  <ToolBarItem name="delete" />
+  <ToolBarSeparator/>
+  <ToolBarItem name="prevpage" text="PrevPg" image="arrup"/>
+  <ToolBarItem name="nextpage" text="NextPg" image="arrdown"/>
+  <ToolBarSeparator/>
+  <ToolBarItem name="help" image="quest"/>
+</ToolBar>

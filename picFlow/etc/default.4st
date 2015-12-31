@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="ANSI_X3.4-1968"?>
+<StyleList>
+
+	<Style name=".html">
+  	<StyleAttribute name="textFormat" value="html" />
+	</Style>
+	<Style name=".big">
+  	<StyleAttribute name="fontSize" value="22pt" />
+  	<StyleAttribute name="border" value="none" />
+	</Style>
+	<Style name=".center">
+  	<StyleAttribute name="textAlign" value="center" />
+	</Style>
+	<Style name="Label.black">
+  	<StyleAttribute name="backgroundColor" value="black" />
+  	<StyleAttribute name="fontSize" value="18pt" />
+  	<StyleAttribute name="fontWeight" value="bold" />
+  	<StyleAttribute name="textColor" value="lightMagenta" />
+	</Style>
+	<Style name="Label.d_black">
+  	<StyleAttribute name="backgroundColor" value="black" />
+  	<StyleAttribute name="fontSize" value="18pt" />
+  	<StyleAttribute name="textColor" value="white" />
+	</Style>
+	<Style name="Edit.d_black">
+  	<StyleAttribute name="backgroundColor" value="darkGray" />
+  	<StyleAttribute name="fontSize" value="18pt" />
+  	<StyleAttribute name="textColor" value="white" />
+	</Style>
+	<Style name=".paleblack">
+  	<StyleAttribute name="backgroundColor" value="#101010" />
+  	<StyleAttribute name="textColor" value="white" />
+  	<StyleAttribute name="border" value="none" />
+	</Style>
+	<Style name=".img_back">
+  	<StyleAttribute name="border" value="none" />
+    <StyleAttribute name="backgroundColor"      value="#B7B7CC" />
+		<StyleAttribute name="backgroundGradientType" value="radial|center|0.5" />
+		<StyleAttribute name="backgroundGradientColor" value="#000010" />
+	</Style>
+	<Style name=".black">
+  	<StyleAttribute name="backgroundColor" value="black" />
+  	<StyleAttribute name="textColor" value="white" />
+  	<StyleAttribute name="border" value="none" />
+	</Style>
+	<Style name="Table.PictureFlow">
+  	<StyleAttribute name="border" value="none" />
+  	<StyleAttribute name="tableType" value="pictureFlow" />
+  	<StyleAttribute name="backgroundColor" value="black" />
+	</Style>
+	<Style name="Button.black:inactive">
+  	<StyleAttribute name="textColor" value="lightMagenta" />
+  	<StyleAttribute name="border" value="none" />
+  	<StyleAttribute name="fontSize" value="14pt" />
+  	<StyleAttribute name="fontWeight" value="bold" />
+	</Style>
+	<Style name="Button.black:active">
+  	<StyleAttribute name="textColor" value="white" />
+  	<StyleAttribute name="border" value="none" />
+  	<StyleAttribute name="fontSize" value="14pt" />
+  	<StyleAttribute name="fontWeight" value="bold" />
+  </Style>
+  <Style name="Window.black">
+  	<StyleAttribute name="backgroundColor" value="black" />
+  	<StyleAttribute name="textColor" value="white" />
+  	<StyleAttribute name="border" value="normal" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+  </Style>
+
+  <Style name="Window">
+     <StyleAttribute name="windowType" value="normal" />
+  </Style>
+  <Style name="Window.main">
+     <StyleAttribute name="windowType" value="normal" />
+     <StyleAttribute name="startMenuPosition" value="menu" />
+  </Style>
+  <Style name="Window.main2">
+     <StyleAttribute name="windowType" value="normal" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+  </Style>
+  <Style name="Window.dialog">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="no" />
+     <StyleAttribute name="position" value="center" />
+     <StyleAttribute name="actionPanelPosition" value="bottom" />
+     <StyleAttribute name="ringMenuPosition" value="bottom" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog2">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="no" />
+     <StyleAttribute name="position" value="center" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog3">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="yes" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog4">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="yes" />
+     <StyleAttribute name="actionPanelPosition" value="bottom" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.naked">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="border" value="tool" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+  </Style>
+  <Style name="Window.viewer">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="windowSystemMenu" value="yes" />
+     <StyleAttribute name="windowOptionMinimize" value="no" />
+     <StyleAttribute name="windowOptionMaximize" value="no" />
+     <StyleAttribute name="sizable" value="yes" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+  </Style>
+</StyleList>

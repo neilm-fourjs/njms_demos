@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<GRF pageWidth="max" pageLength="max" fontName="SansSerif" fontSize="10">
+  <IMPORT grfFileName="list.grf"/>
+  <HEADER type="any">
+    <MATCH name="tableHeader">
+      <STRIPE>
+        <TEXTBOX text="@caption" typebox="both" itemNo="1"/>
+        <TEXTBOX text=" "/>
+        <TEXTBOX text="@caption" typebox="both" itemNo="2"/>
+        <TEXTBOX text=" "/>
+        <TEXTBOX text="@caption" typebox="both" itemNo="3"/>
+        <TEXTBOX text=" "/>
+      </STRIPE>
+    </MATCH>
+  </HEADER>
+  <BODY type="any">
+    <MATCH name="tableData">
+      <STRIPE>
+        <TEXTBOX typebox="both" itemNo="1"/>
+        <TEXTBOX text=" "/>
+        <TEXTBOX typebox="both" itemNo="2"/>
+        <TEXTBOX text=" "/>
+        <TEXTBOX typebox="both" itemNo="3"/>
+        <TEXTBOX text=" "/>
+      </STRIPE>
+    </MATCH>
+  </BODY>
+</GRF>

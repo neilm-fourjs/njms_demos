@@ -1,0 +1,6 @@
+
+#dbi.database.ipod_db.driver = "dbmads380"
+#dbi.database.ipod_db.schema = "ipoddemo"
+#dbi.database.ipod_db.source = "fjs-demo"
+#dbi.database.ipod_db.username = "ipoddemo"
+#dbi.database.ipod_db.password = "ipoddemo"

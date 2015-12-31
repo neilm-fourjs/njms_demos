@@ -1,0 +1,38 @@
+
+LAYOUT (TEXT="Options", STYLE="black")
+GRID
+{
+<G grp1                                                         >
+ [l001|f001                                                    ]
+ [l002|f002]
+<                                                               >
+<G grp2                                                         >
+ <T tab                                     >
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+  [a01 |a02            |a03                ]
+}
+END -- GRID
+
+ATTRIBUTES
+LABEL l001 : lab1, TEXT="Path:",JUSTIFY=RIGHT,STYLE="black";
+LABEL l002 : lab2, TEXT="Max Files:",JUSTIFY=RIGHT,STYLE="black";
+GROUP grp1 : grp1, TEXT="Options";
+GROUP grp2 : grp2, TEXT="Include File Types";
+
+f001 = FORMONLY.base,SCROLL,STYLE="d_black";
+f002 = FORMONLY.max_images,STYLE="d_black";
+
+a01 = FORMONLY.ext,TITLE="Ext";
+CHECKBOX a02 = FORMONLY.tf, VALUECHECKED=1, VALUEUNCHECKED=0,TITLE="Include?";
+a03 = FORMONLY.desc,TITLE="Description";
+
+INSTRUCTIONS
+SCREEN RECORD exts ( ext ,tf, desc )

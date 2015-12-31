@@ -1,0 +1,93 @@
+
+LAYOUT (STYLE="dialog4", TEXT="Multi Dialog Demo")
+VBOX
+HBOX
+GRID tab1
+{
+<T tab1               >
+  Description  Number  
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+ [f001       ][f002  ]
+
+<G "Information"        >
+ Current Arr1[a001     ]
+ [sld1                 ]
+}
+END -- GRID
+GRID myactions
+{
+[stat ]
+[""]
+[""]
+[mover]
+[movel]
+[""]
+[""]
+[exit ]
+}
+END -- GRID
+GRID tab2
+{
+<T tab2               >
+  Description  Number  
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+ [f003       ][f004  ]
+
+<G "Information"        >
+ Current Arr2[a002     ]
+ [sld2                 ]
+}
+END -- GRID
+END -- HBOX
+GRID
+{
+[statmsg                                 ]
+[                                        ]
+}
+END -- GRID
+END -- VBOX
+
+ATTRIBUTES
+f001 = FORMONLY.a1_fld1;
+f002 = FORMONLY.a1_fld2;
+BUTTONEDIT a001 = FORMONLY.fld1,IMAGE="switch",ACTION=move;
+&ifdef genero13x
+sld1 = FORMONLY.sld1;
+&else
+SLIDER sld1 = FORMONLY.sld1, VALUEMIN=1, VALUEMAX=10;
+&endif
+
+BUTTON mover : moveright, IMAGE="next2";
+BUTTON movel : moveleft, IMAGE="prev2";
+BUTTON exit  : exit , IMAGE="exit2",TEXT="";
+BUTTON stat  : stat, IMAGE="about";
+
+f003 = FORMONLY.a2_fld1;
+f004 = FORMONLY.a2_fld2;
+BUTTONEDIT a002 = FORMONLY.fld2,IMAGE="switch",ACTION=move;
+&ifdef genero13x
+sld2 = FORMONLY.sld2;
+&else
+SLIDER sld2 = FORMONLY.sld2, VALUEMIN=1, VALUEMAX=10;
+&endif
+
+TEXTEDIT statmsg = FORMONLY.statmsg;
+
+END -- ATTRIBUTES
+
+INSTRUCTIONS
+SCREEN RECORD scr_arr1 ( a1_fld1 THRU a1_fld2 )
+SCREEN RECORD scr_arr2 ( a2_fld1 THRU a2_fld2 )
+END -- INSTRUCTIONS

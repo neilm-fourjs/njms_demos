@@ -1,0 +1,9 @@
+
+export FGLIMAGEPATH=./pics
+
+unset CLIENT_LOCALE
+unset SERVER_LOCALE
+unset DB_LOCALE
+unset LC_CTYPE
+
+echo Lang: $LANG Locale: $LOCALE

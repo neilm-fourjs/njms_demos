@@ -1,0 +1,48 @@
+
+LAYOUT (TEXT=%"Unicode Labels", STYLE="dialog3")
+VBOX
+GRID
+{
+[l001             |f001                            ]
+[l002             |f002                                                                            ]
+[l003             |f003                    ]
+[l004             |f004                    ] [l005             |f005                    ]
+}
+END -- GRID
+TABLE
+{
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+[t |t001             |t002                     |t003                              ]
+}
+END -- TABLE
+END -- VBOX
+
+ATTRIBUTES
+LABEL l001 : lab1, TEXT=%"English";
+LABEL l002 : lab2, TEXT=%"Comment";
+LABEL l003 : lab3, TEXT=%"Image";
+LABEL l004 : lab4, TEXT=%"Accel 1";
+LABEL l005 : lab5, TEXT=%"Accel 2";
+
+EDIT  f001 = FORMONLY.c_text, SCROLL;
+EDIT f002 = FORMONLY.c_comm,TITLE=%"Comment", SCROLL;
+BUTTONEDIT f003 = FORMONLY.c_image,TITLE=%"Image",ACTION=imglist, IMAGE="combo";
+COMBOBOX f004 = FORMONLY.c_acc1,TITLE=%"Accel1";
+COMBOBOX f005 = FORMONLY.c_acc2,TITLE=%"Accel5";
+
+-- Table
+IMAGE t    = FORMONLY.img, AUTOSCALE;
+EDIT t001 = FORMONLY.lang,TITLE=%"Language", NOENTRY;
+EDIT t002 = FORMONLY.c_text_t,TITLE=%"Translation";
+EDIT t003 = FORMONLY.c_comm_t,TITLE=%"Comment";
+END 
+INSTRUCTIONS
+SCREEN RECORD a_lst[10] ( img THRU c_comm_t)
