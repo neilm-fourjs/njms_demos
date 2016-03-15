@@ -50,7 +50,7 @@
   </Settings>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group compilerOptions=" -DSTUDIO" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:BASE=$(ProjectDir)||value:FGLIMAGEPATH=$(FGLDIR)/lib/image2font.txt:$(FGLDIR)/lib:../pics" label="demos" language="Genero" targetDirectory="$(ProjectDir)/bin3x">
+  <Group compilerOptions=" -DSTUDIO -Dgenero3x" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:BASE=$(ProjectDir)||value:FGLIMAGEPATH=$(FGLDIR)/lib/image2font.txt:$(FGLDIR)/lib:../pics" label="demos" language="Genero" targetDirectory="$(ProjectDir)/bin3x">
     <Application binaryName="dbquery" commandLineArguments="-db custdemo" dependencies="2" environment="value:FJS_GL_DBGLEV=3||value:FGLPROFILE=$(ProjectDir)/dbquery/etc/profile.Borodin||value:FGLDBPATH=$(ProjectDir)/dbquery/etc" id="1011428924" label="dbquery">
       <VirtualFolder label="etc">
         <File filePath="dbquery/etc/profile.Borodin"/>
@@ -76,22 +76,6 @@
         <File filePath="ipodTree/etc/profile.Borodin"/>
         <File filePath="ipodTree/etc/profile.cloud"/>
         <File filePath="ipodTree/etc/profile.oak"/>
-      </VirtualFolder>
-      <VirtualFolder label="pics">
-        <File filePath="ipodTree/pics/00.png"/>
-        <File filePath="ipodTree/pics/00.svg"/>
-        <File filePath="ipodTree/pics/100.png"/>
-        <File filePath="ipodTree/pics/100.svg"/>
-        <File filePath="ipodTree/pics/20.png"/>
-        <File filePath="ipodTree/pics/20.svg"/>
-        <File filePath="ipodTree/pics/40.png"/>
-        <File filePath="ipodTree/pics/40.svg"/>
-        <File filePath="ipodTree/pics/60.png"/>
-        <File filePath="ipodTree/pics/60.svg"/>
-        <File filePath="ipodTree/pics/80.png"/>
-        <File filePath="ipodTree/pics/80.svg"/>
-        <File filePath="ipodTree/pics/cd.jpg"/>
-        <File filePath="ipodTree/pics/cd16.jpg"/>
       </VirtualFolder>
       <File filePath="ipodTree/src/ipod.4gl"/>
       <File filePath="ipodTree/src/ipod.per"/>
