@@ -461,7 +461,7 @@ IMAGE jpg=FORMONLY.jpg, WIDTH=243 PIXELS, HEIGHT=132 PIXELS,STRETCH=BOTH, AUTOSC
 --IMAGE gif:gif, IMAGE="widgets_ani.gif", STRETCH=BOTH, AUTOSCALE;
 IMAGE gif=FORMONLY.gif, STRETCH=BOTH, AUTOSCALE;
 IMAGE bmp=FORMONLY.bmp, STRETCH=BOTH, AUTOSCALE;
-IMAGE png=FORMONLY.png, STRETCH=BOTH, AUTOSCALE;
+IMAGE png: png, IMAGE="widgetspng" {png=FORMONLY.png}, STRETCH=BOTH, AUTOSCALE;
 IMAGE svg=FORMONLY.svg, STRETCH=BOTH, AUTOSCALE;
 IMAGE google=FORMONLY.google,STRETCH=BOTH, AUTOSCALE;
 
@@ -476,7 +476,7 @@ BUTTON k1 : crt,TEXT="Key", IMAGE="key";
 BUTTON b : bar, text="Bar Chart";
 BUTTON p : pie, text="Pie Chart";
 
-EDIT f000 = FORMONLY.norm, TITLE="Title:", COMMENT="Enter error to see an error.";
+EDIT f000 = FORMONLY.norm, SCROLL, TITLE="Title:", COMMENT="Enter error to see an error.";
 -- BUTTONEDIT f001 = FORMONLY.normbe,image="circle", ACTION=lookup;
 BUTTONEDIT f001 = FORMONLY.normbe,ACTION=lookup;
 

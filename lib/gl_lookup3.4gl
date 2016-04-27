@@ -61,7 +61,7 @@ FUNCTION gl_lookup3( tabnam, cols, colts, wher, ordby ) --{{{
 	FETCH listcntcur INTO tot_recs
 	CLOSE listcntcur
 	IF tot_recs < 1 THEN
-		CALL fgl_winmessage("Error", "No Records Found", "exclamation")
+		CALL gl_winmessage("Error", "No Records Found", "exclamation")
 		RETURN NULL --, NULL
 	END IF
 	GL_DBGMSG(2,"gl_lookup3: Counted:"||tot_recs)
@@ -176,7 +176,7 @@ FUNCTION gl_lookup3( tabnam, cols, colts, wher, ordby ) --{{{
 -- Fetch the data
 	CALL sql_handle.fetchFirst()
 	LET x = 0
-	WHILE status = 0
+	WHILE SQLCA.sqlcode = 0
 		LET x = x + 1
 		CALL dlg.setCurrentRow("tablistv", x) -- must set the current row before setting values
 		FOR i = 1 TO sql_handle.getResultCount()

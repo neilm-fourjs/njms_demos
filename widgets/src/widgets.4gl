@@ -21,7 +21,7 @@ CONSTANT p_version = "$Rev: 344 $"
 
 	DEFINE func CHAR(1)
 	DEFINE m_answer STRING
-	DEFINE norm CHAR(20)
+	DEFINE norm CHAR(40)
 	DEFINE normbe CHAR(50)
 	DEFINE wordw CHAR(500)
 	DEFINE combo CHAR(10)
@@ -1406,7 +1406,7 @@ FUNCTION disp_form()
 	DISPLAY "four_js_small" TO jpg
 	DISPLAY "widgets_ani.gif" TO gif
 	DISPLAY "widgetsbmp" TO bmp
-	DISPLAY "widgetspng" TO png
+	--DISPLAY "widgetspng" TO png
 	DISPLAY "widgetssvg" TO svg
 
 	--DISPLAY "Edit Field:" TO lab0

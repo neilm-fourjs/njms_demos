@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="1745728320" gstVersion="30016" version="3.1">
+<Project defaultApplication="1745728320" gstVersion="3001c" version="3.1">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -13,6 +13,7 @@
       <DynamicProperty description="Extra Extra High-DPI Icon (144x144 px) path" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon-xxhdpi (144x144 px)" name="icon-xxhdpi" readOnly="false" type="FILE"/>
       <DynamicProperty description="120x120 pixel icon (used for home screen)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (120x120 px)" name="icon120x120" readOnly="false" type="FILE"/>
       <DynamicProperty description="152x152 pixel icon (used for home screen)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (152x152 px)" name="icon152x152" readOnly="false" type="FILE"/>
+      <DynamicProperty description="167x167 pixel icon (used for home screen)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (167x167 px)" name="icon167x167" readOnly="false" type="FILE"/>
       <DynamicProperty description="180x180 pixel icon (used for home screen)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (180x180 px)" name="icon180x180" readOnly="false" type="FILE"/>
       <DynamicProperty description="29x29 pixel icon (used for settings)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (29x29 px)" name="icon29x29" readOnly="false" type="FILE"/>
       <DynamicProperty description="40x40 pixel icon (used for settings)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Icon (40x40 px)" name="icon40x40" readOnly="false" type="FILE"/>
@@ -27,7 +28,9 @@
       <DynamicProperty description="Launch screen for iPhone 6 (landscape)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (1334x750 px)" name="launchScreen1334x750" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPad (portrait)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (1536x2048 px)" name="launchScreen1536x2048" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPad (landscape)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (2048x1536 px)" name="launchScreen2048x1536" readOnly="false" type="FILE"/>
+      <DynamicProperty description="Launch screen for iPad (portrait)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (2048x2732 px)" name="launchScreen2048x2732" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPhone 6+ (landscape)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (2208x1242 px)" name="launchScreen2208x1242" readOnly="false" type="FILE"/>
+      <DynamicProperty description="Launch screen for iPad (landscape)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (2732x2048 px)" name="launchScreen2732x2048" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPhone" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (320x480 px)" name="launchScreen320x480" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPhone 4" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (640x960 px)" name="launchScreen640x960" readOnly="false" type="FILE"/>
       <DynamicProperty description="Launch screen for iPhone 6 (portrait)" editorInfo="filters:*.png;openDirDialog:true;replaceDocPath:$(ProjectDir)" initialValue="" isDefaultInherited="false" isHidden="false" label="Launch Screen (750x1334 px)" name="launchScreen750x1334" readOnly="false" type="FILE"/>
@@ -42,10 +45,10 @@
       <DynamicProperty description="Requirements" editorInfo="title:Requirements;description:iOS Requirements;icon:checkbox_checked;contains:accelerometer|auto-focus-camera|armv6|armv7|bluetooth-le|camera-flash|front-facing-camera|gamekit|gps|gyroscope|healthkit|magnetometer|metal|microphone|location-services|opengles-1|opengles-2|opengles-3|peer-peer|sms|still-camera|telephony|video-camera|wifi" initialValue="wifi" isDefaultInherited="false" isHidden="true" label="Requirements" name="required" readOnly="false" type="MULTIPLEBOOLEAN"/>
       <DynamicPropertyGroup collapsed="false" description="Android" label="Android" name="AndroidGroup" properties="packageVersionName;gma-primary-color;gma-primary-dark-color;gma-accent-color;gma-actionbar-color;icon-ldpi;icon-mdpi;icon-hdpi;icon-xhdpi;icon-xxhdpi;permissions"/>
       <DynamicPropertyGroup collapsed="false" description="Package" label="Package" name="PackageGroup" properties="packageId;packageName;packageLabel;packageVersion"/>
-      <DynamicPropertyGroup collapsed="false" description="iOS" label="iOS" name="iOSGroup" properties="launchScreen320x480;launchScreen640x960;launchScreen;launchScreen750x1334;launchScreen1334x750;launchScreen1242x2208;launchScreen2208x1242;launchScreen768x1024;launchScreen1024x768;launchScreen1536x2048;launchScreen2048x1536;launchScreenXib;icon29x29;icon40x40;icon58x58;icon60x60;icon76x76;icon80x80;icon87x87;icon120x120;icon152x152;icon180x180;required"/>
+      <DynamicPropertyGroup collapsed="false" description="iOS" label="iOS" name="iOSGroup" properties="launchScreen320x480;launchScreen640x960;launchScreen;launchScreen750x1334;launchScreen1334x750;launchScreen1242x2208;launchScreen2208x1242;launchScreen768x1024;launchScreen1024x768;launchScreen1536x2048;launchScreen2048x1536;launchScreen2048x2732;launchScreen2732x2048;launchScreenXib;icon29x29;icon40x40;icon58x58;icon60x60;icon76x76;icon80x80;icon87x87;icon120x120;icon152x152;icon167x167;icon180x180;required"/>
     </DynamicProperties>
     <NodeInfos version="1">
-      <NodeInfo mimeType="pm/package" properties="packageId;packageLabel;packageName;packageVersion;packageVersionName;launchScreen320x480;launchScreen640x960;launchScreen;launchScreen750x1334;launchScreen1334x750;launchScreen1242x2208;launchScreen2208x1242;launchScreen768x1024;launchScreen1024x768;launchScreen1536x2048;launchScreen2048x1536;launchScreenXib;icon29x29;icon40x40;icon58x58;icon60x60;icon76x76;icon80x80;icon87x87;icon120x120;icon152x152;icon180x180;gma-primary-color;gma-primary-dark-color;gma-accent-color;gma-actionbar-color;icon-ldpi;icon-mdpi;icon-hdpi;icon-xhdpi;icon-xxhdpi;permissions;required"/>
+      <NodeInfo mimeType="pm/package" properties="packageId;packageLabel;packageName;packageVersion;packageVersionName;launchScreen320x480;launchScreen640x960;launchScreen;launchScreen750x1334;launchScreen1334x750;launchScreen1242x2208;launchScreen2208x1242;launchScreen768x1024;launchScreen1024x768;launchScreen1536x2048;launchScreen2048x1536;launchScreen2048x2732;launchScreen2732x2048;launchScreenXib;icon29x29;icon40x40;icon58x58;icon60x60;icon76x76;icon80x80;icon87x87;icon120x120;icon152x152;icon167x167;icon180x180;gma-primary-color;gma-primary-dark-color;gma-accent-color;gma-actionbar-color;icon-ldpi;icon-mdpi;icon-hdpi;icon-xhdpi;icon-xxhdpi;permissions;required"/>
     </NodeInfos>
   </Settings>
   <LanguageList version="1.0"/>
@@ -66,6 +69,9 @@
         <File filePath="dbquery/src/version.inc"/>
       </VirtualFolder>
       <File filePath="dbquery/etc/fjs_demos.4db"/>
+    </Application>
+    <Application binaryName="dynMaint" id="45125898" label="dynMaint" targetDirectory="$(ProjectDir)/dynMaint">
+      <File filePath="dynMaint/dynMaint.4gl"/>
     </Application>
     <Application binaryName="ipodTree" dependencies="2" id="-954685760" label="ipodTree">
       <VirtualFolder label="etc">
