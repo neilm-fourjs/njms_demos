@@ -185,7 +185,6 @@ FUNCTION mk_form()
 		LET m_fld_props[x].formFieldNode = l_n_formfield
 		CALL l_n_formfield.setAttribute("colName", m_fields[x].name )
 		CALL l_n_formfield.setAttribute("name", m_tab||"."||m_fields[x].name )
-		CALL l_n_formfield.setAttribute("numAlign", m_fld_props[x].numeric )
 		IF m_fields[x].type = "DATE" THEN
 			LET l_n_widget = l_n_formField.createChild("DateEdit")
 		ELSE
@@ -194,10 +193,8 @@ FUNCTION mk_form()
 		CALL l_n_widget.setAttribute("posY", x )
 		CALL l_n_widget.setAttribute("posX", l_maxlablen+1 )
 		CALL l_n_widget.setAttribute("gridWidth", m_fld_props[x].len )
+		CALL l_n_widget.setAttribute("width", m_fld_props[x].len)
 		CALL l_n_widget.setAttribute("comment", m_fld_props[x].numeric||" "||m_fields[x].type )
-		IF m_fld_props[x].numeric = 1 THEN
-			CALL l_n_widget.setAttribute("justify", "right" )
-		END IF
 	END FOR
 END FUNCTION
 --------------------------------------------------------------------------------
