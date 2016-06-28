@@ -31,27 +31,21 @@ FUNCTION login()
 	END IF
 
 	OPEN WINDOW login WITH FORM "login"
+	CALL gl_titleWin(NULL)
 
-	CALL ui.interface.setText("Fjs-Demo Login")
-
-	DISPLAY "BEFORE WHILE"
 	WHILE TRUE
 		LET int_flag = FALSE
 		LET l_user_key = -1
 		INPUT BY NAME l_username, l_password ATTRIBUTES(UNBUFFERED,WITHOUT DEFAULTS)
-			BEFORE INPUT
-				DISPLAY "BEFORE INPUT"
 			ON IDLE D_IDLETIME
 	--			CALL gl_logIt("ON IDLE "||D_IDLETIME)
 				LET int_flag = TRUE
 				EXIT INPUT
 			ABOUT
 			AFTER FIELD l_username
-				DISPLAY "AFTER FIELD username:",l_username
 				IF l_username = "guest" THEN LET l_password = "guest" END IF
 			AFTER INPUT
 				IF int_flag THEN EXIT INPUT END IF
-				DISPLAY "AFTER INPUT username:",l_username
 				SELECT user_key,username INTO l_user_key,l_user FROM sys_users 
 					WHERE username = l_username AND password = l_password
 				IF STATUS = NOTFOUND THEN
@@ -63,7 +57,6 @@ FUNCTION login()
 			{ON ACTION dialogtouched
 				DISPLAY "Touched:",l_username}
 		END INPUT
-		DISPLAY "END INPUT"
 		IF NOT int_flag THEN
 			IF NOT checkUserRoles(l_user_key,"Login",TRUE) THEN
 				CONTINUE WHILE
@@ -78,8 +71,6 @@ FUNCTION login()
 		END IF
 		EXIT WHILE
 	END WHILE
-	DISPLAY "END WHILE"
 	CLOSE WINDOW login
-	--DISPLAY "Login:",l_user_key
 	RETURN l_user_key
 END FUNCTION

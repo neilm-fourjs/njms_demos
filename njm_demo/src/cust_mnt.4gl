@@ -2,8 +2,6 @@
 
 &include "schema.inc"
 
-
-CONSTANT VER = "$Id: cust_mnt.4gl 744 2011-11-29 10:47:19Z neilm $"
 CONSTANT PRGNAME = "cust_mnt"
 CONSTANT PRGDESC = "Customer Maintenance Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
@@ -48,7 +46,7 @@ DEFINE m_allowedActions CHAR(6) --Y/N for Find / List / Update / Insert / Delete
 MAIN
 	LET gl_toolbar = "dynmaint"
 	LET gl_topMenu = "dynmaint"
-	CALL gl_setInfo(VER, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"default",TRUE)
 	WHENEVER ANY ERROR CALL gl_error
 	LET m_user_key = ARG_VAL(2)

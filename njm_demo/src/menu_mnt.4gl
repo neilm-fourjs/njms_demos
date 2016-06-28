@@ -1,7 +1,6 @@
 
 &include "schema.inc"
 
-CONSTANT VER = "$Id: menu_mnt.4gl 688 2011-05-31 09:58:14Z  $"
 CONSTANT PRGNAME = "menu_mnt"
 CONSTANT PRGDESC = "Menu Maintenance Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
@@ -44,7 +43,7 @@ MAIN
 	DEFINE dnd ui.DragDrop
 
 	LET gl_toolbar = "dynmaint"
-	CALL gl_setInfo(VER, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"default",TRUE)
 	WHENEVER ANY ERROR CALL gl_error
 	LET m_user_key = ARG_VAL(2)

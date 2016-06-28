@@ -5,9 +5,8 @@
 
 IMPORT FGL lib_weboe
 
-CONSTANT VER = "$Rev: 960 $"
-CONSTANT PRGNAME = "Ordent"
-CONSTANT PRGDESC = "Order Entry Demo"
+CONSTANT PRGNAME = "webOE2"
+CONSTANT PRGDESC = "Web Ordering Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
 
 &define ABOUT 		ON ACTION about \
@@ -53,6 +52,7 @@ MAIN
 	DEFINE l_test STRING
 	DEFINE l_em LIKE customer.email
 
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
 
 	CALL gldb_connect(NULL)

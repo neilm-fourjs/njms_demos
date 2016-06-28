@@ -8,7 +8,6 @@
 #+
 #+ -DgotJAVA enables java based server side printer detection
 
-CONSTANT VER = "$Rev: 692 $"
 CONSTANT PRGNAME = "user_mnt"
 CONSTANT PRGDESC = "User Maintenance Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
@@ -36,7 +35,7 @@ DEFINE m_save, m_saveUser, m_saveRoles BOOLEAN
 MAIN
 	DEFINE dnd ui.DragDrop
 
-	CALL gl_setInfo(VER, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,TRUE)
 	WHENEVER ANY ERROR CALL gl_error
 	LET m_curruser = ARG_VAL(2)

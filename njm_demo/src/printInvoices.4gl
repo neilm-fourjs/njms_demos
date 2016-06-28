@@ -15,6 +15,10 @@ IMPORT os
 
 IMPORT FGL gl_grw
 
+CONSTANT PRGNAME = "printinoices"
+CONSTANT PRGDESC = "Invoice Print"
+CONSTANT PRGAUTH = "Neil J.Martin"
+
 CONSTANT m_logo = "../pics/fourjs-demo-co.png"
 
 &include "schema.inc"
@@ -38,6 +42,8 @@ MAIN
 	CALL chk_libs("oe_lib,gl_lib,gl_db,gl_grw",".42m")
 }
 	LET gl_noToolBar = TRUE
+
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,TRUE)
 GL_MODULE_ERROR_HANDLER
 

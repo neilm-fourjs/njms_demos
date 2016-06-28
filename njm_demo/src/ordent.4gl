@@ -11,13 +11,13 @@
 
 IMPORT util
 
-CONSTANT VER = "$Rev: 961 $"
 CONSTANT PRGNAME = "Ordent"
 CONSTANT PRGDESC = "Order Entry Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
 
+&include "lib/gitver.inc"
 &define ABOUT 		ON ACTION about \
-			CALL gl_about( VER )
+			CALL gl_about( GITVER )
 &define TIMELOG CALL timeLogIt(PRGNAME,__LINE__)
 &include "schema.inc"
 &include "ordent.inc"
@@ -28,6 +28,7 @@ DEFINE m_arg1, m_arg2 STRING
 MAIN
 	DEFINE l_test STRING
 
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,TRUE)
 GL_MODULE_ERROR_HANDLER
 	CALL timeLogOn()

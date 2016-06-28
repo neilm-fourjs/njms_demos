@@ -55,8 +55,8 @@ $ export DBDATE=DMY4/
 $ dbimport -d <whatever dbspace> njm_demo
 ```
 
-## Running view the GAS
-Once you have done the database and make deploy you should be able to run the demos.
+## Running via the GAS
+Once you have done the database and the 'make deploy' you should be able to run the demos.
 
 ```
 http://<your server>/gas/ua/r/gweboe_def

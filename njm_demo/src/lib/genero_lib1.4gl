@@ -27,17 +27,14 @@
 #+	FJS_PICS: Add this path to images used for splash etc. Will default to FGLIMAGEPATH
 #+
 
-&ifdef genero13x
--- No importing of file functions, use dummy code?
-&else
 IMPORT os
-&endif
 
+&include "gitver.inc"
 &include "genero_lib1.inc" -- Contains GL_DBGMSG & g_dbgLev
 
 -- These are used in gl_about.
-CONSTANT gl_genlibver = "$Revision: 344 $" -- Now have to manually do this because svn is not setup right yet.
-CONSTANT gl_genlibdte = "$Date: 2010-11-08 17:27:22 +0000 (Mon, 08 Nov 2010) $"
+CONSTANT gl_genlibver = "1.3" -- see gitver
+CONSTANT gl_genlibdte = "2016/06/28   "
 CONSTANT gl_libauth = "Neil J Martin"
 
 CONSTANT MAX_COLS = 12 -- Used by gl_dyntab
@@ -634,17 +631,20 @@ FUNCTION gl_titleWin( titl ) --{{{
 	END IF
 
 	LET new = TODAY,":"
+	IF titl IS NOT NULL THEN
+		LET new = new.trim(),titl.trim()
+	END IF
 	IF gl_progname IS NOT NULL THEN
-		LET new = new.trim()," ",gl_progname.trim()
+		LET new = new.trim()," - ",gl_progname.trim()
 	END IF
 	IF gl_version IS NOT NULL THEN
 		LET new = new.trim()," ",gl_verFmt(gl_version)
-	END IF
-	IF titl IS NOT NULL THEN
-		LET new = new.trim()," - ",titl.trim()
+	ELSE
+		LET new = new.trim()," ("||GITVER||")"
 	END IF
 
-	GL_DBGMSG(1, "gl_titleWin: new '"||new||"'")
+
+	GL_DBGMSG(1, "gl_titleWin: new '"||new||"' titl:"||titl)
 	CALL win.setText( new )
 	IF n IS NOT NULL THEN
 		CALL n.setAttribute("text",new )
@@ -1566,7 +1566,7 @@ FUNCTION gl_verFmt( ver ) --{{{
 
 	LET x = ver.getIndexOf(":",1)
 
-	RETURN ver.subString(X+2, ver.getLength() - 1 )
+	RETURN ver.subString(X+2, ver.getLength() - 1 )||"("||GITVER||")"
 END FUNCTION --}}}
 ----------------------------------------------------------------------------------
 #+ Get FrontEnd type and Version String.

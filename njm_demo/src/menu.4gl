@@ -2,15 +2,14 @@
 -- A Simple Menu example program.
 -- $Id: menu.4gl 957 2016-06-13 10:11:24Z neilm $
 
-CONSTANT VER = "$Rev: 957 $"
-CONSTANT PRGNAME = "Login"
-CONSTANT PRGDESC = "Fjs Demos Suite"
+CONSTANT PRGNAME = "Menu"
+CONSTANT PRGDESC = "NJM Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
 
 CONSTANT D_IDLETIME = 300
 
 &define TIMELOG CALL timeLogIt(PRGNAME,__LINE__)
-
+&include "lib/gitver.inc"
 &include "schema.inc"
 DEFINE m_compno SMALLINT
 DEFINE m_user, m_titl VARCHAR(60)
@@ -28,6 +27,7 @@ MAIN
 
 	WHENEVER ANY ERROR CALL gl_error
 	LET l_prog = base.Application.getProgramName()||"_"||DOWNSHIFT(ui.Interface.getFrontEndName())
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,FALSE)
 
 	CALL timeLogOn()
@@ -41,6 +41,8 @@ MAIN
 
 	OPEN FORM menu FROM "menu"
 	DISPLAY FORM menu
+	CALL gl_titleWin(NULL)
+
 	LET l_idle = D_IDLETIME
 	LET m_user_key = ARG_VAL(2)
 	IF m_user_key = 0 OR m_user_key IS NULL THEN
@@ -140,7 +142,7 @@ MAIN
 					CALL DIALOG.setCurrentRow("menu",1)
 			END CASE
 		ON ACTION about
-			CALL gl_about( VER )
+			CALL gl_about( GITVER )
 		ON ACTION exit 
 			IF ARG_VAL(1) = "MDI" THEN
 				IF ui.Interface.getChildCount() > 0 THEN
