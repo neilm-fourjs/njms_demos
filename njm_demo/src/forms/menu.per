@@ -1,0 +1,66 @@
+
+&include "schema.inc"
+
+LAYOUT ( TEXT="Menu Screen", STYLE="menu", VERSION="$Id: menu.per 960 2016-06-13 14:39:50Z neilm $" )
+HBOX -- (SPLITTER)
+GRID
+{
+["      "]
+}
+END -- GRID
+GRID (STYLE="menu")
+{
+ [logo                          ]
+ [                              ]
+ [                              ]
+ [titl                          ]
+<T menu                          >
+[desc                           ]
+[desc                           ]
+[desc                           ]
+[desc                           ]
+[desc                           ]
+[desc                           ]
+[desc                           ]
+[desc                           ]
+<                                >
+[dte]-[lab1:f00][lab2:f001      ]
+  [accept:back   :close  :about ]
+}
+END -- GRID
+GRID
+{
+["      "]
+}
+END -- GRID
+END -- HBOX
+TABLES
+sys_menus
+
+ATTRIBUTES
+IMAGE logo : logo,IMAGE="fourjs-demo-co", AUTOSCALE,STYLE="noborder";
+ 
+LABEL titl = FORMONLY.m_titl,STYLE="title",JUSTIFY=CENTER;
+
+TABLE menu : menu, STYLE="menu oneclick";
+PHANTOM sys_menus.menu_key;
+PHANTOM sys_menus.m_id;
+PHANTOM sys_menus.m_pid;
+PHANTOM sys_menus.m_type;
+desc = sys_menus.m_text,STYLE="menuopts",IMAGECOLUMN=m_type;
+PHANTOM sys_menus.m_item;
+PHANTOM sys_menus.m_passw;
+
+LABEL dte = FORMONLY.dte,STYLE="login";
+LABEL lab1 : lab1, TEXT=%"Comp:",STYLE="login";
+LABEL lab2 : lab2, TEXT=%"User:",STYLE="login";
+LABEL f00 = FORMONLY.m_compno;
+LABEL f001 = FORMONLY.m_user;
+
+BUTTON accept : accept, TEXT="",IMAGE="ok2";
+BUTTON back : back;
+BUTTON close : close, TEXT="", IMAGE="exit2";
+BUTTON about : about, TEXT="";
+
+INSTRUCTIONS
+SCREEN RECORD menu ( menu_key THRU m_passw )

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" version="3.00">
+    <report:Settings RWPageWidth="a4width" RWPageLength="a4length" RWLeftMargin="1.3cm" RWTopMargin="1.3cm" RWRightMargin="1.3cm" RWBottomMargin="1.3cm">
+        <report:FormatList>
+            <report:Format-SVG/>
+            <report:Format-PDF/>
+            <report:Format-image/>
+        </report:FormatList>
+    </report:Settings>
+    <report:Data RWDataLocation="../reports/printInvoices.rdd" RWFglReportName="rpt"/>
+    <rtl:stylesheet>
+        <PXML>
+            <rtl:match nameConstraint="Report">
+                <MINIPAGE name="Page Root" width="max" length="max" alignment="near" layoutDirection="topToBottom" swapX="false">
+                    <LAYOUTNODE name="Page Header" width="max" length="min" port="anyPageHeader">
+                        <MINIPAGE name="StripeLayouter3" width="min" length="max" layoutDirection="leftToRight" swapX="false">
+                            <WORDBOX name="Report Title" x="0" y="max/2" anchorX="0" anchorY="0.5" alignment="baseline" fontSize="25" layoutDirection="topToBottom" swapX="false" baselineType="leftleft" floatingBehavior="enclosed" text="Picking List"/>
+                            <PAGENOBOX name="PageNoBox" x="1.23857" y="max" anchorX="0" anchorY="1" alignment="baseline" layoutDirection="topToBottom" swapX="false" baselineType="leftleft" floatingBehavior="enclosed" textAlignment="right"/>
+                        </MINIPAGE>
+                    </LAYOUTNODE>
+                    <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                        <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                            <rtl:match nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
+                                <MINIPAGE name="Table Row" width="73" length="max" alignment="near" bgColor="#e6f4ff" layoutDirection="leftToRight" swapX="false" floatingBehavior="enclosed" paddingTopWidth="1" paddingRightWidth="2" paddingBottomWidth="4" paddingLeftWidth="2">
+                                    <WORDBOX name="r_detailline.stock_code Caption" x="30" y="5" anchorX="0" anchorY="0" floatingBehavior="enclosed" text="Stock Code:"/>
+                                    <rtl:input-variable name="r_detailline.stock_code" type="FGLString" expectedLocation="expectedHere"/>
+                                    <WORDBOX name="r_detailline.stock_code Value" x="30" y="145" width="64" anchorY="1" bgColor="#ffffff" floatingBehavior="enclosed" text="{{r_detailline.stock_code}}"/>
+                                    <rtl:input-variable name="r_detailline.description" type="FGLString" expectedLocation="expectedHere"/>
+                                    <WORDBOX name="r_detailline.description Value" x="47" y="5" width="237.876" anchorX="0" anchorY="0" bgColor="#ffffff" floatingBehavior="enclosed" text="{{r_detailline.description}}"/>
+                                    <rtl:input-variable name="r_detailline.barcode" type="FGLString" expectedLocation="expectedHere"/>
+                                    <BARCODEBOX name="BarCodeBox3" x="10" y="251.271" width="97.174" length="53.5763" anchorX="0" anchorY="0" bgColor="#ffffff" floatingBehavior="enclosed" codeType="upc-a" codeValue="{{r_detailline.barcode}}"/>
+                                    <WORDBOX name="quantity Caption" x="10" y="430" anchorX="3.90799e-14" anchorY="1" floatingBehavior="enclosed" textAlignment="right" text="Ordered Qty:"/>
+                                    <rtl:input-variable name="r_detailline.quantity" type="FGLNumeric" expectedLocation="expectedHere"/>
+                                    <DECIMALFORMATBOX name="r_detailline.quantity Value" x="10" y="435" width="width(&quot;000000&quot;)" bgColor="#ffffff" fontSize="20" floatingBehavior="enclosed" textAlignment="right" format="--------#" value="{{r_detailline.quantity}}" roundedCorners="true" borderWidth="1"/>
+                                    <WORDBOX name="order_no Caption_1" x="10" y="5" anchorX="0" anchorY="0" floatingBehavior="enclosed" text="Order No:"/>
+                                    <rtl:input-variable name="r_ordhead.order_number" type="FGLNumeric" expectedLocation="expectedBefore"/>
+                                    <DECIMALFORMATBOX name="r_ordhead.order_number Value" x="10" y="145" width="64" anchorX="0" anchorY="1" bgColor="#ffffff" floatingBehavior="enclosed" textAlignment="right" format="--------#" value="{{r_ordhead.order_number}}"/>
+                                    <WORDBOX name="pquantity Caption" x="44" y="430" anchorX="3.90799e-14" anchorY="1" floatingBehavior="enclosed" textAlignment="right" text="Picked Qty:"/>
+                                    <WORDBOX name="WordBox9" x="44" y="435" width="width(&quot;000000&quot;)" length="min" bgColor="#ffffff" fontSize="20" floatingBehavior="enclosed" text="  " roundedCorners="true" borderWidth="1"/>
+                                </MINIPAGE>
+                            </rtl:match>
+                        </rtl:match>
+                        <MINIPAGE name="OrderBox" width="80" length="max" layoutDirection="leftToRight" floatingBehavior="enclosed" borderBottomWidth="2" borderBottomStyle="dotted"/>
+                    </rtl:match>
+                </MINIPAGE>
+            </rtl:match>
+        </PXML>
+    </rtl:stylesheet>
+</report:Report>

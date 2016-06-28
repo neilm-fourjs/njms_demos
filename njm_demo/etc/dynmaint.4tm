@@ -1,0 +1,29 @@
+<TopMenu>
+  <TopMenuGroup text="File" >
+    <TopMenuCommand name="exit" text="Exit" />
+  </TopMenuGroup>
+  <TopMenuGroup text="Edit" >
+    <TopMenuCommand name="editcopy" />
+    <TopMenuCommand name="editcut" />
+    <TopMenuCommand name="editpaste" />
+  </TopMenuGroup>
+  <TopMenuGroup text="Options" >
+    <TopMenuCommand name="find"/>
+    <TopMenuCommand name="list"/>
+    <TopMenuSeparator/>
+    <TopMenuCommand name="insert" />
+    <TopMenuCommand name="sample" />
+    <TopMenuCommand name="delete" />
+    <TopMenuCommand name="update" />
+  </TopMenuGroup>
+  <TopMenuGroup text="Navigation" >
+    <TopMenuCommand name="firstrow" />
+    <TopMenuCommand name="nextrow" />
+    <TopMenuCommand name="prevrow" />
+    <TopMenuCommand name="lastrow" />
+  </TopMenuGroup>
+  <TopMenuGroup text="Help" >
+    <TopMenuCommand name="help"/>
+    <TopMenuCommand name="about"/>
+  </TopMenuGroup>
+</TopMenu>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="45125898" gstVersion="3001c" version="3.1">
+<Project defaultApplication="-130282562" gstVersion="3001c" version="3.1">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -53,131 +53,141 @@
   </Settings>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group compilerOptions=" -DSTUDIO -Dgenero3x" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:BASE=$(ProjectDir)||value:FGLIMAGEPATH=$(FGLDIR)/lib/image2font.txt:$(FGLDIR)/lib:../pics" label="demos" language="Genero" targetDirectory="$(ProjectDir)/bin3x">
-    <Application binaryName="dbquery" commandLineArguments="-db custdemo" dependencies="2" environment="value:FJS_GL_DBGLEV=3||value:FGLPROFILE=$(ProjectDir)/dbquery/etc/profile.Borodin||value:FGLDBPATH=$(ProjectDir)/dbquery/etc" id="1011428924" label="dbquery">
-      <VirtualFolder label="etc">
-        <File filePath="dbquery/etc/profile.Borodin"/>
-        <File filePath="dbquery/etc/profile.Demo"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="dbquery/src/build.inc"/>
-        <File filePath="dbquery/src/dbquery.4gl"/>
-        <File filePath="dbquery/src/dbquery.inc"/>
-        <File filePath="dbquery/src/dbquery_lib.4gl"/>
-        <File filePath="dbquery/src/gen_rpt.4gl"/>
-        <File filePath="dbquery/src/sqlfe.4gl"/>
-        <File filePath="dbquery/src/version.inc"/>
-      </VirtualFolder>
-      <File filePath="dbquery/etc/fjs_demos.4db"/>
-    </Application>
-    <Application binaryName="dynMaint" id="45125898" label="dynMaint" targetDirectory="$(ProjectDir)/dynMaint">
-      <File filePath="dynMaint/dynMaint.4gl"/>
-    </Application>
-    <Application binaryName="ipodTree" dependencies="2" id="-954685760" label="ipodTree">
-      <VirtualFolder label="etc">
-        <File filePath="ipodTree/etc/actions.str"/>
-        <File filePath="ipodTree/etc/default.4ad"/>
-        <File filePath="ipodTree/etc/default.4st"/>
-        <File filePath="ipodTree/etc/genero_lib1.str"/>
-        <File filePath="ipodTree/etc/profile.Borodin"/>
-        <File filePath="ipodTree/etc/profile.cloud"/>
-        <File filePath="ipodTree/etc/profile.oak"/>
-      </VirtualFolder>
-      <File filePath="ipodTree/src/ipod.4gl"/>
-      <File filePath="ipodTree/src/ipod.per"/>
-      <File filePath="ipodTree/src/ipod_sax.4gl"/>
-    </Application>
-    <Library binaryName="lib" id="2" label="lib">
-      <File filePath="lib/actions.str"/>
-      <File filePath="lib/fileutil.inc"/>
-      <File filePath="lib/genero_lib1.4gl"/>
-      <File filePath="lib/genero_lib1.inc"/>
-      <File filePath="lib/genero_lib1.str"/>
-      <File filePath="lib/genero_lib2.4gl"/>
-      <File filePath="lib/gl2_lookup.4gl"/>
-      <File filePath="lib/gl_canvas.4gl"/>
-      <File filePath="lib/gl_comlib.4gl"/>
-      <File filePath="lib/gl_db.4gl"/>
-      <File filePath="lib/gl_ddelib.4gl"/>
-      <File filePath="lib/gl_ddelib.inc"/>
-      <File filePath="lib/gl_fileUtils.4gl"/>
-      <File filePath="lib/gl_fileUtils.per"/>
-      <File filePath="lib/gl_grw.4gl"/>
-      <File filePath="lib/gl_grwCfg.per"/>
-      <File filePath="lib/gl_lookup.4gl"/>
-      <File filePath="lib/gl_lookup.inc"/>
-      <File filePath="lib/gl_lookup2.4gl"/>
-      <File filePath="lib/gl_lookup3.4gl"/>
-      <File filePath="lib/gl_xmlcfg.4gl"/>
-    </Library>
-    <Application binaryName="picFlow" environment="value:PICPATH=../pics" id="-1096760640" label="picFlow">
-      <VirtualFolder label="etc">
-        <File filePath="picFlow/etc/default.4ad"/>
-        <File filePath="picFlow/etc/default.4st"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="picFlow/getopts.per"/>
-        <File filePath="picFlow/picflow.per"/>
-      </VirtualFolder>
-      <File filePath="picFlow/picflow.4gl"/>
-    </Application>
-    <Application binaryName="unicode" dependencies="2" id="1151305190" label="unicode">
-      <VirtualFolder label="etc">
-        <File filePath="unicode/etc/default.4ad"/>
-        <File filePath="unicode/etc/default.4st"/>
-        <File filePath="unicode/etc/default.str"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="unicode/forms/f_unicode.per"/>
-        <File filePath="unicode/forms/f_unicode2.per"/>
-        <File filePath="unicode/forms/lookup.per"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="unicode/src/examples.4gl"/>
-        <File filePath="unicode/src/unicode.4gl"/>
-      </VirtualFolder>
-    </Application>
-    <Application binaryName="widgets" dependencies="2" environment="value:FGLRESOURCEPATH=../etc:$(ProjectDir)/widgets/etc||value:FGLPROFILE=$(ProjectDir)/widgets/etc/profile" id="1745728320" label="widgets">
-      <VirtualFolder label="etc">
-        <File filePath="widgets/etc/actions.str"/>
-        <File filePath="widgets/etc/arr.4tb"/>
-        <File filePath="widgets/etc/colours.txt"/>
-        <File filePath="widgets/etc/genero_lib1.str"/>
-        <File filePath="widgets/etc/mydef.4st"/>
-        <File filePath="widgets/etc/mydefaults.4ad"/>
-        <File filePath="widgets/etc/mydefaults.4sm"/>
-        <File filePath="widgets/etc/mydefaults.4st"/>
-        <File filePath="widgets/etc/mydefaults.4tb"/>
-        <File filePath="widgets/etc/mydefaults1.4st"/>
-        <File filePath="widgets/etc/mydefaults2.4st"/>
-        <File filePath="widgets/etc/mydefaults3.4ad"/>
-        <File filePath="widgets/etc/mydefaults3.4st"/>
-        <File filePath="widgets/etc/mydefaults3.4tb"/>
-        <File filePath="widgets/etc/profile"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="widgets/forms/md_form.per"/>
-        <File filePath="widgets/forms/newwin.per"/>
-        <File filePath="widgets/forms/table.per"/>
-        <File filePath="widgets/forms/webkit.per"/>
-        <File filePath="widgets/forms/widgets.per"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="widgets/src/build.inc"/>
-        <File filePath="widgets/src/charts.4gl"/>
-        <File filePath="widgets/src/clock2.4gl"/>
-        <File filePath="widgets/src/colour.4gl"/>
-        <File filePath="widgets/src/ddeexcel.4gl"/>
-        <File filePath="widgets/src/version.inc"/>
-        <File filePath="widgets/src/widgets.4gl"/>
-        <File filePath="widgets/src/widgets.inc"/>
-        <File filePath="widgets/src/widgets210.4gl"/>
-      </VirtualFolder>
-    </Application>
-    <Group label="widgets_extra">
-      <Application binaryName="editfile" id="1924001392" label="editfile">
-        <File filePath="widgets/src/editfile.4gl"/>
-        <File excludeFromCompilation="true" excludeFromLink="true" filePath="widgets/src/proglaunch.4gl"/>
+  <Group environment="value:FGLDBPATH=$(ProjectDir)/etc||value:TIMELOG=/tmp/time.log||value:BASE=$(HOME)/all||value:STUDIO=1||value:FJS_GL_DBGLEV=3||value:STARTMENU=false||value:REPORTDIR=$(ProjectDir)/etc300/||value:DBNAME=njm_demo||value:FGLIMAGEPATH=$(ProjectDir)/pics:$(ProjectDir)/pics/image2font.txt||value:FGLRESOURCEPATH=$(ProjectDir)/etc" label="njm_demo" language="Genero" targetDirectory="$(ProjectDir)/bin300">
+    <Group label="db">
+      <Library binaryName="libCommon" dependencies="1986" id="483338962" label="libCommon">
+        <File filePath="db/db.inc"/>
+        <File filePath="db/mkdb_common.4gl"/>
+      </Library>
+      <Application binaryName="mkdb_informix" dependencies="483338962" id="-1663475168" label="mkdb_informix">
+        <File filePath="db/mkdb_informix.4gl"/>
+      </Application>
+      <Application binaryName="mkdb_mysql" dependencies="483338962" id="-666350442" label="mkdb_mysql">
+        <File filePath="db/mkdb_mysql.4gl"/>
+      </Application>
+      <Application binaryName="mkdb_sqlite" compilerOptions="-DDEL" dependencies="483338962" id="609502394" label="mkdb_sqlite">
+        <File filePath="db/mkdb_sqlite.4gl"/>
+      </Application>
+      <Application binaryName="mkdb_sqlServer" commandLineArguments="DELETE" excludeFromBuild="true" id="-1168205654" label="mkdb_sqlServer">
+        <File filePath="db/mkdb_sqlServer.4gl"/>
+      </Application>
+      <Application binaryName="pop_db" dependencies="483338962" id="2043644464" label="pop_db">
+        <File filePath="db/mkdb_data.4gl"/>
+        <File filePath="db/pop_db.4gl"/>
+      </Application>
+    </Group>
+    <Group label="libraries">
+      <Library binaryName="Databases" id="1986" label="Databases">
+        <File filePath="etc/njm_demo.4db"/>
+        <File filePath="lib/schema.inc"/>
+      </Library>
+      <Library binaryName="etc" id="570408889" label="etc" targetDirectory="$(ProjectDir)/etc">
+        <File filePath="etc/default.4ad"/>
+        <File filePath="etc/default.4st"/>
+        <File filePath="etc/dynmaint.4tb"/>
+        <File filePath="etc/dynmaint.4tm"/>
+        <File filePath="etc/genero_lib1.str"/>
+      </Library>
+      <Library binaryName="lib_logiin" dependencies="14000" id="-319008706" label="lib_logiin">
+        <File filePath="src/login.4gl"/>
+        <File filePath="src/forms/login.per"/>
+        <File filePath="src/forms/login_www.per"/>
+      </Library>
+      <Library binaryName="lib_webOE" dependencies="1986||1563799204" id="2086842111" label="lib_webOE">
+        <File filePath="src/lib/lib_weboe.4gl"/>
+        <File filePath="etc/weboe.4ad"/>
+        <File filePath="etc/weboe.4st"/>
+        <File filePath="src/forms/webOE_signin.per"/>
+      </Library>
+      <Library binaryName="libApplication" id="1563799204" label="libApplication">
+        <VirtualFolder label="forms">
+          <File filePath="src/forms/getcust.per"/>
+          <File filePath="src/forms/getorder.per"/>
+          <File filePath="src/forms/getstock.per"/>
+        </VirtualFolder>
+        <File filePath="src/lib/fjs_lib.4gl"/>
+        <File filePath="src/lib/oe_lib.4gl"/>
+        <File filePath="src/ordent.inc"/>
+      </Library>
+      <Library binaryName="libDefault" dependencies="1986||570408889" id="14000" label="libDefault">
+        <File filePath="src/lib/genero_lib1.4gl"/>
+        <File filePath="src/lib/genero_lib1.inc"/>
+        <File filePath="src/lib/genero_lib1.str"/>
+        <File filePath="src/lib/gl_bm.4gl"/>
+        <File filePath="src/lib/gl_db.4gl"/>
+        <File filePath="src/lib/gl_lookup.4gl"/>
+        <File filePath="src/lib/gl_lookup.inc"/>
+        <File filePath="src/lib/gl_lookup3.4gl"/>
+      </Library>
+      <Library binaryName="libMaint" dependencies="14000||-526112109" id="-211328758" label="libMaint">
+        <File filePath="src/lib/genero_lib2.4gl"/>
+        <File filePath="src/lib/gl2_lookup.4gl"/>
+      </Library>
+      <Library binaryName="libReports" compilerOptions="-DgotJAVA" externalDependencies="libgre.42x" id="-526112109" label="libReports">
+        <File filePath="src/lib/gl_grw.4gl"/>
+        <File filePath="src/lib/gl_grwCfg.per"/>
+      </Library>
+    </Group>
+    <Group label="maintenance">
+      <Application binaryName="cust_mnt" dependencies="1986||570408889||14000||-526112109||1563799204||-211328758" id="-1659529936" label="cust_mnt">
+        <File filePath="src/forms/cust_mnt.4fd"/>
+        <File filePath="src/cust_mnt.4gl"/>
+      </Application>
+      <Application binaryName="dynMaint" commandLineArguments="S 1 stock_cat catid YYNNNN" dependencies="1986||14000||1563799204" id="195647156" label="dynMaint">
+        <File filePath="src/dynMaint.4gl"/>
+      </Application>
+      <Application binaryName="menu_mnt" dependencies="1986||570408889||14000||-526112109||1563799204||-211328758" id="2060528692" label="menu_mnt">
+        <File filePath="src/menu_mnt.4gl"/>
+        <File filePath="src/forms/menu_mnt.per"/>
+      </Application>
+      <Application binaryName="user_mnt" dependencies="14000||1563799204||-211328758||-526112109" id="-1270917556" label="user_mnt">
+        <File filePath="src/user_mnt.4gl"/>
+        <File filePath="src/forms/user_mnt.per"/>
+      </Application>
+    </Group>
+    <Group label="menu">
+      <Application binaryName="login" commandLineArguments="MDI" dependencies="14000||-319008706||1563799204" id="1191959540" label="login">
+        <File filePath="src/login_main.4gl"/>
+      </Application>
+      <Application binaryName="menu" commandLineArguments="MDI" dependencies="14000||-319008706||1563799204" id="-130282562" label="menu">
+        <File filePath="src/menu.4gl"/>
+        <File filePath="src/forms/menu.per"/>
+      </Application>
+    </Group>
+    <Group label="orderEntry">
+      <Application binaryName="orderEntry" commandLineArguments="S 1" dependencies="14000||1563799204" id="740092252" label="orderEntry">
+        <File filePath="src/ordent.4gl"/>
+        <File filePath="src/forms/ordent2.per"/>
+        <File filePath="src/forms/packshow.per"/>
+      </Application>
+      <Application binaryName="webOE" compilerOptions="-DXCLOUD" dependencies="1986||570408889||1563799204||14000||2086842111" id="-361325592" label="webOE">
+        <File filePath="src/webOE.4gl"/>
+        <File filePath="src/forms/webOE.per"/>
+        <File filePath="src/forms/webOE_b.per"/>
+        <File filePath="src/forms/webOE_det.per"/>
+        <File filePath="src/forms/webOE_inv.per"/>
+      </Application>
+      <Application binaryName="webOE2" dependencies="2086842111||1563799204||14000||-526112109||1986" id="-1071699716" label="webOE2">
+        <File filePath="src/webOE2.4gl"/>
+        <File filePath="src/forms/webOE2.per"/>
+      </Application>
+      <Application binaryName="webOE3" dependencies="1563799204||1986||14000||-526112109||570408889||2086842111" id="-1597972872" label="webOE3">
+        <File filePath="src/webOE3.4gl"/>
+        <File filePath="src/forms/webOE3.per"/>
+      </Application>
+    </Group>
+    <Group compilerOptions="--build-rdd" label="reports">
+      <Application binaryName="printInvoices" commandLineArguments="S 0 0 ordent.4rp SVG preview 1" dependencies="-526112109||14000||1563799204" id="614032032" label="printInvoices">
+        <VirtualFolder label="Layouts">
+          <File filePath="etc/ordent-1.4rp"/>
+          <File filePath="etc/ordent-2.4rp"/>
+          <File filePath="etc/ordent-3.4rp"/>
+          <File filePath="etc/ordent-4.4rp"/>
+          <File filePath="etc/ordent-5.4rp"/>
+          <File filePath="etc/ordent.4rp"/>
+          <File filePath="etc/picklist.4rp"/>
+        </VirtualFolder>
+        <File filePath="src/printInvoices.4gl"/>
       </Application>
     </Group>
   </Group>

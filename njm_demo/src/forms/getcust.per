@@ -1,0 +1,54 @@
+
+#+
+#+ $Id: getcust.per 758 2012-02-23 11:01:41Z neilm $
+
+&include "schema.inc"
+LAYOUT (TEXT=%"Customers",STYLE="dialog")
+VBOX
+GRID
+{
+[cc         ][a001    ]
+[cn         ][a002                     ]
+}
+END -- GRID
+TABLE
+{
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+[f001    |f002                  ]
+}
+END -- TABLE
+END -- VBOX
+
+TABLES
+customer
+
+ATTRIBUTES
+LABEL cc : cc, TEXT="Customer Code:";
+LABEL cn : cn, TEXT="Customer Name:";
+
+a001 = FORMONLY.customer_code;
+a002 = FORMONLY.customer_name;
+
+f001 = customer.customer_code, TITLE=%"Code";
+f002 = customer.customer_name, SCROLL,TITLE=%"Name";
+{
+PHANTOM customer.contact_name;
+PHANTOM customer.email;
+PHANTOM customer.web_passwd;
+PHANTOM customer.del_addr;
+PHANTOM customer.inv_addr;
+PHANTOM customer.disc_code;
+PHANTOM customer.credit_limit;
+PHANTOM customer.total_invoices;
+PHANTOM customer.outstanding_amount;
+}
+INSTRUCTIONS
+SCREEN RECORD arr ( customer.* )

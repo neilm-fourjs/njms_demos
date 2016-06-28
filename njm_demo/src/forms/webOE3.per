@@ -1,0 +1,73 @@
+
+&include "schema.inc"
+
+LAYOUT (TEXT="Main Store Front #2", VERSION="$Id: webOE.per 960 2016-06-13 14:39:50Z neilm $")
+VBOX
+GRID
+{
+[signin][viewb][gotoco][cancel]Welcome:[f001               ]
+}
+END -- GRID
+HBOX (SPLITTER)
+VBOX
+GRID
+{
+<G cats      >
+
+<            >
+<G tots      >
+[tot_items  ]
+[t002       ]
+[t003       ]
+[t004       ]
+[t005       ]
+[t006       ]
+[tot_nett   ]
+[t007       ]
+[pt1|pt2|pt3]
+[   |   |   ]
+}
+END --GRID
+END --VBOX
+
+VBOX main_vbox
+GRID
+{
+place holder
+}
+END -- GRID
+END -- VBOX
+
+END --HBOX
+END --VBOX
+
+TABLES
+stock
+stock_cat
+ord_head
+ord_payment
+
+ATTRIBUTES
+
+LABEL f001 = FORMONLY.custname,SIZEPOLICY=DYNAMIC, STYLE="big";
+BUTTON signin : signin, STYLE="big";
+BUTTON viewb : viewb, STYLE="big";
+BUTTON gotoco : gotoco, STYLE="big";
+BUTTON cancel : cancel,TEXT="Leave", IMAGE="fa-sign-out", STYLE="big";
+
+IMAGE pt1 : pt1, IMAGE="fa-cc-paypal", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt2 : pt2, IMAGE="fa-cc-mastercard", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt3 : pt3, IMAGE="fa-cc-visa", SIZEPOLICY=FIXED, AUTOSCALE;
+
+GROUP cats : cats, TEXT="Categories";
+GROUP tots : tots, TEXT="This Sale";
+LABEL tot_items : tot_items,TEXT="Total Qty:", STYLE="big";
+t002 = ord_head.total_qty, STYLE="big";
+t003 = ord_head.total_gross, HIDDEN;
+t004 = ord_head.total_tax, HIDDEN;
+t005 = ord_head.total_disc, HIDDEN;
+t006 = ord_payment.del_amount, HIDDEN;
+LABEL tot_nett : tot_nett,TEXT="Total Cost:", STYLE="big";
+t007 = ord_head.total_nett, STYLE="big";
+
+

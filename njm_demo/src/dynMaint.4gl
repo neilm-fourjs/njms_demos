@@ -30,18 +30,19 @@ DEFINE m_key_fld SMALLINT
 DEFINE m_sql_handle base.SqlHandle
 DEFINE m_dialog ui.Dialog
 DEFINE m_row_count, m_row_cur INTEGER
+DEFINE m_user_key INTEGER
+DEFINE m_allowedActions CHAR(6) --Y/N for Find / List / Update / Insert / Delete / Sample
+                              -- NNYNNN = Only update allowed.
 MAIN
 
-	LET m_db = "fjs_demos"
-	LET m_tab = "njm_test_table"
-	LET m_key_nam = "customer_code"
-	IF base.Application.getArgumentCount() = 3 THEN
-		LET m_db = ARG_VAL(1)
-		LET m_tab = ARG_VAL(2)
-		LET m_key_nam = ARG_VAL(3)
-	END IF
+	CALL gl_init(ARG_VAL(1),"default",TRUE)
+	LET m_user_key = ARG_VAL(2)
+	LET m_tab = ARG_VAL(3)
+	LET m_key_nam = ARG_VAL(4)
+	LET m_allowedActions  = ARG_VAL(5)
 
-	CALL db_connect()
+	CALL gldb_connect(NULL)
+
 	LET m_key_fld = 0
 	LET m_row_cur = 0
 	LET m_row_count = 0
@@ -50,62 +51,26 @@ MAIN
 	CALL mk_form()
 
 	MENU
+		BEFORE MENU
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
 		ON ACTION insert		CALL inpt(1)
 		ON ACTION update		CALL inpt(0)
 		ON ACTION delete		CALL sql_del()
 		ON ACTION find			CALL constrct()
-		ON ACTION first			CALL get_row(SQL_FIRST)
-		ON ACTION previous	CALL get_row(SQL_PREV)
-		ON ACTION next			CALL get_row(SQL_NEXT)
-		ON ACTION last			CALL get_row(SQL_LAST)
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
+		ON ACTION firstrow	CALL get_row(SQL_FIRST)
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
+		ON ACTION prevrow		CALL get_row(SQL_PREV)
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
+		ON ACTION nextrow		CALL get_row(SQL_NEXT)
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
+		ON ACTION lastrow		CALL get_row(SQL_LAST)
+			CALL setActions(m_row_cur,m_row_count, m_allowedActions)
 		ON ACTION quit			EXIT MENU
 		ON ACTION close			EXIT MENU
 	END MENU
 
 END MAIN
---------------------------------------------------------------------------------
-FUNCTION db_connect()
-
-	TRY
-		DATABASE m_db
-	CATCH
-		CALL fgl_winMessage("Error",SFMT("Failed to connect to '%1'\n%2!",m_db,SQLERRMESSAGE),"exclamation")
-		EXIT PROGRAM
-	END TRY
-
-	IF m_tab != "njm_test_table" THEN RETURN END IF
--- Drop test table.
-	TRY
-		DROP TABLE njm_test_table
-	CATCH
-	END TRY
--- Create a test table.
-	TRY
-		CREATE TABLE njm_test_table (
-			customer_code       CHAR(8),
-			customer_name       VARCHAR(30),
-			contact_name        VARCHAR(30),
-			email               VARCHAR(100),
-			created             DATE,
-			web_passwd          CHAR(10),
-			del_addr            INTEGER,
-			inv_addr            INTEGER,
-			disc_code           CHAR(2),
-			credit_limit        INTEGER,
-			total_invoices      DECIMAL(12,2),
-			outstanding_amount  DECIMAL(12,2)
-		)
-	CATCH
-		CALL fgl_winMessage("Error","Failed to create test table!","exclamation")
-		EXIT PROGRAM
-	END TRY
-	DISPLAY "Inserting test data ..."
-	INSERT INTO njm_test_table VALUES("NJM","NJM Software Inc","Neil Martin","neilm@4js.com",TODAY,"xxx",1,1,"NM",1000,0,0)
-	INSERT INTO njm_test_table VALUES("FB","Fred Bloggs and Son Ltd","Fred Bloggs","fb@fbas.com",TODAY,"xxx",1,1,"FB",1000,0,0)
-	INSERT INTO njm_test_table VALUES("JB","Universal Exports Ltd","James Bond","jb@ue.com",TODAY,"xxx",1,1,"JB",1000,0,0)
-	DISPLAY "Done."
-
-END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION mk_sql(l_where)
 	DEFINE l_where, l_sql STRING
@@ -164,10 +129,10 @@ FUNCTION mk_form()
 	CALL add_toolbarItem(l_n_tb, "insert","Insert","new")
 	CALL add_toolbarItem(l_n_tb, "update","Update","pen")
 	CALL add_toolbarItem(l_n_tb, "delete","Delete","delete")
-	CALL add_toolbarItem(l_n_tb, "first","","")
-	CALL add_toolbarItem(l_n_tb, "previous","","")
-	CALL add_toolbarItem(l_n_tb, "next","","")
-	CALL add_toolbarItem(l_n_tb, "last","","")
+	CALL add_toolbarItem(l_n_tb, "firstrow","","")
+	CALL add_toolbarItem(l_n_tb, "prevrow","","")
+	CALL add_toolbarItem(l_n_tb, "nextrow","","")
+	CALL add_toolbarItem(l_n_tb, "lastrow","","")
 
 	LET l_n_grid = l_n_form.createChild("Grid")
 	CALL l_w.setText("Dynamic Maintenance for "||m_tab)
@@ -478,4 +443,45 @@ FUNCTION sql_del()
 	ELSE
 		MESSAGE "Delete aborted."
 	END IF
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION setActions(l_row,l_max,l_allowedActions)
+	DEFINE l_row, l_max INTEGER
+	DEFINE l_allowedActions CHAR(6)
+	DEFINE d ui.Dialog
+&define ACT_FIND l_allowedActions[1]
+&define ACT_LIST l_allowedActions[2]
+&define ACT_UPD l_allowedActions[3]
+&define ACT_INS l_allowedActions[4]
+&define ACT_DEL l_allowedActions[5]
+&define ACT_SAM l_allowedActions[6]
+	LET d = ui.Dialog.getCurrent()
+	IF ACT_FIND = "N" THEN CALL d.setActionActive("find",FALSE) END IF
+	IF ACT_LIST = "N" THEN CALL d.setActionActive("list",FALSE) END IF
+	IF ACT_UPD = "N" THEN CALL d.setActionActive("update",FALSE) END IF
+	IF ACT_INS = "N" THEN CALL d.setActionActive("insert",FALSE) END IF
+	IF ACT_DEL = "N" THEN CALL d.setActionActive("delete",FALSE) END IF
+	--IF ACT_SAM = "N" THEN CALL d.setActionActive("sample",FALSE) END IF
+	IF l_max > 1 THEN
+		IF ACT_UPD = "Y" THEN CALL d.setActionActive("update",TRUE) END IF
+		IF ACT_DEL = "Y" THEN CALL d.setActionActive("delete",TRUE) END IF
+	ELSE
+		IF ACT_UPD = "Y" THEN CALL d.setActionActive("update",FALSE) END IF
+		IF ACT_DEL = "Y" THEN CALL d.setActionActive("delete",FALSE) END IF
+	END IF
+	IF l_row > 0 AND l_row < l_max THEN
+		CALL d.setActionActive("nextrow",TRUE)
+		CALL d.setActionActive("lastrow",TRUE)
+	ELSE
+		CALL d.setActionActive("lastrow",FALSE)
+		CALL d.setActionActive("nextrow",FALSE)
+	END IF
+	IF l_row > 1 THEN
+		CALL d.setActionActive("prevrow",TRUE)
+		CALL d.setActionActive("firstrow",TRUE)
+	ELSE
+		CALL d.setActionActive("prevrow",FALSE)
+		CALL d.setActionActive("firstrow",FALSE)
+	END IF
+
 END FUNCTION

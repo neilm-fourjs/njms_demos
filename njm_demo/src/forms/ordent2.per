@@ -1,0 +1,186 @@
+----------------------------------------------------------------------------------
+-- $Id:  /home/neilm/all/examples/fjs-demos/orderEntry/ordent.tmp.per created 2011-02-11T09:22:29
+----------------------------------------------------------------------------------
+&include "schema.inc"
+
+TopMenu TopMenu1
+	Group file(TEXT=%"File")
+		COMMAND new
+		COMMAND update
+		COMMAND enquire
+		Separator
+		COMMAND print
+			Separator
+		COMMAND exit
+	END -- Group
+	Group edit(TEXT=%"Edit")
+		COMMAND editcopy
+		COMMAND editcut
+		COMMAND editpaste
+	END -- Group
+	Group info(TEXT=%"Information")
+		COMMAND getcust
+		COMMAND getstock
+	END -- Group
+	Group reports(TEXT=%"Reports")
+		COMMAND print (TEXT=%"Invoices")
+		COMMAND picklist (TEXT=%"Picking List")
+	END -- Group
+	Group help(TEXT=%"Help")
+		COMMAND help
+		COMMAND about
+	END -- Group
+END -- TopMenu
+
+ToolBar ToolBar1
+	Item exit
+	Item accept
+	Item cancel
+	Separator
+	Item new
+	Item update
+	Item enquire
+	Separator
+	Item insert
+	Item append
+	Item delete
+	Separator
+	Item print
+	Separator
+	Item about
+	Item help
+END -- ToolBar
+
+LAYOUT(TEXT=%"Order Entry",windowStyle="ordent", VERSION="$Id: ordent2.per 763 2012-03-16 09:56:09Z neilm $")
+VBox VBox1 --(splitter)
+VBOX vb2
+Grid head
+{
+ [welcome                                               ]
+ [cust|custome][cus1|customer_name                      ]
+ [ordn|order_n][ordd|order_datetime    ][due |reqduedate][op  |user]
+ [ordr|order_ref                                        ]
+}
+END
+GRID addr2 (HIDDEN)
+{
+[y] Show Addresses ...
+}
+END 
+GRID addr
+{
+[x] <G del                        ><G inv                      >
+     [del_address1               ]  [inv_address1             ]
+     [del_address2               ]  [inv_address2             ]
+     [del_address3               ]  [inv_address3             ]
+     [del_address4               ]  [inv_address4             ]
+     [del_address5               ]  [inv_address5             ]
+     [del_post]                     [inv_postc]
+    <                             ><                           >
+}
+END -- GRID
+END -- Vb2
+TREE details (PARENTIDCOLUMN=parentid, IDCOLUMN=id)
+{
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+[description      |price      |stock|quan|disc_p|disc_v|tax_c|tax_r|tax_valu|gross_va|a]
+}
+END -- TREE
+Grid Grid1
+{
+ [ordt|item|ord1|total_|ord2|total1|ord3|total2]    [ord4|total_gross  |ord5|total_nett   ]
+}
+END
+END -- VBox
+END -- Form
+
+TABLES
+customer
+ord_head
+stock
+ord_detail
+
+ATTRIBUTES
+BUTTON X : hideaddr,TEXT="",IMAGE="minus";
+BUTTON Y : showaddr,TEXT="",IMAGE="plus";
+LABEL welcome=formonly.welcome, justify=center, style="welcome";
+LABEL cust:custcode, TEXT=%"Customer:", justify=right;
+BUTTONEDIT custome=customer.customer_code, action=getcust, tabIndex=2, not null, required, upShift;
+LABEL cus1:custname, TEXT=%"Name:", justify=right;
+customer_name=customer.customer_name, tabIndex=3;
+LABEL ordn:ordno, TEXT=%"Order No:", justify=right;
+BUTTONEDIT order_n=formonly.order_number, action=getorder, tabIndex=4;
+LABEL ordd:orddate, TEXT=%"Date:", justify=right;
+order_datetime=ord_head.order_datetime, tabIndex=5, noEntry, scroll;
+LABEL due:due, TEXT=%"Del By:", justify=right;
+reqduedate = ord_head.req_del_date;
+PHANTOM ord_head.order_date;
+LABEL op:op, TEXT=%"Op:", justify=right;
+user=ord_head.username, tabIndex=6;
+LABEL ordr:ordref, TEXT=%"Reference:", justify=right;
+order_ref=ord_head.order_ref, tabIndex=7, scroll;
+
+GROUP del:del, TEXT=%"Delivery Address";
+GROUP inv:inv, TEXT=%"Invoice Address";
+
+del_address1=ord_head.del_address1, tabIndex=8;
+del_address2=ord_head.del_address2, tabIndex=9;
+del_address3=ord_head.del_address3, tabIndex=10;
+del_address4=ord_head.del_address4, tabIndex=11;
+del_address5=ord_head.del_address5, tabIndex=12;
+del_post=ord_head.del_postcode, tabIndex=13;
+
+inv_address1=ord_head.inv_address1, tabIndex=14;
+inv_address2=ord_head.inv_address2, tabIndex=15;
+inv_address3=ord_head.inv_address3, tabIndex=16;
+inv_address4=ord_head.inv_address4, tabIndex=17;
+inv_address5=ord_head.inv_address5, tabIndex=18;
+inv_postc=ord_head.inv_postcode, tabIndex=19;
+
+-- Tree
+PHANTOM formonly.parentid;
+PHANTOM formonly.id;
+PHANTOM formonly.stock_code;
+--BUTTONEDIT stock_c=formonly.stock_code, action=getstock, tabIndex=20, title=%"P-Code", upShift, scroll, style="entry";
+PHANTOM stock.barcode;
+description=stock.description, tabIndex=22, title=%"Description", noEntry, scroll, style="noentry";
+PHANTOM stock.pack_flag;
+price=stock.price, tabIndex=23, title=%"Price", noEntry, style="noentry";
+stock=formonly.stock, tabIndex=24, title=%"Stock", noEntry, style="noentry",HIDDEN;
+quan=formonly.quantity, tabIndex=25, title=%"Qty", style="entry";
+disc_p=formonly.disc_percent, tabIndex=26, title=%"Disc%", style="entry";
+disc_v=formonly.disc_value, tabIndex=27, title=%"Disc Val", noEntry, style="noentry";
+COMBOBOX tax_c=formonly.tax_code, tabIndex=38, title=%"Tax Code", items=(("0", "Rate 0"),("1", "Rate 1"),("2", "Rate 2"),("3", "Rate 3"));
+tax_r=formonly.tax_rate, tabIndex=35, title=%"Tax Rate", noEntry;
+tax_valu=formonly.tax_value, tabIndex=37, title=%"Tax Value", noEntry;
+PHANTOM ord_detail.nett_value;
+gross_va=ord_detail.gross_value, tabIndex=39, title=%"Total";
+CHECKBOX a=formonly.accepted, tabIndex=29, title=%"Ok", noEntry, valueChecked = 1, valueUnchecked = 0, style="noentry";
+
+
+LABEL ordt:ordtot, TEXT=%"Items:", justify=right;
+item=ord_head.items, tabIndex=30;
+LABEL ord1:ordtot1, TEXT=%"Qty:", justify=right;
+total_=ord_head.total_qty, tabIndex=31;
+LABEL ord2:ordtot2, TEXT=%"Disc:", justify=right;
+total1=ord_head.total_disc, tabIndex=32;
+LABEL ord3:ordtot5, TEXT=%"Tax:", justify=right;
+total2=ord_head.total_tax, tabIndex=36;
+LABEL ord4:ordtot3, TEXT=%"Gross:", justify=right;
+total_gross=ord_head.total_gross, tabIndex=33;
+LABEL ord5:ordtot4, TEXT=%"Nett:", justify=right;
+total_nett=ord_head.total_nett, tabIndex=34;
+END -- ATTRIBUTES
+
+INSTRUCTIONS
+SCREEN RECORD details(formonly.parentid THRU formonly.accepted)
+
+

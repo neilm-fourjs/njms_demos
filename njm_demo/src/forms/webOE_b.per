@@ -1,0 +1,177 @@
+----------------------------------------------------------------------------------
+&include "schema.inc"
+
+LAYOUT (TEXT="Web OE Basket", VERSION="$Id: webOE_b.per 958 2016-06-13 13:04:03Z neilm $")
+VBOX
+GRID
+{
+[signin][gotoco][cancel] User:[f001               ]
+}
+END -- GRID
+HBOX
+FOLDER
+PAGE i (TEXT="Basket")
+VBOX
+TABLE
+{
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+[a001    ][a002                        ][a003     ][a004  ][a005       ]
+}
+END -- TABLE
+GRID
+{
+[delete               ]
+}
+END -- GRID
+END -- VBOX
+END -- PAGE i
+PAGE d (TEXT="Delivery Details",HIDDEN)
+GRID
+{
+A/C:[d010    ]Name:[d011                                    ]
+To:[d001                      ] Invoice To:[i001                      ]
+   [d002                      ]            [i002                      ]
+   [d003                      ]            [i003                      ]
+   [d004                      ]            [i004                      ]
+   [d005                      ]            [i005                      ]
+   [d006    ]                              [i006    ]
+[""]
+[dlab1         ][d000                                     |dv01       ]
+}
+END -- GRID
+END -- PAGE d
+PAGE p (TEXT="Payment Details",HIDDEN)
+VBOX
+GRID
+{
+[cl01           ][c001                  ]
+[""]
+}
+END -- GRID
+GRID
+{
+Payment Type:          Card Details:
+[p001                ][plab1   ][p002                       ]
+[                    ][plab2   ][p003                       ]
+                      [plab3   ][pm]/[py    ] mm/yyyy
+                      [plab4   ][p005]
+[pt1 ][pt2 ][pt3 ]
+[    ][    ][    ]
+}
+END -- GRID
+
+END -- VBOX
+END -- PAGE p
+END -- FOLDER
+
+GRID
+{
+Your Order so far:
+[cl02           ][c002            ]
+[cl03           ][c003            ]
+[cl04           ][c004            ]
+[cl05           ][c005            ]
+[cl06           ][c006            ]
+-----------------------------------
+[cl07           ][c007            ]
+-----------------------------------
+                 [confirm         ]
+}
+END -- GRID
+
+END -- HBOX
+END -- VBOX
+
+TABLES
+stock
+ord_detail
+ord_head
+ord_payment
+
+ATTRIBUTES
+LABEL f001 = FORMONLY.custname,SIZEPOLICY=DYNAMIC;
+
+LABEL dlab1 : dpost,TEXT="Method:",JUSTIFY=RIGHT;
+LABEL plab1 : ltype,TEXT="Type:",JUSTIFY=RIGHT;
+LABEL plab2 : lnumb,TEXT="Number:",JUSTIFY=RIGHT;
+LABEL plab3 : lexpr,TEXT="Expires:",JUSTIFY=RIGHT;
+LABEL plab4 : lissu,TEXT="Issue:",JUSTIFY=RIGHT;
+
+LABEL cl01 : oref ,TEXT="Your Reference:",JUSTIFY=RIGHT;
+LABEL cl02 : itms ,TEXT="Total Items:",JUSTIFY=RIGHT;
+LABEL cl03 : gros ,TEXT="Gross Value:",JUSTIFY=RIGHT;
+LABEL cl04 : taxv ,TEXT="Total Tax:",JUSTIFY=RIGHT;
+LABEL cl05 : disc ,TEXT="Your Discount:",JUSTIFY=RIGHT;
+LABEL cl06 : post ,TEXT="Post'n'Packing:",JUSTIFY=RIGHT;
+LABEL cl07 : nett ,TEXT="Nett Value:",JUSTIFY=RIGHT;
+
+a001 = stock.stock_code,TITLE="Item",NOENTRY;
+PHANTOM stock.barcode;
+a002 = stock.description,TITLE="Desscription",NOENTRY;
+PHANTOM stock.pack_flag;
+a003 = stock.price,TITLE="Price",NOENTRY;
+PHANTOM FORMONLY.stock;
+a004 = FORMONLY.qty,TITLE="Qty";
+PHANTOM ord_detail.disc_percent;
+PHANTOM ord_detail.disc_value;
+PHANTOM ord_detail.tax_code;
+PHANTOM ord_detail.tax_rate;
+PHANTOM ord_detail.tax_value;
+a005 = FORMONLY.nett_value,TITLE="Total",NOENTRY;
+PHANTOM ord_detail.gross_value;
+PHANTOM FORMONLY.accepted;
+BUTTON delete : delete,TEXT="Remove selected item";
+
+d010 = ord_head.customer_code,NOENTRY;
+d011 = ord_head.customer_name,NOENTRY;
+d001 = ord_head.del_address1, NOT NULL;
+d002 = ord_head.del_address2;
+d003 = ord_head.del_address3;
+d004 = ord_head.del_address4;
+d005 = ord_head.del_address5;
+d006 = ord_head.del_postcode, NOT NULL;
+i001 = ord_head.inv_address1;
+i002 = ord_head.inv_address2;
+i003 = ord_head.inv_address3;
+i004 = ord_head.inv_address4;
+i005 = ord_head.inv_address5;
+i006 = ord_head.inv_postcode;
+
+COMBOBOX d000 = ord_payment.del_type, ITEMS=(
+	("0","Next Day Guaranteed - 5.50"),
+	("1","First Class - 3.50"),
+	("2","2nd Class - 2.50"),
+	("3","Free - 0.00")), NOT NULL;
+dv01 = FORMONLY.del_amt, NOENTRY;
+
+RADIOGROUP p001 = ord_payment.payment_type,ITEMS=(("C","Card"),("P","Paypal")), NOT NULL;
+COMBOBOX p002 = ord_payment.card_type,ITEMS=(("V","Visa"),("M","MasterCard")),NOT NULL;
+p003 = ord_payment.card_no;
+COMBOBOX pm = FORMONLY.expires_m, ITEMS=(1,2,3,4,5,6,7,8,9,10,11,12), NOT NULL;
+COMBOBOX py = FORMONLY.expires_y, ITEMS=(2011,2012,2013,2014,2015,2016,2017),NOT NULL;
+p005 = ord_payment.issue_no;
+IMAGE pt1 : pt1, IMAGE="fa-cc-paypal", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt2 : pt2, IMAGE="fa-cc-mastercard", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt3 : pt3, IMAGE="fa-cc-visa", SIZEPOLICY=FIXED, AUTOSCALE;
+
+c001 = ord_head.order_ref;
+c002 = ord_head.total_qty, NOENTRY;
+c003 = ord_head.total_gross, NOENTRY;
+c004 = ord_head.total_tax, NOENTRY;
+c005 = ord_head.total_disc, NOENTRY;
+c006 = ord_payment.del_amount, NOENTRY;
+c007 = ord_head.total_nett, NOENTRY;
+
+BUTTON signin : signin,TEXT="Signin";
+BUTTON gotoco : gotoco,TEXT="Go to Checkout";
+BUTTON confirm : next ,TEXT="Next",IMAGE="next", COMMENT="", STYLE="vbig";
+BUTTON cancel : cancel,TEXT="Go Back",IMAGE="prev";
+
+INSTRUCTIONS
+SCREEN RECORD dets (stock.stock_code THRU formonly.accepted)

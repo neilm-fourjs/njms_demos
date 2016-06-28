@@ -1,0 +1,128 @@
+
+&include "schema.inc"
+
+LAYOUT (TEXT="Main Store Front #2", VERSION="$Id: webOE.per 960 2016-06-13 14:39:50Z neilm $")
+VBOX
+GRID
+{
+[signin][viewb][gotoco][cancel]Welcome:[f001               ]["   "][pt1 ][pt2 ][pt3 ]
+                                                                   [    ][    ][    ]
+}
+END -- GRID
+HBOX (SPLITTER)
+VBOX
+TABLE cats
+{
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+[c001                ]
+}
+END --TABLE
+GRID
+{
+Total Items:
+[t002            ]
+[t003            ]
+[t004            ]
+[t005            ]
+[t006            ]
+Total Cost:
+[t007            ]
+}
+END --GRID
+END --VBOX
+SCROLLGRID ( STYLE="itemlist" )
+{
+[img1              |img2              ][img3              |img4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[det1              |det2              ][det3              |det4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+QTY:[qty1     |dl1] QTY:[qty2     |dl2]QTY:[qty3     |dl3] QTY[qty4     |dl4 ]
+[" "]
+[img1              |img2              ][img3              |img4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[det1              |det2              ][det3              |det4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+QTY:[qty1     |dl1] QTY:[qty2     |dl2]QTY:[qty3     |dl3] QTY[qty4     |dl4 ]
+[" "]
+[img1              |img2              ][img3              |img4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[det1              |det2              ][det3              |det4              ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+[                  |                  ][                  |                  ]
+QTY:[qty1     |dl1] QTY:[qty2     |dl2]QTY:[qty3     |dl3] QTY[qty4     |dl4 ]
+}
+END -- SCROLLGRID
+END --HBOX
+END --VBOX
+
+TABLES
+stock
+stock_cat
+ord_head
+ord_payment
+
+ATTRIBUTES
+
+LABEL f001 = FORMONLY.custname,SIZEPOLICY=DYNAMIC, STYLE="big";
+BUTTON signin : signin, STYLE="big";
+BUTTON viewb : viewb, STYLE="big";
+BUTTON gotoco : gotoco, STYLE="big";
+BUTTON cancel : cancel,TEXT="Leave", IMAGE="fa-sign-out", STYLE="big";
+
+IMAGE pt1 : pt1, IMAGE="fa-cc-paypal", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt2 : pt2, IMAGE="fa-cc-mastercard", SIZEPOLICY=FIXED, AUTOSCALE;
+IMAGE pt3 : pt3, IMAGE="fa-cc-visa", SIZEPOLICY=FIXED, AUTOSCALE;
+
+PHANTOM stock_cat.catid;
+c001 = stock_cat.cat_name, SCROLL,TITLE="Category";
+
+t002 = ord_head.total_qty;
+t003 = ord_head.total_gross, HIDDEN;
+t004 = ord_head.total_tax, HIDDEN;
+t005 = ord_head.total_disc, HIDDEN;
+t006 = ord_payment.del_amount, HIDDEN;
+t007 = ord_head.total_nett;
+
+BUTTONEDIT dl1 = FORMONLY.stock_code1,ACTION=detlnk1, STYLE="buttononly";
+IMAGE img1 = FORMONLY.img1,AUTOSCALE,WIDTH=150 PIXELS,HEIGHT=150 PIXELS{,STRETCH=BOTH},SIZEPOLICY=FIXED,STYLE="bg_white noborder";
+TEXTEDIT det1 = FORMONLY.det1 {,SCROLLBARS=NONE},NOENTRY,STYLE="bg_white noborder html notools";
+BUTTONEDIT qty1 = FORMONLY.qty1,ACTION=add1;
+
+BUTTONEDIT dl2 = FORMONLY.stock_code2,ACTION=detlnk2, STYLE="buttononly";
+IMAGE img2 = FORMONLY.img2,AUTOSCALE,WIDTH=150 PIXELS,HEIGHT=150 PIXELS{,STRETCH=BOTH},SIZEPOLICY=FIXED,STYLE="bg_white noborder";
+TEXTEDIT det2 = FORMONLY.det2 {,SCROLLBARS=NONE},NOENTRY,STYLE="bg_white noborder html notools";
+BUTTONEDIT qty2 = FORMONLY.qty2,ACTION=add2;
+
+BUTTONEDIT dl3 = FORMONLY.stock_code3,ACTION=detlnk3, STYLE="buttononly";
+IMAGE img3 = FORMONLY.img3,AUTOSCALE,WIDTH=150 PIXELS,HEIGHT=150 PIXELS{,STRETCH=BOTH},SIZEPOLICY=FIXED,STYLE="bg_white noborder";
+TEXTEDIT det3 = FORMONLY.det3 {,SCROLLBARS=NONE},NOENTRY,STYLE="bg_white noborder html notools";
+BUTTONEDIT qty3 = FORMONLY.qty3,ACTION=add3;
+
+BUTTONEDIT dl4 = FORMONLY.stock_code4,ACTION=detlnk4, STYLE="buttononly";
+IMAGE img4 = FORMONLY.img4,AUTOSCALE,WIDTH=150 PIXELS,HEIGHT=150 PIXELS{,STRETCH=BOTH},SIZEPOLICY=FIXED,STYLE="bg_white noborder";
+TEXTEDIT det4 = FORMONLY.det4 {,SCROLLBARS=NONE},NOENTRY,STYLE="bg_white noborder html notools";
+BUTTONEDIT qty4 = FORMONLY.qty4,ACTION=add4;
+
+INSTRUCTIONS
+SCREEN RECORD stkcats ( stock_cat.* )
+SCREEN RECORD items ( FORMONLY.stock_code1 THRU FORMONLY.qty4 )

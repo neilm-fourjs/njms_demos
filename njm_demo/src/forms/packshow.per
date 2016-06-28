@@ -1,0 +1,47 @@
+
+&include "schema.inc"
+
+ACTION DEFAULTS
+	ACTION cancel ( TEXT="Close" )
+END --
+
+LAYOUT ( TEXT="Pack Items", STYLE="dialog" )
+VBOX
+GRID
+{
+[p001    ][p000                                   ]
+pack Type:[pf                 ]
+}
+END -- GRID
+TABLE
+{
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+[p002    |p003                                   |p004|p005  |p006  ]
+}
+END -- TABLE
+END -- VBOX
+TABLES
+pack_items
+stock
+
+ATTRIBUTES
+p001 = pack_items.pack_code;
+p000 = FORMONLY.pack_desc;
+COMBOBOX pf = FORMONLY.pf, ITEMS=(("E","Exploded"),("P","Simple Pack")),NOT NULL;
+
+p002 = pack_items.stock_code,TITLE="Stock Code";
+p004 = pack_items.qty, TITLE="Qty";
+p005 = pack_items.price, TITLe="Price";
+p006 = pack_items.cost, TITLE="Code";
+PHANTOM pack_items.tax_code;
+PHANTOM pack_items.disc_code;
+p003 = stock.description, TITLE="Stock Description";
+
+INSTRUCTIONS
+SCREEN RECORD packs ( pack_items.stock_code THRU stock.description )
