@@ -2,7 +2,8 @@
 
 export FGLLDPATH=$(GREDIR)/lib
 GITVER=$(shell git describe --always)
-GARFILE=njm_demo-$(GITVER).gar
+GARNAME=njm_demo
+GARFILE=$(GARNAME).gar
 
 all: src/lib/gitver.inc
 	gsmake njm_demo300.4pw
@@ -14,6 +15,8 @@ run: all
 	run.sh
 
 clean:
+	rm *.gar;
+	rm *.tgz;
 	rm src/lib/gitver.inc;
 	rm -f *.4pw?? \;
 	find . -name \*.42? -exec rm {} \;
@@ -29,8 +32,10 @@ gar: $(GARFILE)
 
 $(GARFILE): clean all MANIFEST gas300/gdemo.xcf
 	$(info Building Genero Archive ...)
-	@zip -qr  $(GARFILE) MANIFEST gas300/g*.xcf bin300/* etc/* pics/*
+	@zip -qr $(GARNAME)-$(GITVER).gar MANIFEST gas300/g*.xcf bin300/* etc/* pics/*
+	ln -s $(GARNAME)-$(GITVER).gar $(GARFILE)
 	$(info Done)
+	
 
 
 # NOTE: can't use fglgar because it assumes a sloppy folder layout where 
@@ -38,12 +43,12 @@ $(GARFILE): clean all MANIFEST gas300/gdemo.xcf
 #	fglgar --gar --input-source ./messy
 
 undeploy:
-	gasadmin --disable-archive njm_demo
-	gasadmin --undeploy-archive njm_demo
+	gasadmin --disable-archive $(GARNAME)
+	gasadmin --undeploy-archive $(GARNAME)
 
-deploy: njm_demo.gar
+deploy: $(GARFILE)
 	gasadmin --deploy-archive $(GARFILE)
-	gasadmin --enable-archive njm_demo
+	gasadmin --enable-archive $(GARNAME)
 
 redeploy: undeploy deploy
 	$(info Done)
