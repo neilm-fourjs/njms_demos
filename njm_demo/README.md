@@ -67,3 +67,12 @@ and
 ```
 http://<your server>/gas/ua/r/gdemo_def
 ```
+
+## GWC-JS Customizations
+So far I've only customized the colours, header text / logo and footer text.
+What I'd like to do:
+* Make the header scroll up with the page, rather than staying fixed.
+* Make the header menu bar so if scrolled up it get anchored at the top so always there
+* Make the footer anchored to the bottom of the page ( instead of the screen )
+* Add an application field to the 'header menu bar' to show data & buttons. ( ie order amount / checkout button )
+
