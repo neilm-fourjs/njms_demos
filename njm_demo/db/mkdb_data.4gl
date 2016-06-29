@@ -437,7 +437,7 @@ FUNCTION officeStore()
 	LET l_sep = "."
 	IF m_dbtyp = "ifx" THEN LET l_sep = ":" END IF
 	LET l_stmt = "SELECT itemid, catid,supplier, prodname, proddesc, prodpic, listprice, unitcost, i.attr1
-		FROM officestore",l_sep,"product p ,officestore",l_sep,"item i WHERE p.productid = i.productid"
+		FROM officestore",l_sep,"product p , OUTER officestore",l_sep,"item i WHERE p.productid = i.productid"
 	LET l_stmt2 = "SELECT userid, TRIM(firstname)||\" \"||lastname,email, addr1,addr2,city,state, country,zip
 		FROM officestore",l_sep,"account ORDER BY 1"
 	LET retry = TRUE
@@ -451,7 +451,6 @@ FUNCTION officeStore()
 				RETURN
 			END IF
 			DISPLAY "Officestore not found, looking for tables."
-			DISPLAY "SQL:",l_stmt
 			DISPLAY "Err:",SQLERRMESSAGE
 			LET l_stmt = "SELECT itemid, catid,supplier, prodname, proddesc, prodpic, listprice, unitcost, i.attr1
 			FROM product p , OUTER item i	WHERE p.productid = i.productid"
@@ -461,6 +460,7 @@ FUNCTION officeStore()
 		END TRY
 		CONTINUE WHILE
 	END WHILE
+	DISPLAY "SQL:",l_stmt
 	DISPLAY "Adding officestore stock data..."
 	TRY
 		FOREACH oscur INTO l_sc, l_cat, l_sup, l_ds, l_ld, l_pic, l_pr, l_cst,l_att

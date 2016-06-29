@@ -15,18 +15,22 @@ run: all
 	run.sh
 
 clean:
-	rm *.gar;
-	rm *.tgz;
-	rm src/lib/gitver.inc;
-	rm -f *.4pw?? \;
+	rm -f *.gar;
+	rm -f *.tgz;
+	rm -f src/lib/gitver.inc;
+	rm -f *.4pw??;
+	rm -f gbc/njm_gbc.tgz;
 	find . -name \*.42? -exec rm {} \;
 	find . -name \*.log -exec rm {} \;
 	find . -name \*.pdf -exec rm {} \;
 	find . -name \*.xml -exec rm {} \;
 
-packit: 
+packit: gbc/njm_gbc.tgz
 	$(info Building TGZ of deployables ...)
-	tar cvzf njm_demo-$(GITVER).tgz bin300 gas300 etc pics db/njm_demo.exp.tgz db/imp.sh
+	tar cvzf njm_demo-$(GITVER).tgz bin300 gas300 etc pics db/njm_demo.exp.tgz db/imp.sh gbc/njm_gbc.tgz
+
+gbc/njm_gbc.tgz:
+	cd gbc ; ./packit.sh
 
 gar: $(GARFILE)
 

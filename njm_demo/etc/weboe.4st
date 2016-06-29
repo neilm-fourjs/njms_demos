@@ -96,6 +96,7 @@
 		<StyleAttribute name="actionPanelPosition" value="none" />
 		<StyleAttribute name="toolBarPosition" value="top" />
 	</Style>
+
   <Style name="Window.config">
      <StyleAttribute name="windowType" value="modal" />
      <StyleAttribute name="sizable" value="no" />
@@ -120,6 +121,7 @@
 		<StyleAttribute name='actionPanelPosition'  value='bottom'/>
 		<StyleAttribute name="actionPanelHAlign"    value="right" />
 	</Style>
+
 	<Style name="Window.modal">
 		<StyleAttribute name="windowType"           value="modal" />
 	</Style>
@@ -131,9 +133,11 @@
     <StyleAttribute name="ringMenuPosition"    value="none" />
     <StyleAttribute name="toolBarPosition"    value="none" />
   </Style>
+
   <Style name="Grid.menu">
     <StyleAttribute name="fontSize"  value="1.5em" />
   </Style>
+
   <Style name="Table.menu">
     <StyleAttribute name="headerHidden" value="yes" />
     <StyleAttribute name="fontWeight" value="bold" />
@@ -163,14 +167,10 @@
     <StyleAttribute name="backgroundColor" value="white" />
   </Style>
 
-  <Style name="Image">
-    <!-- StyleAttribute name="alignment" value="center" /-->
-		<StyleAttribute name="border" value="none" />
-    <StyleAttribute name="backgroundColor" value="white" />
-  </Style>
   <Style name=".noborder">
 		<StyleAttribute name="border" value="none" />
   </Style>
+
   <Style name="Button">
 		<StyleAttribute name="scaleIcon" value="32px" />
   </Style>
@@ -188,7 +188,7 @@
 		<StyleAttribute name="backgroundColor" value="white" />
   </Style>
 
-	<Style name=".griditem">
+	<Style name=".bg_white">
 		<StyleAttribute name="backgroundColor" value="white" />
 	</Style>
 </StyleList>

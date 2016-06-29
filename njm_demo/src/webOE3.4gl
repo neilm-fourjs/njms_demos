@@ -368,8 +368,13 @@ END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION build_grids()
 	DEFINE l_hbox, n,n1, ff om.DomNode
-	DEFINE x,y SMALLINT
+	DEFINE x,y, l_gw SMALLINT
+	CONSTANT l_lab1_gwidth = 12
+	CONSTANT l_lab2_gwidth = 3
+	CONSTANT l_qty_gwidth = 6
+	CONSTANT l_detbut_gwidth = 2
 
+	LET l_gw = l_lab1_gwidth + 1
 	DISPLAY "Build_grids"
 	LET n = m_vbox.getParent()
 	CALL n.removeChild( m_vbox )
@@ -391,7 +396,7 @@ FUNCTION build_grids()
 			CALL n.setAttribute("style", "noborderX")
 		END IF
 		LET n = n.createChild("Grid")
-		CALL n.setAttribute("gridWidth", "25")
+		CALL n.setAttribute("gridWidth", l_gw)
 		CALL n.setAttribute("gridHeight", "14")
 		IF x <= m_items.getLength() THEN
 			CALL n.setAttribute("style", "griditem")
@@ -400,12 +405,12 @@ FUNCTION build_grids()
 		LET n1 = n.createChild("Image")
 		IF x <= m_items.getLength() THEN
 			CALL n1.setAttribute("image", m_items[x].img1)
-			CALL n1.setAttribute("style", "bg_white noborder")
 		END IF
+		CALL n1.setAttribute("style", "bg_white noborder")
 		CALL n1.setAttribute("sizePolicy","fixed")
 		CALL n1.setAttribute("autoScale","1")
 
-		CALL n1.setAttribute("gridWidth", "25")
+		CALL n1.setAttribute("gridWidth", l_gw-1)
 		CALL n1.setAttribute("width", "150px")
 		CALL n1.setAttribute("height", "150px")
 		CALL n1.setAttribute("posY","1")
@@ -417,7 +422,8 @@ FUNCTION build_grids()
 		ELSE
 			CALL n1.setAttribute("text", "&nbsp;" )
 		END IF
-		CALL n1.setAttribute("gridWidth", "25")
+		CALL n1.setAttribute("gridWidth", l_lab1_gwidth)
+		CALL n1.setAttribute("width", l_lab1_gwidth)
 		CALL n1.setAttribute("gridHeight", "3")
 		CALL n1.setAttribute("posY","5")
 		CALL n1.setAttribute("posX","1")
@@ -428,7 +434,7 @@ FUNCTION build_grids()
 			CALL n1.setAttribute("text","QTY:")
 		END IF
 		CALL n1.setAttribute("style", "bold")
-		CALL n1.setAttribute("gridWidth","4")
+		CALL n1.setAttribute("gridWidth",l_lab2_gwidth)
 		CALL n1.setAttribute("width","4")
 		CALL n1.setAttribute("sizePolicy","fixed")
 		CALL n1.setAttribute("posY","10")
@@ -439,20 +445,20 @@ FUNCTION build_grids()
 			CALL ff.setAttribute("name","formonly.qty"||x)
 			CALL ff.setAttribute("colName","qty"||x)
 			LET n1 = ff.createChild("ButtonEdit")
-			CALL n1.setAttribute("gridWidth","8")
-			CALL n1.setAttribute("width","8")
+			CALL n1.setAttribute("gridWidth",l_qty_gwidth)
+			CALL n1.setAttribute("width",l_qty_gwidth)
 			CALL n1.setAttribute("action","add1")
 			CALL n1.setAttribute("posY","10")
-			CALL n1.setAttribute("posX","5")
+			CALL n1.setAttribute("posX",l_lab2_gwidth)
 			CALL n1.setAttribute("style", "bold")
 
 			LET n1 = n.createChild("Button")
 			CALL n1.setAttribute("name","detlnk"||x)
-			CALL n1.setAttribute("gridWidth","3")
-			CALL n1.setAttribute("width","3")
+			CALL n1.setAttribute("gridWidth",l_detbut_gwidth)
+			CALL n1.setAttribute("width",l_detbut_gwidth)
 			CALL n1.setAttribute("image", "fa-info-circle")
 			CALL n1.setAttribute("posY","10")
-			CALL n1.setAttribute("posX","14")
+			CALL n1.setAttribute("posX",l_lab2_gwidth+l_qty_gwidth)
 		END IF
 		DISPLAY "Grid x:",x, " y:",y, " MOD4:",( x MOD 4 ), " len:",m_items.getLength()
 		IF NOT x MOD 4 THEN

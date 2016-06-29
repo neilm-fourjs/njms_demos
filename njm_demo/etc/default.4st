@@ -76,16 +76,6 @@
   </Style>
 
 <!-- My Styles -->
-	<Style name="Table:display:odd">
-		<StyleAttribute name="backgroundColor" value="#B0FFB0" />
-	</Style>
-  <Style name="Table" >
-    <StyleAttribute name="headerAlignment" value="auto" />
-  </Style>
-	<Style name="Label">
-		<StyleAttribute name="fontWeight" value="bold" />
-	</Style>
-
 	<Style name="Window.ordent">
 		<StyleAttribute name="ringMenuPosition" value="none" />
 		<StyleAttribute name="actionPanelPosition" value="none" />
@@ -156,5 +146,15 @@
     <StyleAttribute name="fontSize" value="16pt" />
     <StyleAttribute name="textColor" value="darkRed" />
   </Style>
+
+	<Style name="Table:display:odd">
+		<StyleAttribute name="backgroundColor" value="#B0FFB0" />
+	</Style>
+  <Style name="Table" >
+    <StyleAttribute name="headerAlignment" value="auto" />
+  </Style>
+	<Style name="Label">
+		<StyleAttribute name="fontWeight" value="bold" />
+	</Style>
 
 </StyleList>
