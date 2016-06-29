@@ -1,0 +1,24 @@
+{
+  "gbc-font-size-ratio"    : "1",
+  "gbc-margin-ratio"       : "0.6",
+  "gbc-field-height-ratio" : "0.7",
+  "gbc-radiobutton-size"   : "14px",
+  "gbc-checkbox-size"      : "14px",
+
+  "gbc-primary-background-color"         : "$mt-grey-50",
+  "gbc-secondary-background-color"       : "$mt-white",
+  "gbc-field-background-color"           : "$mt-white",
+  "gbc-field-disabled-background"        : "rgba(0,0,0,0.04)",
+  "gbc-primary-color"                    : "#e00e0e",
+  "gbc-primary-medium-color"             : "$mt-red-500",
+  "gbc-primary-light-color"              : "$mt-red-100",
+  "gbc-secondary-color"                  : "$mt-blue-grey-600",
+  "gbc-disabled-color"                   : "$mt-blue-grey-400",
+  "gbc-separator-color"                  : "$mt-blue-grey-400",
+  "gbc-header-color"                     : "$mt-blue-grey-100",
+  "gbc-message-color"                    : "$mt-blue-grey-800",
+  "gbc-error-color"                      : "$mt-red-800",
+  "gbc-sidebar-always-visible-min-width" : "999999px",
+  "gbc-sidebar-default-width"            : "30px",
+  "gbc-animation-duration"               : "0.7s"
+}

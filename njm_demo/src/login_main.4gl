@@ -1,8 +1,13 @@
 
+CONSTANT PRGNAME = "Menu"
+CONSTANT PRGDESC = "NJM Demo"
+CONSTANT PRGAUTH = "Neil J.Martin"
+
 MAIN
 	DEFINE l_user_key INTEGER
 
---	CALL gl_init(ARG_VAL(1),"menu",FALSE)
+	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_init(ARG_VAL(1),NULL,FALSE)
 
 	CALL gldb_connect(NULL)
 	CLOSE WINDOW SCREEN

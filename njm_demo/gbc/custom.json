@@ -1,0 +1,7 @@
+{
+  "compile": {
+    "mode": "cdev",
+    "withStats": false,
+    "customization": "cust_njm"
+  }
+}
