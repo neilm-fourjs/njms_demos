@@ -39,7 +39,6 @@ DEFINE m_items DYNAMIC ARRAY OF RECORD
 		qty2 INTEGER
 	END RECORD
 
-DEFINE m_pay RECORD LIKE ord_payment.*
 MAIN
 	DEFINE l_test STRING
 	DEFINE l_em LIKE customer.email
@@ -100,7 +99,7 @@ MAIN
 	FOREACH sc_cur INTO m_stock_cats[ m_stock_cats.getLength() + 1 ].*
 	END FOREACH
 	CALL m_stock_cats.deleteElement( m_stock_cats.getLength() )
-	LET m_pay.del_amount = 0
+
 	DIALOG ATTRIBUTE(UNBUFFERED)
 		DISPLAY ARRAY m_stock_cats TO stkcats.*
 			BEFORE ROW
@@ -236,142 +235,5 @@ FUNCTION recalcOrder()
 		CATCH
 		END TRY
 	END IF
-
-END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION gotoco()
-	DEFINE f ui.Form
-	DEFINe l_row SMALLINT
-	DEFINE del_amt LIKE ord_payment.del_amount
-
-	IF g_custcode = "Guest" THEN
-		CALL lib_weboe.signin()
-		IF g_custcode = "Guest" THEN RETURN END IF
-	END IF
-
--- Add code here to place actual order.
-	OPEN WINDOW basket WITH FORM "webOE_b"
-	DISPLAY g_custname TO custname
-	LET int_flag = FALSE
-	INITIALIZE m_pay.* TO NULL
-	LET m_pay.del_type = "0"
-	LET m_pay.del_amount = POST_0
-	LET m_pay.payment_type = "C"
-	LET m_pay.card_type = "V"
-	LET g_ordHead.customer_code = g_cust.customer_code
-	LET g_ordHead.customer_name = g_cust.customer_name
-	DIALOG ATTRIBUTE(UNBUFFERED)
-		INPUT ARRAY g_detailArray FROM dets.* ATTRIBUTE(WITHOUT DEFAULTS,
-					DELETE ROW=FALSE,INSERT ROW=FALSE,APPEND ROW=FALSE)
-			ON ACTION delete
-				CALL g_detailArray.deleteElement( arr_curr() )
-				CALL recalcOrder()
-
-			AFTER FIELD qty
-				CALL recalcOrder()
-
-			ON ACTION next
-				CALL f.setElementHidden("b",TRUE)
-				CALL f.setElementHidden("d",FALSE)
-				CALL DIALOG.nextField("del_address1")
-		END INPUT
-		INPUT BY NAME g_ordHead.customer_code, g_ordHead.customer_name,
-					g_ordHead.del_address1, g_ordHead.del_address2, g_ordHead.del_address3, g_ordHead.del_address4, g_ordHead.del_address5, g_ordHead.del_postcode,
-					g_ordHead.inv_address1, g_ordHead.inv_address2, g_ordHead.inv_address3, g_ordHead.inv_address4, g_ordHead.inv_address5, g_ordHead.inv_postcode,
-					m_pay.del_type, del_amt
-				ATTRIBUTE(WITHOUT DEFAULTS)
-			ON CHANGE del_type
-				CASE m_pay.del_type
-					WHEN "0" LET m_pay.del_amount = POST_0
-					WHEN "1" LET m_pay.del_amount = POST_1
-					WHEN "2" LET m_pay.del_amount = POST_2
-					WHEN "3" LET m_pay.del_amount = POST_3
-				END CASE
-				LET del_amt = m_pay.del_amount
-				CALL recalcOrder()
-
-			ON ACTION next
-				CALL f.setElementHidden("p",FALSE)
-				CALL DIALOG.nextField("payment_type")
-				CALL f.setElementText("next","Confirm")
-				CALL f.setElementImage("next","smiley")
-		END INPUT
-		INPUT BY NAME g_ordHead.order_ref,
-									m_pay.payment_type, 
-									m_pay.card_type, m_pay.card_no, 
-									m_pay.expires_m, m_pay.expires_y, 
-									m_pay.issue_no
-				ATTRIBUTE(WITHOUT DEFAULTS)
-			ON ACTION next
-				EXIT DIALOG
-		END INPUT
-
-		BEFORE DIALOG
-			LET f = DIALOG.getForm()
-			CALL recalcOrder()
-
-		ON ACTION cancel
-			LET int_flag = TRUE	
-			EXIT DIALOG
-	END DIALOG
-	CLOSE WINDOW basket
-	IF int_flag THEN RETURN END IF
-	LET g_ordHead.order_datetime = CURRENT
--- Insert Order Here
-
-	BEGIN WORK
-	INSERT INTO ord_head VALUES g_ordHead.* 
-	LET g_ordHead.order_number = SQLCA.SQLERRD[2] -- Fetch SERIAL order num
-	LET m_pay.order_number = g_ordHead.order_number
-	INSERT INTO ord_payment VALUES(m_pay.*)
-	FOR l_row = 1 TO g_detailArray.getLength()
-		IF g_detailArray[ l_row ].stock_code IS NOT NULL THEN
-			INSERT INTO ord_detail VALUES( 
-				g_ordHead.order_number,
-				l_row,
-				g_detailArray[ l_row ].stock_code,
-				g_detailArray[ l_row ].pack_flag,
-				g_detailArray[ l_row ].price,
-				g_detailArray[ l_row ].quantity,
-				g_detailArray[ l_row ].disc_percent,
-				g_detailArray[ l_row ].disc_value,
-				g_detailArray[ l_row ].tax_code,
-				g_detailArray[ l_row ].tax_rate,
-				g_detailArray[ l_row ].tax_value,
-				g_detailArray[ l_row ].nett_value,
-				g_detailArray[ l_row ].gross_value  )
-		END IF
-	END FOR
-	COMMIT WORK -- Commit and end transaction.
-	RUN "fglrun printInvoices.42r S 1 "||g_ordHead.order_number||" ordent-4.4rp Image bg 0 ord"||g_ordHead.order_number||"-"
-
-	OPEN WINDOW inv WITH FORM "webOE_inv"
-	DISPLAY "ord"||g_ordHead.order_number||"-0001.png" TO inv
-	MENU
-		ON ACTION close EXIT MENU
-		ON ACTION exit EXIT MENU
-	END MENU
-	CLOSE WINDOW inv
-
-	CALL initAll()
-
-END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION initAll()
-
-	INITIALIZE g_cust.* TO NULL
-	INITIALIZE g_ordHead.* TO NULL
-	INITIALIZE m_pay.* TO NULL
-	LET g_ordHead.items = 0
-	LET g_ordHead.order_datetime = CURRENT
-	LET g_custcode = "Guest"
-	LET g_custname = "Guest"
-	CALL g_detailArray.clear()
-	LET m_pay.del_type = "0"
-	LET m_pay.del_amount = POST_0
-	LET m_pay.payment_type = "C"
-	LET m_pay.card_type = "V"
-	CALL recalcOrder()
-	DISPLAY g_custname TO custname
 
 END FUNCTION

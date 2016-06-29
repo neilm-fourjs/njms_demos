@@ -2,6 +2,8 @@
 &include "schema.inc"
 &include "ordent.inc"
 
+DEFINE m_pay RECORD LIKE ord_payment.*
+
 --------------------------------------------------------------------------------
 FUNCTION detLnk(l_sc, l_det, l_img, l_qty )
 	DEFINE l_sc LIKE stock.stock_code
@@ -65,7 +67,7 @@ FUNCTION signin()
 			CALL DIALOG.setFieldActive("l_pwd",FALSE)
 			LET l_newuser = TRUE
 			CALL DIALOG.setActionActive("newuser",FALSE)
-		ON KEY(f12) LET l_em = "njm@njm-projects.com" LET l_pwd = "12njm"
+
 		AFTER FIELD l_pwd
 			LET l_password1 = l_pwd
 			LET l_password2 = l_pwd
@@ -101,20 +103,15 @@ FUNCTION signin()
 				LET l_cust.total_invoices = 0
 				LET l_cust.credit_limit = 0
 				INSERT INTO customer VALUES(l_cust.*)
-&ifdef CLOUD
-				CALL cl_addUser(m_VARCODE, m_VARPASS, 0, l_cust.customer_code , l_cust.web_passwd, 
-							l_cust.email, "webOE", "A",1, TRUE)
-					RETURNING m_soapStatus, cl_addUserResponse.stat, cl_addUserResponse.mesg
-				CALL soapStatus()
-&endif
-			ELSE
-				SELECT * INTO g_cust.* FROM customer
-				WHERE email = l_em AND web_passwd = l_pwd
-				IF STATUS = NOTFOUND THEN
-					DISPLAY "Invalid Login!" TO msg
-					NEXT FIELD l_em
-				END IF
 			END IF
+
+			SELECT * INTO g_cust.* FROM customer
+			WHERE email = l_em AND web_passwd = l_pwd
+			IF STATUS = NOTFOUND THEN
+				DISPLAY "Invalid Login!" TO msg
+				NEXT FIELD l_em
+			END IF
+
 			LET g_custcode = g_cust.customer_code
 			LET g_custname = g_cust.contact_name
 			CALL oe_setHead( g_cust.customer_code,g_cust.del_addr,g_cust.inv_addr )
@@ -126,7 +123,7 @@ FUNCTION signin()
 		LET g_custcode = "Guest"
 	END IF
 	CALL setSignInAction()
-	DISPLAY g_custname TO custname
+
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION setSignInAction()
@@ -141,6 +138,7 @@ FUNCTION setSignInAction()
 		DISPLAY "SignOut"
 		CALL f.setElementText("signin","Sign Out")
 	END IF
+	DISPLAY g_custname TO custname
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION mkDesc( l_stk )
@@ -157,16 +155,9 @@ FUNCTION mkDesc( l_stk )
 	RETURN l_desc
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION soapStatus()
-&ifdef CLOUD
-	IF m_soapStatus = 0 THEN RETURN END IF
-	CALL fgl_winMessage("WS Error","An occured with the web service call\nSoap Status:"||m_soapStatus||"\nResponse Status:"||cl_addUserResponse.stat||"\nMessage:"||cl_addUserResponse.mesg,"exclamation")
-&endif
-END FUNCTION
---------------------------------------------------------------------------------
 FUNCTION viewb()
 	DEFINE l_co BOOLEAN
-
+	DEFINE l_f ui.Form
 	OPEN WINDOW basket WITH FORM "webOE_b"
 	CALL recalcOrder()
 	DISPLAY g_custname TO custname
@@ -183,10 +174,181 @@ FUNCTION viewb()
 		ON ACTION signin
 			CALL signin()
 		ON ACTION gotoco LET l_co = TRUE EXIT INPUT
+		ON ACTION next EXIT INPUT
 		BEFORE INPUT
 			CALL setSignInAction()
+			LET l_f = DIALOG.getForm()
+			CALL l_f.setElementText("next","Continue Browsing Items")
 	END INPUT
 	CLOSE WINDOW basket
 	CALL recalcOrder()
 	IF l_co THEN CALL gotoco() END IF
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION gotoco()
+	DEFINE f ui.Form
+	DEFINe l_row SMALLINT
+	DEFINE l_add RECORD LIKE addresses.*
+	DEFINE del_amt LIKE ord_payment.del_amount
+	IF g_custcode = "Guest" THEN
+		CALL signin()
+		IF g_custcode = "Guest" THEN RETURN END IF
+	END IF
+
+-- Add code here to place actual order.
+	OPEN WINDOW basket WITH FORM "webOE_b"
+	DISPLAY g_custname TO custname
+	LET int_flag = FALSE
+	INITIALIZE m_pay.* TO NULL
+	LET m_pay.del_type = "0"
+	LET m_pay.del_amount = POST_0
+	LET m_pay.payment_type = "C"
+	LET m_pay.card_type = "V"
+	LET g_ordHead.customer_code = g_cust.customer_code
+	LET g_ordHead.customer_name = g_cust.customer_name
+	IF g_cust.del_addr > 0 THEN
+		SELECT * INTO l_add.* FROM addresses WHERE rec_key = g_cust.del_addr
+		LET g_ordHead.del_address1 = l_add.line1
+		LET g_ordHead.del_address2 = l_add.line2
+		LET g_ordHead.del_address3 = l_add.line3
+		LET g_ordHead.del_address4 = l_add.line4
+		LET g_ordHead.del_address5 = l_add.line5
+		LET g_ordHead.del_postcode = l_add.postal_code
+	END IF
+	IF g_cust.inv_addr > 0 THEN
+		SELECT * INTO l_add.* FROM addresses WHERE rec_key = g_cust.inv_addr
+	END IF
+-- will be del_addr if inv addr not found.
+	LET g_ordHead.inv_address1 = l_add.line1
+	LET g_ordHead.inv_address2 = l_add.line2
+	LET g_ordHead.inv_address3 = l_add.line3
+	LET g_ordHead.inv_address4 = l_add.line4
+	LET g_ordHead.inv_address5 = l_add.line5
+	LET g_ordHead.inv_postcode = l_add.postal_code
+
+	DIALOG ATTRIBUTE(UNBUFFERED)
+		INPUT ARRAY g_detailArray FROM dets.* ATTRIBUTE(WITHOUT DEFAULTS,
+					DELETE ROW=FALSE,INSERT ROW=FALSE,APPEND ROW=FALSE)
+			ON ACTION delete
+				CALL g_detailArray.deleteElement( arr_curr() )
+				CALL recalcOrder()
+
+			AFTER FIELD qty
+				CALL recalcOrder()
+
+			ON ACTION next
+				CALL f.setElementHidden("b",TRUE)
+				CALL f.setElementHidden("d",FALSE)
+				CALL DIALOG.nextField("del_address1")
+		END INPUT
+		INPUT BY NAME g_ordHead.customer_code, g_ordHead.customer_name,
+					g_ordHead.del_address1, g_ordHead.del_address2, g_ordHead.del_address3, g_ordHead.del_address4, g_ordHead.del_address5, g_ordHead.del_postcode,
+					g_ordHead.inv_address1, g_ordHead.inv_address2, g_ordHead.inv_address3, g_ordHead.inv_address4, g_ordHead.inv_address5, g_ordHead.inv_postcode,
+					m_pay.del_type, del_amt
+				ATTRIBUTE(WITHOUT DEFAULTS)
+			ON CHANGE del_type
+				CASE m_pay.del_type
+					WHEN "0" LET m_pay.del_amount = POST_0
+					WHEN "1" LET m_pay.del_amount = POST_1
+					WHEN "2" LET m_pay.del_amount = POST_2
+					WHEN "3" LET m_pay.del_amount = POST_3
+				END CASE
+				LET del_amt = m_pay.del_amount
+				CALL recalcOrder()
+
+			ON ACTION next
+				CALL f.setElementHidden("p",FALSE)
+				CALL DIALOG.nextField("payment_type")
+				CALL f.setElementText("next","Confirm")
+				CALL f.setElementImage("next","smiley")
+		END INPUT
+		INPUT BY NAME g_ordHead.order_ref,
+									m_pay.payment_type, 
+									m_pay.card_type, m_pay.card_no, 
+									m_pay.expires_m, m_pay.expires_y, 
+									m_pay.issue_no
+				ATTRIBUTE(WITHOUT DEFAULTS)
+			ON ACTION next
+				EXIT DIALOG
+		END INPUT
+
+		BEFORE DIALOG
+			LET f = DIALOG.getForm()
+			CALL recalcOrder()
+
+		ON ACTION cancel
+			LET int_flag = TRUE	
+			EXIT DIALOG
+	END DIALOG
+	CLOSE WINDOW basket
+	IF int_flag THEN RETURN END IF
+	LET g_ordHead.order_datetime = CURRENT
+-- Insert Order Here
+
+	IF g_cust.del_addr = 0 THEN
+		INSERT INTO addresses VALUES(0,g_ordHead.del_address1, g_ordHead.del_address2, g_ordHead.del_address3, g_ordHead.del_address4, g_ordHead.del_address5, g_ordHead.del_postcode,"")
+		LET g_cust.del_addr = SQLCA.sqlerrd[2]
+		UPDATE customer SET del_addr = g_cust.del_addr WHERE customer_code = g_cust.customer_code
+	END IF
+	IF g_cust.inv_addr = 0 THEN
+		INSERT INTO addresses VALUES(0,g_ordHead.inv_address1, g_ordHead.inv_address2, g_ordHead.inv_address3, g_ordHead.inv_address4, g_ordHead.inv_address5, g_ordHead.inv_postcode,"")
+		LET g_cust.inv_addr = SQLCA.sqlerrd[2]
+		UPDATE customer SET inv_addr = g_cust.inv_addr WHERE customer_code = g_cust.customer_code
+	END IF
+
+	BEGIN WORK
+	INSERT INTO ord_head VALUES g_ordHead.* 
+	LET g_ordHead.order_number = SQLCA.SQLERRD[2] -- Fetch SERIAL order num
+	LET m_pay.order_number = g_ordHead.order_number
+	INSERT INTO ord_payment VALUES(m_pay.*)
+	FOR l_row = 1 TO g_detailArray.getLength()
+		IF g_detailArray[ l_row ].stock_code IS NOT NULL THEN
+			INSERT INTO ord_detail VALUES( 
+				g_ordHead.order_number,
+				l_row,
+				g_detailArray[ l_row ].stock_code,
+				g_detailArray[ l_row ].pack_flag,
+				g_detailArray[ l_row ].price,
+				g_detailArray[ l_row ].quantity,
+				g_detailArray[ l_row ].disc_percent,
+				g_detailArray[ l_row ].disc_value,
+				g_detailArray[ l_row ].tax_code,
+				g_detailArray[ l_row ].tax_rate,
+				g_detailArray[ l_row ].tax_value,
+				g_detailArray[ l_row ].nett_value,
+				g_detailArray[ l_row ].gross_value  )
+		END IF
+	END FOR
+	COMMIT WORK -- Commit and end transaction.
+	RUN "fglrun printInvoices.42r S 1 "||g_ordHead.order_number||" ordent-4.4rp Image bg 0 ord"||g_ordHead.order_number||"-"
+
+	OPEN WINDOW inv WITH FORM "webOE_inv"
+	DISPLAY "ord"||g_ordHead.order_number||"-0001.png" TO inv
+	MENU
+		ON ACTION close EXIT MENU
+		ON ACTION exit EXIT MENU
+	END MENU
+	CLOSE WINDOW inv
+
+	CALL initAll()
+
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION initAll()
+
+	INITIALIZE g_cust.* TO NULL
+	INITIALIZE g_ordHead.* TO NULL
+	INITIALIZE m_pay.* TO NULL
+	LET g_ordHead.items = 0
+	LET g_ordHead.order_datetime = CURRENT
+	LET g_custcode = "Guest"
+	LET g_custname = "Guest"
+	CALL g_detailArray.clear()
+	LET m_pay.del_type = "0"
+	LET m_pay.del_amount = POST_0
+	LET m_pay.payment_type = "C"
+	LET m_pay.card_type = "V"
+	CALL recalcOrder()
+	DISPLAY g_custname TO custname
+
 END FUNCTION
