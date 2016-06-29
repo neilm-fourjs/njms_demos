@@ -201,12 +201,11 @@ FUNCTION recalcOrder()
 	DEFINE l_d ui.Dialog
 
 	CALL oe_calcOrderTot()
-	IF m_pay.del_amount IS NULL THEN DISPLAY "post null" LET m_pay.del_amount = 0 END IF
+
 	DISPLAY BY NAME g_ordHead.total_qty,
 			g_ordHead.total_gross,
 			g_ordHead.total_disc,
 			g_ordHead.total_tax,
-			m_pay.del_amount,
 			g_ordHead.total_nett
 
 	FOR x = 1 TO m_items.getLength()

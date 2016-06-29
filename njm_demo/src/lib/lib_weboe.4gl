@@ -103,6 +103,8 @@ FUNCTION signin()
 				LET l_cust.total_invoices = 0
 				LET l_cust.credit_limit = 0
 				INSERT INTO customer VALUES(l_cust.*)
+				LET l_em = l_email
+				LET l_pwd = l_password1
 			END IF
 
 			SELECT * INTO g_cust.* FROM customer

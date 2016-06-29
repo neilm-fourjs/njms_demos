@@ -240,7 +240,6 @@ FUNCTION recalcOrder()
 			g_ordHead.total_gross,
 			g_ordHead.total_disc,
 			g_ordHead.total_tax,
-			m_pay.del_amount,
 			g_ordHead.total_nett
 
 	FOR x = 1 TO m_items.getLength()
