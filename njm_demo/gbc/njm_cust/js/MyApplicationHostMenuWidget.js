@@ -42,7 +42,7 @@ modulum('MyApplicationHostMenuWidget', ['ApplicationHostMenuWidget', 'WidgetFact
             titleElement.textContent = " - " + this._defaultTitle + " - ";
           }
         }
-      };
+      }
     });
 
     /*
@@ -51,5 +51,5 @@ modulum('MyApplicationHostMenuWidget', ['ApplicationHostMenuWidget', 'WidgetFact
      *  the original widget registration to this one.
      */
 
-    // cls.WidgetFactory.register('ApplicationHostMenu', cls.MyApplicationHostMenuWidget);
+     //cls.WidgetFactory.register('ApplicationHostMenu', cls.MyApplicationHostMenuWidget);
   });

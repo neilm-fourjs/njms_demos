@@ -25,6 +25,7 @@ FUNCTION detLnk(l_sc, l_det, l_img, l_qty )
 		ON ACTION cancel EXIT MENU
 	END MENU
 	CLOSE WINDOW webOE_det
+	CALL recalcOrder()
 	IF co THEN CALL gotoco() END IF
 END FUNCTION
 --------------------------------------------------------------------------------
@@ -134,10 +135,8 @@ FUNCTION setSignInAction()
 	LET d = ui.Dialog.getCurrent()
 	LET f = d.getForm()
 	IF g_custcode = "Guest" THEN
-		DISPLAY "SignIn"
 		CALL f.setElementText("signin","Sign In")
 	ELSE
-		DISPLAY "SignOut"
 		CALL f.setElementText("signin","Sign Out")
 	END IF
 	DISPLAY g_custname TO custname
@@ -199,6 +198,7 @@ FUNCTION oe_uiUpdate()
 			g_ordHead.total_tax,
 			g_ordHead.total_nett
 
+	DISPLAY "Your basket: "||g_ordHead.total_qty||" Items, Value: "||g_ordHead.total_nett
 	DISPLAY "Your basket: "||g_ordHead.total_qty||" Items, Value: "||g_ordHead.total_nett TO status
 
 	LET l_d = ui.Dialog.getCurrent()

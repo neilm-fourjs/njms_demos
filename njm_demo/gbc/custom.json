@@ -2,6 +2,6 @@
   "compile": {
     "mode": "cdev",
     "withStats": false,
-    "customization": "cust_njm"
+    "customization": "njm_cust"
   }
 }

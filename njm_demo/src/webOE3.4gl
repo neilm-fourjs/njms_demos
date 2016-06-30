@@ -337,7 +337,6 @@ FUNCTION dynDiag()
 					m_items[x].desc1,
 					m_items[x].img1,
 					m_items[x].qty1 )
-			CALL recalcOrder()
 		END IF
 
 		CASE l_evt

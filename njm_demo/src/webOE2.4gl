@@ -137,22 +137,18 @@ MAIN
 																		 m_items[DIALOG.getCurrentRow("items")].desc1,
                                      m_items[DIALOG.getCurrentRow("items")].img1,
                                      m_items[DIALOG.getCurrentRow("items")].qty1 )
-												CALL recalcOrder()
 			ON ACTION detlnk2 CALL detLnk( m_items[DIALOG.getCurrentRow("items")].stock_code2,
 																		 m_items[DIALOG.getCurrentRow("items")].desc2,
                                      m_items[DIALOG.getCurrentRow("items")].img2,
                                      m_items[DIALOG.getCurrentRow("items")].qty2 )
-												CALL recalcOrder()
 			ON ACTION detlnk3 CALL detLnk( m_items[DIALOG.getCurrentRow("items")].stock_code3,
 																		 m_items[DIALOG.getCurrentRow("items")].desc3,
                                      m_items[DIALOG.getCurrentRow("items")].img3,
                                      m_items[DIALOG.getCurrentRow("items")].qty3 )
-												CALL recalcOrder()
 			ON ACTION detlnk4 CALL detLnk( m_items[DIALOG.getCurrentRow("items")].stock_code4,
 																		 m_items[DIALOG.getCurrentRow("items")].desc4,
                                      m_items[DIALOG.getCurrentRow("items")].img4,
                                      m_items[DIALOG.getCurrentRow("items")].qty4 )
-												CALL recalcOrder()
 		END INPUT
 		BEFORE DIALOG
 			CALL DIALOG.setActionActive("viewb", FALSE)

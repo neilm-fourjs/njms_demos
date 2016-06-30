@@ -1,7 +1,7 @@
 
 FILES="
 custom.json
-cust_njm/
+njm_cust/
 src/img/njm_demo_logo_256.png
 "
 

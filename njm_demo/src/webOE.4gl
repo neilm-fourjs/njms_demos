@@ -123,12 +123,10 @@ MAIN
 																		 m_items[DIALOG.getCurrentRow("items")].desc1,
                                      m_items[DIALOG.getCurrentRow("items")].img1,
                                      m_items[DIALOG.getCurrentRow("items")].qty1 )
-												CALL recalcOrder()
 			ON ACTION detlnk2 CALL detLnk( m_items[DIALOG.getCurrentRow("items")].stock_code2,
 																		 m_items[DIALOG.getCurrentRow("items")].desc2,
                                      m_items[DIALOG.getCurrentRow("items")].img2,
                                      m_items[DIALOG.getCurrentRow("items")].qty2 )
-												CALL recalcOrder()
 		END INPUT
 		BEFORE DIALOG
 			CALL DIALOG.setActionActive("viewb", FALSE)

@@ -71,7 +71,8 @@ http://<your server>/gas/ua/r/gdemo_def
 ## GWC-JS Customizations
 So far I've:
 * Customized the colours, header text / logo and footer text.
-* Change the text in the 'ApplicationHostMenu' to show data from a custom lable ( ie basket values )
+* Change the redirect on end of application to a demos page.
+* Change the text in the 'ApplicationHostMenu' to show data from a custom label ( ie basket values ) NOTE: this is not 100% working as the window title is reappearing when you open/close a new window
 
 What I'd like to do:
 * Make the header scroll up with the page, rather than staying fixed.

@@ -5,7 +5,7 @@ GITVER=$(shell git describe --always)
 GARNAME=njm_demo
 GARFILE=$(GARNAME).gar
 
-all: src/lib/gitver.inc
+all: src/lib/gitver.inc packit 
 	gsmake njm_demo300.4pw
 
 src/lib/gitver.inc: 
@@ -50,7 +50,7 @@ undeploy:
 	gasadmin --disable-archive $(GARNAME)
 	gasadmin --undeploy-archive $(GARNAME)
 
-deploy: $(GARFILE)
+deploy: $(GARFILE) packit
 	gasadmin --deploy-archive $(GARFILE)
 	gasadmin --enable-archive $(GARNAME)
 
