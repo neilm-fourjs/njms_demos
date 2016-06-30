@@ -70,7 +70,7 @@ http://<your server>/gas/ua/r/gdemo_def
 
 ## GWC-JS Customizations
 So far I've:
-* customized the colours, header text / logo and footer text.
+* Customized the colours, header text / logo and footer text.
 * Change the text in the 'ApplicationHostMenu' to show data from a custom lable ( ie basket values )
 
 What I'd like to do:
