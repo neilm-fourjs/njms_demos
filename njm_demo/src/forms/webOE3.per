@@ -5,7 +5,7 @@ LAYOUT (TEXT="Main Store Front #3", VERSION="$Id: webOE.per 960 2016-06-13 14:39
 VBOX
 GRID
 {
-[signin][viewb][gotoco][cancel]Welcome:[f001               ][" "][status                         ]
+[signin][viewb][gotoco][cancel]Welcome:[f001               ][" "][status                                      ]
 }
 END -- GRID
 HBOX (SPLITTER)
@@ -55,7 +55,7 @@ BUTTON viewb : viewb, STYLE="big";
 BUTTON gotoco : gotoco, STYLE="big";
 BUTTON cancel : cancel,TEXT="Leave", IMAGE="fa-sign-out", STYLE="big";
 
-EDIT status = FORMONLY.status, STYLE="gbc_status";
+LABEL status = FORMONLY.status,SIZEPOLICY=DYNAMIC, STYLE="gbc_status";
 
 IMAGE pt1 : pt1, IMAGE="fa-cc-paypal", SIZEPOLICY=FIXED, AUTOSCALE;
 IMAGE pt2 : pt2, IMAGE="fa-cc-mastercard", SIZEPOLICY=FIXED, AUTOSCALE;
@@ -71,5 +71,3 @@ t005 = ord_head.total_disc, HIDDEN;
 t006 = ord_payment.del_amount, HIDDEN;
 LABEL tot_nett : tot_nett,TEXT="Total Cost:", STYLE="big";
 t007 = ord_head.total_nett, STYLE="big";
-
-
