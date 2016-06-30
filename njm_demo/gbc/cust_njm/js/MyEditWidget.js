@@ -44,5 +44,5 @@ modulum('MyEditWidget', ['EditWidget', 'WidgetFactory'],
        *  the original widget registration to this one.
        */
 
-      // cls.WidgetFactory.register('Edit', cls.MyEditWidget);
+       //cls.WidgetFactory.register('Edit', cls.MyEditWidget);
     });

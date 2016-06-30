@@ -166,43 +166,6 @@ FUNCTION detLine(l_sc,l_qty)
 	CALL recalcOrder()
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION recalcOrder()
-	DEFINE x,y SMALLINT
-	DEFINE l_d ui.Dialog
-
-	CALL oe_calcOrderTot()
-
-	DISPLAY BY NAME g_ordHead.total_qty,
-			g_ordHead.total_gross,
-			g_ordHead.total_disc,
-			g_ordHead.total_tax,
-			g_ordHead.total_nett
-
-	FOR x = 1 TO m_items.getLength()
-		LET m_items[x].qty1 = 0
-		FOR y = 1 TO g_detailArray.getLength()
-			IF m_items[x].stock_code1 = g_detailArray[y].stock_code THEN
-				LET m_items[x].qty1 = g_detailArray[y].quantity
-			END IF
-		END FOR
-	END FOR
-
-	LET l_d = ui.Dialog.getCurrent()
-	IF l_d IS NOT NULL THEN
-		TRY -- actions maybe not be in current dialog!
-			IF g_ordHead.total_qty > 0 THEN
-				CALL l_d.setActionActive("viewb", TRUE)
-				CALL l_d.setActionActive("gotoco", TRUE)
-			ELSE
-				CALL l_d.setActionActive("viewb", FALSE)
-				CALL l_d.setActionActive("gotoco", FALSE)
-			END IF
-		CATCH
-		END TRY
-	END IF
-
-END FUNCTION
---------------------------------------------------------------------------------
 FUNCTION build_cats()
 	DEFINE n om.DomNode
 	DEFINE x,len SMALLINT
@@ -334,17 +297,12 @@ FUNCTION dynDiag()
 	DEFINE x SMALLINT
 	DEFINE l_field, l_evt STRING
 
+	CALL recalcOrder()
 	CALL m_fields.clear()
 	FOR x = 1 TO m_items.getLength()
 		LET m_fields[m_fields.getLength()+1].name = "qty"||x
 		LET m_fields[m_fields.getLength()].type = "INTEGER"
-		--LET m_fields[m_fields.getLength()+1].name = "det"||x
-		--LET m_fields[m_fields.getLength()].type = "INTEGER"
 	END FOR
-
-	{FOR x = 1 TO m_fields.getLength()
-		DISPLAY "Fields:",m_fields[x].name,":",m_fields[x].type
-	END FOR}
 
 	CALL ui.Dialog.setDefaultUnbuffered(TRUE)
 	LET m_dialog = ui.Dialog.createInputByName(m_fields)
@@ -357,6 +315,7 @@ FUNCTION dynDiag()
 	CALL m_dialog.addTrigger("ON ACTION cancel")	
 	FOR x = 1 TO m_items.getLength()
 		CALL m_dialog.addTrigger("ON ACTION detlnk"||x)
+		CALL m_dialog.setFieldValue("qty"||x, m_items[x].qty1)
 	END FOR
 	FOR x = 1 TO m_stock_cats.getLength()
 		CALL m_dialog.addTrigger("ON ACTION cat"||x)
@@ -392,8 +351,8 @@ FUNCTION dynDiag()
 			WHEN "ON ACTION add1"
 				LET l_field = m_dialog.getCurrentItem()
 				LET x = l_field.subString(4, l_field.getLength())
-				DISPLAY "add1 GI:",l_field," X:",x
-				CALL detLine(m_items[x].stock_code1,m_items[x].qty1+1)
+				LET m_items[x].qty1 = m_items[x].qty1 + 1
+				CALL detLine(m_items[x].stock_code1,m_items[x].qty1)
 				CALL m_dialog.setFieldValue("qty"||x, m_items[x].qty1)
 
 			WHEN "ON ACTION close"
@@ -413,4 +372,17 @@ FUNCTION dynDiag()
 	END WHILE
 	IF int_flag THEN LET int_flag = FALSE END IF
 	RETURN 0
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION recalcOrder()
+	DEFINE x,y SMALLINT
+	FOR x = 1 TO m_items.getLength()
+		LET m_items[x].qty1 = 0
+		FOR y = 1 TO g_detailArray.getLength()
+			IF m_items[x].stock_code1 = g_detailArray[y].stock_code THEN
+				LET m_items[x].qty1 = g_detailArray[y].quantity
+			END IF
+		END FOR
+	END FOR
+	CALL oe_uiUpdate()
 END FUNCTION

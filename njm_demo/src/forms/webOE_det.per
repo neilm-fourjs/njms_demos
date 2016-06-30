@@ -5,7 +5,7 @@ LAYOUT (TEXT="Web OE Product Details", VERSION="$Id: webOE.per 603 2011-03-02 17
 VBOX
 GRID
 {
-[signin][viewb][gotoco][cancel] User:[f001               ]
+[signin][viewb][gotoco][cancel] User:[f001               ][" "][status]
 }
 END -- GRID
 GRID
@@ -47,6 +47,8 @@ BUTTON viewb : viewb,TEXT="View Basket";
 BUTTON gotoco : gotoco,TEXT="Go to Checkout";
 BUTTON cancel : cancel,TEXT="Go Back",IMAGE="prev";
 LABEL f001 = FORMONLY.custname,SIZEPOLICY=DYNAMIC;
+
+LABEL status = FORMONLY.status, STYLE="gbc_status", HIDDEN;
 
 t002 = ord_head.total_qty;
 t003 = ord_head.total_gross, HIDDEN;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="-130282562" gstVersion="3001c" version="3.1">
+<Project defaultApplication="-1597972872" gstVersion="3001c" version="3.1">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -93,12 +93,6 @@
         <File filePath="src/forms/login.per"/>
         <File filePath="src/forms/login_www.per"/>
       </Library>
-      <Library binaryName="lib_webOE" dependencies="1986||1563799204" id="2086842111" label="lib_webOE">
-        <File filePath="src/lib/lib_weboe.4gl"/>
-        <File filePath="etc/weboe.4ad"/>
-        <File filePath="etc/weboe.4st"/>
-        <File filePath="src/forms/webOE_signin.per"/>
-      </Library>
       <Library binaryName="libApplication" id="1563799204" label="libApplication">
         <VirtualFolder label="forms">
           <File filePath="src/forms/getcust.per"/>
@@ -155,6 +149,15 @@
       </Application>
     </Group>
     <Group label="orderEntry">
+      <Library binaryName="lib_webOE" dependencies="1986||1563799204" id="2086842111" label="lib_webOE">
+        <File filePath="src/lib/lib_weboe.4gl"/>
+        <File filePath="etc/weboe.4ad"/>
+        <File filePath="etc/weboe.4st"/>
+        <File filePath="src/forms/webOE_b.per"/>
+        <File filePath="src/forms/webOE_det.per"/>
+        <File filePath="src/forms/webOE_inv.per"/>
+        <File filePath="src/forms/webOE_signin.per"/>
+      </Library>
       <Application binaryName="orderEntry" commandLineArguments="S 1" dependencies="14000||1563799204" id="740092252" label="orderEntry">
         <File filePath="src/ordent.4gl"/>
         <File filePath="src/forms/ordent2.per"/>
@@ -163,9 +166,6 @@
       <Application binaryName="webOE" compilerOptions="-DXCLOUD" dependencies="1986||570408889||1563799204||14000||2086842111" id="-361325592" label="webOE">
         <File filePath="src/webOE.4gl"/>
         <File filePath="src/forms/webOE.per"/>
-        <File filePath="src/forms/webOE_b.per"/>
-        <File filePath="src/forms/webOE_det.per"/>
-        <File filePath="src/forms/webOE_inv.per"/>
       </Application>
       <Application binaryName="webOE2" dependencies="2086842111||1563799204||14000||-526112109||1986" id="-1071699716" label="webOE2">
         <File filePath="src/webOE2.4gl"/>
