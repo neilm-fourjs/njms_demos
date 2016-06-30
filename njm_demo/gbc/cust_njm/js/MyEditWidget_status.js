@@ -10,7 +10,7 @@
 
 "use strict";
 
-modulum('MyEditWidget', ['EditWidget', 'WidgetFactory'],
+modulum('MyEditWidget_status', ['EditWidget', 'WidgetFactory'],
     /**
      * @param {gbc} context
      * @param {classes} cls
@@ -22,14 +22,16 @@ modulum('MyEditWidget', ['EditWidget', 'WidgetFactory'],
        * @class classes.MyEditWidget
        * @extends classes.EditWidget
        */
-      cls.MyEditWidget = context.oo.Class(cls.EditWidget, function($super) {
-        /** @lends classes.MyEditWidget.prototype */
+      cls.MyEditWidget_status = context.oo.Class(cls.EditWidget, function($super) {
+        /** @lends classes.MyEditWidget_status.prototype */
         return {
-          __name: "MyEditWidget",
+          __name: "MyEditWidget_status",
           __dataContentPlaceholderSelector: '.gbc_dataContentPlaceholder',
 
           setTitle: function(title) {
             $(this.getElement()).find(".title").text(title);
+						/** NJM */
+						//this._applicationHostWidget.getMenu().setText("Hello World");
           },
 
           getTitle: function() {
@@ -38,11 +40,5 @@ modulum('MyEditWidget', ['EditWidget', 'WidgetFactory'],
         };
       });
 
-      /*
-       *  This is a sample widget that would replace the default one in GWC-JS
-       *  To activate it, please uncomment the line below. This will override
-       *  the original widget registration to this one.
-       */
-
-       //cls.WidgetFactory.register('Edit', cls.MyEditWidget);
+      cls.WidgetFactory.register('Edit', 'gbc_status', cls.MyEditWidget_status);
     });

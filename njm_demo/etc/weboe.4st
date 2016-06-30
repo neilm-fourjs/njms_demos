@@ -191,4 +191,10 @@
 	<Style name=".bg_white">
 		<StyleAttribute name="backgroundColor" value="white" />
 	</Style>
+
+	<Style name=".gbc_status">
+    <StyleAttribute name="fontWeight" value="bold" />
+		<StyleAttribute name="border" value="none" />
+    <StyleAttribute name="fontSize" value="14pt" />
+	</Style>
 </StyleList>

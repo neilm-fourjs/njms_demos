@@ -198,15 +198,6 @@ END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION recalcOrder()
 	DEFINE x,y SMALLINT
-	DEFINE l_d ui.Dialog
-
-	CALL oe_calcOrderTot()
-
-	DISPLAY BY NAME g_ordHead.total_qty,
-			g_ordHead.total_gross,
-			g_ordHead.total_disc,
-			g_ordHead.total_tax,
-			g_ordHead.total_nett
 
 	FOR x = 1 TO m_items.getLength()
 		LET m_items[x].qty1 = 0
@@ -221,18 +212,5 @@ FUNCTION recalcOrder()
 		END FOR
 	END FOR
 
-	LET l_d = ui.Dialog.getCurrent()
-	IF l_d IS NOT NULL THEN
-		TRY -- actions maybe not be in current dialog
-			IF g_ordHead.total_qty > 0 THEN
-				CALL l_d.setActionActive("viewb", TRUE)
-				CALL l_d.setActionActive("gotoco", TRUE)
-			ELSE
-				CALL l_d.setActionActive("viewb", FALSE)
-				CALL l_d.setActionActive("gotoco", FALSE)
-			END IF
-		CATCH
-		END TRY
-	END IF
-
+	CALL oe_uiUpdate()
 END FUNCTION

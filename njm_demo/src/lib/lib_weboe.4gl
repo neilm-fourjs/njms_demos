@@ -187,6 +187,36 @@ FUNCTION viewb()
 	IF l_co THEN CALL gotoco() END IF
 END FUNCTION
 --------------------------------------------------------------------------------
+FUNCTION oe_uiUpdate()
+	DEFINE l_d ui.Dialog
+
+	CALL oe_calcOrderTot()
+
+	DISPLAY BY NAME 
+			g_ordHead.total_qty,
+			g_ordHead.total_gross,
+			g_ordHead.total_disc,
+			g_ordHead.total_tax,
+			g_ordHead.total_nett
+
+	DISPLAY "Your basket: "||g_ordHead.total_qty||" Items, Value: "||g_ordHead.total_nett TO status
+
+	LET l_d = ui.Dialog.getCurrent()
+	IF l_d IS NOT NULL THEN
+		TRY -- actions maybe not be in current dialog!
+			IF g_ordHead.total_qty > 0 THEN
+				CALL l_d.setActionActive("viewb", TRUE)
+				CALL l_d.setActionActive("gotoco", TRUE)
+			ELSE
+				CALL l_d.setActionActive("viewb", FALSE)
+				CALL l_d.setActionActive("gotoco", FALSE)
+			END IF
+		CATCH
+		END TRY
+	END IF
+
+END FUNCTION
+--------------------------------------------------------------------------------
 FUNCTION gotoco()
 	DEFINE f ui.Form
 	DEFINe l_row SMALLINT
