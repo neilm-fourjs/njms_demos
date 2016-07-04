@@ -5,7 +5,7 @@ LAYOUT (TEXT="Web OE Basket", STYLE="dialog3")
 VBOX
 GRID
 {
-[signin][gotoco][cancel] User:[f001               ]
+[signin][gotoco][cancel] User:[f001               ][" "][status]
 }
 END -- GRID
 HBOX
@@ -97,6 +97,8 @@ ord_payment
 ATTRIBUTES
 LABEL f001 = FORMONLY.custname,SIZEPOLICY=DYNAMIC;
 
+LABEL status = FORMONLY.status, HIDDEN;
+
 LABEL dlab1 : dpost,TEXT="Method:",JUSTIFY=RIGHT;
 LABEL plab1 : ltype,TEXT="Type:",JUSTIFY=RIGHT;
 LABEL plab2 : lnumb,TEXT="Number:",JUSTIFY=RIGHT;
@@ -166,7 +168,7 @@ c003 = ord_head.total_gross, NOENTRY;
 c004 = ord_head.total_tax, NOENTRY;
 c005 = ord_head.total_disc, NOENTRY;
 c006 = ord_payment.del_amount, NOENTRY;
-c007 = ord_head.total_nett, NOENTRY;
+c007 = ord_head.total_nett, NOENTRY, STYLE="big";
 
 BUTTON signin : signin,TEXT="Signin";
 BUTTON gotoco : gotoco,TEXT="Go to Checkout";
