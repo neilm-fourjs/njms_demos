@@ -50,6 +50,8 @@ DEFINE m_items DYNAMIC ARRAY OF RECORD
 MAIN
 	DEFINE l_test STRING
 	DEFINE l_em LIKE customer.email
+	DEFINE l_f ui.Form
+	DEFINE l_w ui.Window
 
 	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
@@ -101,17 +103,26 @@ MAIN
 
 	DECLARE stkcur2 CURSOR FROM "SELECT * FROM stock WHERE stock_code = ?"
 
+	LET l_w = ui.Window.getCurrent()
+	LET l_f = l_w.getForm()
+
 	DECLARE sc_cur CURSOR FOR SELECT UNIQUE stock_cat.* FROM stock_cat, stock 
 		WHERE stock.stock_cat = stock_cat.catid AND stock_cat.catid != "ARMS"
 	FOREACH sc_cur INTO m_stock_cats[ m_stock_cats.getLength() + 1 ].*
+		IF m_stock_cats[ m_stock_cats.getLength() ].desc IS NOT NULL THEN
+			CALL l_f.setElementText("cat"||m_stock_cats.getLength(), m_stock_cats[ m_stock_cats.getLength() ].desc)
+			CALL l_f.setElementImage("cat"||m_stock_cats.getLength(), "products/"||DOWNSHIFT(m_stock_cats[ m_stock_cats.getLength() ].id CLIPPED))
+			CALL l_f.setElementHidden("cat"||m_stock_cats.getLength(), FALSE)
+
+		END IF
 	END FOREACH
 	CALL m_stock_cats.deleteElement( m_stock_cats.getLength() )
 
 	DIALOG ATTRIBUTE(UNBUFFERED)
-		DISPLAY ARRAY m_stock_cats TO stkcats.*
+		{DISPLAY ARRAY m_stock_cats TO stkcats.*
 			BEFORE ROW
 				CALL getItems( m_stock_cats[ arr_curr() ].id )
-		END DISPLAY
+		END DISPLAY}
 		INPUT ARRAY m_items FROM items.* 
 			ATTRIBUTES(WITHOUT DEFAULTS, DELETE ROW=FALSE, INSERT ROW=FALSE, APPEND ROW=FALSE)
 
@@ -153,9 +164,23 @@ MAIN
 		BEFORE DIALOG
 			CALL DIALOG.setActionActive("viewb", FALSE)
 			CALL DIALOG.setActionActive("gotoco", FALSE)
+			CALL getItems( m_stock_cats[ 1 ].id )
 
 		ON ACTION signin 
 			CALL lib_weboe.signin()
+
+		ON ACTION cat1 CALL getItems( m_stock_cats[ 1 ].id )
+		ON ACTION cat2 CALL getItems( m_stock_cats[ 2 ].id )
+		ON ACTION cat3 CALL getItems( m_stock_cats[ 3 ].id )
+		ON ACTION cat4 CALL getItems( m_stock_cats[ 4 ].id )
+		ON ACTION cat5 CALL getItems( m_stock_cats[ 5 ].id )
+		ON ACTION cat6 CALL getItems( m_stock_cats[ 6 ].id )
+		ON ACTION cat7 CALL getItems( m_stock_cats[ 7 ].id )
+		ON ACTION cat8 CALL getItems( m_stock_cats[ 8 ].id )
+		ON ACTION cat9 CALL getItems( m_stock_cats[ 9 ].id )
+		ON ACTION cat10 CALL getItems( m_stock_cats[ 10 ].id )
+		ON ACTION cat11 CALL getItems( m_stock_cats[ 11 ].id )
+		ON ACTION cat12 CALL getItems( m_stock_cats[ 12 ].id )
 
 		ON ACTION viewb CALL lib_weboe.viewb()
 		ON ACTION gotoco CALL gotoco()

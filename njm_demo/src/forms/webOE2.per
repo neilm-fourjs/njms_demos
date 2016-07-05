@@ -11,21 +11,22 @@ GRID
 END -- GRID
 HBOX (SPLITTER)
 VBOX
-TABLE cats
+GRID cats
 {
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
-[c001                ]
+[cat1                ]
+[cat2                ]
+[cat3                ]
+[cat4                ]
+[cat5                ]
+[cat6                ]
+[cat7                ]
+[cat8                ]
+[cat9                ]
+[cat10               ]
+[cat11               ]
+[cat12               ]
 }
-END --TABLE
+END --GRID
 GRID
 {
 Total Items:
@@ -94,8 +95,18 @@ IMAGE pt1 : pt1, IMAGE="fa-cc-paypal", SIZEPOLICY=FIXED, AUTOSCALE;
 IMAGE pt2 : pt2, IMAGE="fa-cc-mastercard", SIZEPOLICY=FIXED, AUTOSCALE;
 IMAGE pt3 : pt3, IMAGE="fa-cc-visa", SIZEPOLICY=FIXED, AUTOSCALE;
 
-PHANTOM stock_cat.catid;
-c001 = stock_cat.cat_name, SCROLL,TITLE="Category";
+BUTTON cat1 : cat1;
+BUTTON cat2 : cat2, HIDDEN;
+BUTTON cat3 : cat3, HIDDEN;
+BUTTON cat4 : cat4, HIDDEN;
+BUTTON cat5 : cat5, HIDDEN;
+BUTTON cat6 : cat6, HIDDEN;
+BUTTON cat7 : cat7, HIDDEN;
+BUTTON cat8 : cat8, HIDDEN;
+BUTTON cat9 : cat9, HIDDEN;
+BUTTON cat10 : cat10, HIDDEN;
+BUTTON cat11 : cat11, HIDDEN;
+BUTTON cat12 : cat12, HIDDEN;
 
 t002 = ord_head.total_qty;
 t003 = ord_head.total_gross, HIDDEN;
@@ -125,5 +136,4 @@ TEXTEDIT det4 = FORMONLY.det4 {,SCROLLBARS=NONE},NOENTRY,STYLE="bg_white noborde
 BUTTONEDIT qty4 = FORMONLY.qty4,ACTION=add4;
 
 INSTRUCTIONS
-SCREEN RECORD stkcats ( stock_cat.* )
 SCREEN RECORD items ( FORMONLY.stock_code1 THRU FORMONLY.qty4 )
