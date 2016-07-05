@@ -5,4 +5,6 @@
 	<APPLICATION xcf='gas300/gdemo.xcf' />
 	<APPLICATION xcf='gas300/gweboe.xcf' />
 	<APPLICATION xcf='gas300/gweboe_def.xcf' />
+	<APPLICATION xcf='gas300/gweboe2.xcf' />
+	<APPLICATION xcf='gas300/gweboe2_def.xcf' />
 </MANIFEST>
