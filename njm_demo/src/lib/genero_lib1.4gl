@@ -485,6 +485,7 @@ FUNCTION gl_setInfo(p_version, p_splash, p_progicon, p_progname, p_progdesc, p_p
 	LET gl_progname = p_progname
 	LET gl_progdesc = p_progdesc
 	LET gl_progauth = p_progauth
+	DISPLAY "Started: ",base.Application.getProgramName()," Build:",GITVER," - ",p_progname," ",p_progdesc
 
 END FUNCTION --}}}
 ----------------------------------------------------------------------------------

@@ -31,8 +31,8 @@ clean:
 	find . -name \*.xml -exec rm {} \;
 
 packit: gbc/njm_gbc.tgz
-	$(info Building TGZ of deployables ...)
-	tar cvzf njm_demo-$(GITVER).tgz bin300 gas300 etc pics db/njm_demo.exp.tgz db/imp.sh gbc/njm_gbc.tgz
+	$(info Building TGZ of deployables ...) 
+	tar cvzf njm_demo-$(GITVER).tgz bin300 gas300 etc pics db/njm_demo.exp.tgz db/imp.sh gbc/njm_gbc.tgz gbc/njm_demo.html
 
 gbc/njm_gbc.tgz:
 	cd gbc ; ./packit.sh

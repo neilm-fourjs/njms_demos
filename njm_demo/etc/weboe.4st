@@ -167,6 +167,10 @@
     <StyleAttribute name="backgroundColor" value="white" />
   </Style>
 
+  <Style name=".nocurrow">
+    <StyleAttribute name="highlightCurrentRow" value="no" />
+  </Style>
+
   <Style name=".noborder">
 		<StyleAttribute name="border" value="none" />
   </Style>
@@ -186,6 +190,8 @@
     <StyleAttribute name="fontSize" value="16pt" />
     <StyleAttribute name="textColor" value="darkRed" />
 		<StyleAttribute name="backgroundColor" value="white" />
+    <StyleAttribute name="highlightCurrentRow" value="no" />
+    <StyleAttribute name="highlightColor" value="white" />
   </Style>
 
 	<Style name=".bg_white">

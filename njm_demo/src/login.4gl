@@ -21,6 +21,7 @@ FUNCTION login()
 
 	WHENEVER ANY ERROR CALL gl_error
 	LET l_cookie = "NJM User:",fgl_getEnv("USERNAME")," RS:",fgl_getEnv("FGLRESOURCEPATH")
+	DISPLAY "login: ",l_cookie
 	CALL errorlog(l_cookie)
 
 	LET l_cookie = ARG_VAL(2)
@@ -61,13 +62,13 @@ FUNCTION login()
 			IF NOT checkUserRoles(l_user_key,"Login",TRUE) THEN
 				CONTINUE WHILE
 			END IF
-			IF ui.Interface.getFrontEndName() = "GWC" THEN
+			IF UPSHIFT(ui.Interface.getFrontEndName()) != "GDC" THEN
 				LET l_cookie = l_user
 				CALL ui.Interface.FrontCall("session","setvar",["login",l_cookie],l_result)
+				DISPLAY "login: Setting cookie:",l_cookie, " Ret:",l_result
 			END IF
-			--DISPLAY "RealUser:",l_user_key, " result:",l_result
+			DISPLAY "login: RealUser:",l_user_key, " result:",l_result
 			CALL fgl_setEnv("REALUSER", l_user_key )
-			--RUN "fglrun ordent.42r" WITHOUT WAITING
 		END IF
 		EXIT WHILE
 	END WHILE

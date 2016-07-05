@@ -40,11 +40,17 @@ FUNCTION signin()
 	DEFINE l_form ui.Form
 	DEFINE l_newuser BOOLEAN
 	DEFINE l_cust RECORD LIKE customer.*
-	DEFINE l_ah SMALLINT
+	DEFINE l_ah, l_result SMALLINT
+	DEFINE l_cookie STRING
 
 	IF g_custcode != "Guest" THEN
 		IF fgl_winQuestion("Confirm","Confirm signout","No","Yes|No","question",0) = "No" THEN
 			RETURN
+		END IF
+		IF UPSHIFT(ui.Interface.getFrontEndName()) != "GDC" THEN
+			LET l_cookie = "guest"
+			CALL ui.Interface.FrontCall("session","setvar",["login",l_cookie],l_result)
+			DISPLAY "login: Setting cookie:",l_cookie, " Ret:",l_result
 		END IF
 		CALL initAll()
 		RETURN
@@ -115,6 +121,7 @@ FUNCTION signin()
 				NEXT FIELD l_em
 			END IF
 
+			CALL logaccess( TRUE, l_em )
 			LET g_custcode = g_cust.customer_code
 			LET g_custname = g_cust.contact_name
 			CALL oe_setHead( g_cust.customer_code,g_cust.del_addr,g_cust.inv_addr )
@@ -124,6 +131,12 @@ FUNCTION signin()
 		LET int_flag = FALSE
 		LET g_custname = "Guest"
 		LET g_custcode = "Guest"
+	ELSE
+		IF UPSHIFT(ui.Interface.getFrontEndName()) != "GDC" THEN
+			LET l_cookie = g_custcode
+			CALL ui.Interface.FrontCall("session","setvar",["login",l_cookie],l_result)
+			DISPLAY "login: Setting cookie:",l_cookie, " Ret:",l_result
+		END IF
 	END IF
 	CALL setSignInAction()
 
@@ -382,5 +395,77 @@ FUNCTION initAll()
 	LET m_pay.card_type = "V"
 	CALL recalcOrder()
 	DISPLAY g_custname TO custname
+
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION logaccess( l_new, l_email )
+	CONSTANT C_VER = 2
+	DEFINE l_new BOOLEAN
+	DEFINE l_email CHAR(60)
+	DEFINE l_ver SMALLINT
+	DEFINE l_wu RECORD
+			wu_tabver SMALLINT,
+			wu_email CHAR(60),
+			wu_new_user SMALLINT,
+			wu_when DATETIME YEAR TO SECOND,
+			wu_fe CHAR(10),
+			wu_fever CHAR(10),
+			wu_gbc CHAR(20),
+			wu_gbc_bootstrap CHAR(50),
+			wu_gbc_url_prefix CHAR(50),
+			wu_gas_addr CHAR(50),
+			wu_host CHAR(50),
+			wu_referer CHAR(200),
+			wu_user_agent CHAR(200),
+			wu_remote_addr CHAR(50)
+		END RECORD
+	
+	TRY
+		SELECT MAX(wu_tabver) INTO l_ver FROM web_access
+	CATCH
+		LET l_ver = 0
+	END TRY
+	IF l_ver != C_VER THEN
+		IF l_ver > 0 THEN
+			TRY
+				DROP TABLE web_access
+			CATCH
+			END TRY
+		END IF
+		CREATE TABLE web_access (
+			wu_tabver SMALLINT,
+			wu_email CHAR(60),
+			wu_new_user SMALLINT,
+			wu_when DATETIME YEAR TO SECOND,
+			wu_fe CHAR(10),
+			wu_fever CHAR(10),
+			wu_gbc CHAR(20),
+			wu_gbc_bootstrap CHAR(50),
+			wu_gbc_url_prefix CHAR(50),
+			wu_gas_addr CHAR(50),
+			wu_host CHAR(50),
+			wu_referer CHAR(200),
+			wu_user_agent CHAR(200),
+			wu_remote_addr CHAR(50)
+		)
+		LET l_ver = C_VER
+	END IF
+
+	LET l_wu.wu_tabver = C_VER
+	LET l_wu.wu_email = l_email
+	LET l_wu.wu_new_user = l_new
+	LET l_wu.wu_when = CURRENT
+	LET l_wu.wu_fe = ui.Interface.getFrontEndName()
+	LET l_wu.wu_fever = ui.Interface.getFrontEndVersion()
+	LET l_wu.wu_gas_addr = fgl_getEnv("FGL_VMPROXY_GAS_ADDRESS")
+	LET l_wu.wu_gbc = fgl_getEnv("GBC")
+	LET l_wu.wu_gbc_bootstrap = fgl_getEnv("GBC_BOOTSTRAP")
+	LET l_wu.wu_gbc_url_prefix = fgl_getEnv("GBC_URL_PREFIX")
+	LET l_wu.wu_host = fgl_getEnv("FGL_WEBSERVER_HTTP_HOST")
+	LET l_wu.wu_referer = fgl_getEnv("FGL_WEBSERVER_HTTP_REFERER")
+	LET l_wu.wu_user_agent = fgl_getEnv("FGL_WEBSERVER_HTTP_USER_AGENT")
+	LET l_wu.wu_remote_addr = fgl_getEnv("FGL_WEBSERVER_REMOTE_ADDR")
+
+	INSERT INTO web_access VALUES(l_wu.*)
 
 END FUNCTION

@@ -4,6 +4,8 @@
 #+ $Id: webOE.4gl 960 2016-06-13 14:39:50Z neilm $
 
 IMPORT FGL lib_weboe
+IMPORT FGL genero_lib1
+IMPORT FGL gl_db
 
 CONSTANT PRGNAME = "webOE3"
 CONSTANT PRGDESC = "Web Ordering Demo"
@@ -43,36 +45,27 @@ DEFINE m_fields DYNAMIC ARRAY OF RECORD
 	END RECORD
 	DEFINE m_form ui.Form
 MAIN
-	DEFINE l_test STRING
-	DEFINE l_em LIKE customer.email
+	DEFINE l_cookie STRING
+	DEFINE l_cc LIKE customer.customer_code
 	DEFINE l_win ui.Window
 
 	DEFINE l_cat SMALLINT
 
 --	RUN "env | sort > "||base.Application.getProgramName()||".env"
 	
-	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
-	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
+	CALL genero_lib1.gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL genero_lib1.gl_init(ARG_VAL(1),"weboe",TRUE)
 
-	CALL gldb_connect(NULL)
+	CALL gl_db.gldb_connect(NULL)
 
 	LET m_arg1 = ARG_VAL(1)
 	IF m_arg1 IS NULL OR m_arg1 = " " THEN LET m_arg1 = "SDI" END IF
-	LET m_arg2 = ARG_VAL(2)
-	DISPLAY "webOE3 - arg2:",m_arg2
-	IF m_arg2 IS NULL OR m_arg2 = " " THEN LET m_arg2 = "1" END IF
+
 	LET m_dbtyp = gldb_getDBType()
 
 	IF ui.Interface.getFrontEndName() != "GDC" THEN
-		CALL ui.Interface.FrontCall("session","getvar","login",l_test)
-		LET m_user.user_key = l_test
-		DISPLAY "From cookie:",l_test
-	ELSE
-		LET m_user.username = fgl_getEnv("REALUSER")
-	END IF
-	IF m_user.user_key > 1 THEN
-		LET m_user.fullname = getUserName(m_user.user_key)
-		DISPLAY "User:",m_user.fullname,":",m_user.def_cust
+		CALL ui.Interface.FrontCall("session","getvar","login",l_cookie)
+		DISPLAY "From Cookie:",l_cookie
 	END IF
 
 	OPEN FORM weboe FROM "webOE3"
@@ -82,15 +75,16 @@ MAIN
 	LET m_form = l_win.getForm()
 	LET m_vbox = m_form.findNode("VBox","main_vbox")
 
-	CALL initAll()
+	CALL lib_weboe.initAll()
 
-	IF m_arg2.getLength() > 0 THEN
-		LET l_em = m_arg2.trim()
-		DISPLAY "selecting cust:",l_em
-		SELECT * INTO g_cust.* FROM customer WHERE email = l_em
+	IF l_cookie.getLength() > 0 THEN
+		LET l_cc = l_cookie.trim()
+		DISPLAY "Selecting customer_code:",l_cc
+		SELECT * INTO g_cust.* FROM customer WHERE customer_code = l_cc
 		IF STATUS = NOTFOUND THEN
 			LET g_custcode = "Guest"
 			LET g_custname = "Guest"
+			LET g_cust.email = "Guest"
 		ELSE
 			LET g_custcode = g_cust.customer_code
 			LET g_custname = g_cust.customer_name
@@ -98,7 +92,8 @@ MAIN
 		END IF
 	END IF
 
-	DISPLAY "customer:",g_custname
+	CALL lib_weboe.logaccess( FALSE ,g_cust.email )
+	DISPLAY "Customer:",g_custname
 	DISPLAY g_custname TO custname
 
 	DECLARE stkcur CURSOR FROM "SELECT * FROM stock WHERE stock_cat = ?"
