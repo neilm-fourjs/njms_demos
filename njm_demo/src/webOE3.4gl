@@ -49,7 +49,9 @@ MAIN
 
 	DEFINE l_cat SMALLINT
 
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	RUN "env | sort > "||base.Application.getProgramName()||".env"
+	
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
 
 	CALL gldb_connect(NULL)

@@ -35,7 +35,7 @@ DEFINE m_save, m_saveUser, m_saveRoles BOOLEAN
 MAIN
 	DEFINE dnd ui.DragDrop
 
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,TRUE)
 	WHENEVER ANY ERROR CALL gl_error
 	LET m_curruser = ARG_VAL(2)

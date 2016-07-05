@@ -27,7 +27,7 @@ MAIN
 
 	WHENEVER ANY ERROR CALL gl_error
 	LET l_prog = base.Application.getProgramName()||"_"||DOWNSHIFT(ui.Interface.getFrontEndName())
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,FALSE)
 
 	CALL timeLogOn()

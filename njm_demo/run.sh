@@ -6,7 +6,7 @@ cd bin300
 
 export FGLRESOURCEPATH=../etc
 export FGLIMAGEPATH=../pics:../pics/image2font.txt
-export DBNAME=fjs_demos
+export DBNAME=njm_demo
 export BASE=..
 export HOSTNAME=`uname -n`
 export REPORTDIR=../etc/

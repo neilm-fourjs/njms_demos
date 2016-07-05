@@ -28,7 +28,7 @@ DEFINE m_arg1, m_arg2 STRING
 MAIN
 	DEFINE l_test STRING
 
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),NULL,TRUE)
 GL_MODULE_ERROR_HANDLER
 	CALL timeLogOn()

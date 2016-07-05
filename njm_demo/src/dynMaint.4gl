@@ -39,7 +39,7 @@ DEFINE m_allowedActions CHAR(6) --Y/N for Find / List / Update / Insert / Delete
                               -- NNYNNN = Only update allowed.
 MAIN
 
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"default",TRUE)
 	LET m_user_key = ARG_VAL(2)
 	LET m_tab = ARG_VAL(3)

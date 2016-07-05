@@ -43,7 +43,7 @@ MAIN
 	DEFINE l_test STRING
 	DEFINE l_em LIKE customer.email
 
-	CALL gl_setInfo(NULL, "njm_demo", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
+	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
 
 	CALL gldb_connect(NULL)
