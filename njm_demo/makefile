@@ -5,14 +5,19 @@ GITVER=$(shell git describe --always)
 GARNAME=njm_demo
 GARFILE=$(GARNAME).gar
 
-all: src/lib/gitver.inc packit 
+all: src/lib/gitver.inc app 
+
+app:
 	gsmake njm_demo300.4pw
 
 src/lib/gitver.inc: 
 	echo "CONSTANT GITVER=\"$(GITVER)\"" > src/lib/gitver.inc
 
 run: all
-	run.sh
+	run.sh menu.42r
+
+run2: all
+	run.sh webOE3.42r
 
 clean:
 	rm -f *.gar;

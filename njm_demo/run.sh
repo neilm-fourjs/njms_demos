@@ -16,8 +16,5 @@ export TIMELOG=/tmp/time_ssh.log
 
 echo HOST=$HOSTNAME
 
-PROG=menu.42r
-#PROG=webOE3.42r
-
 #env | sort  > env.log
-fglrun $PROG 2> $1.err
+fglrun $1 2> $1.err
