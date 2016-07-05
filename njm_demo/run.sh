@@ -5,6 +5,7 @@
 cd bin300
 
 export FGLRESOURCEPATH=../etc
+export FGLPROFILE=../etc/profile
 export FGLIMAGEPATH=../pics:../pics/image2font.txt
 export DBNAME=njm_demo
 export BASE=..

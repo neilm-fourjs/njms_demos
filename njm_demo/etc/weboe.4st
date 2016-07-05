@@ -73,6 +73,7 @@
      <StyleAttribute name="ringMenuPosition" value="none" />
      <StyleAttribute name="toolBarPosition" value="none" />
      <StyleAttribute name="statusBarType" value="none" />
+
   </Style>
 
 <!-- My Styles -->
@@ -90,6 +91,17 @@
 	<Style name=".bold">
 		<StyleAttribute name="fontWeight" value="bold" />
 	</Style>
+
+  <Style name="Window.about">
+    <StyleAttribute name="windowType" value="modal" />
+    <StyleAttribute name="border" value="tool" />
+    <StyleAttribute name="actionPanelPosition" value="none" />
+    <StyleAttribute name="ringMenuPosition" value="none" />
+    <StyleAttribute name="toolBarPosition" value="none" />
+    <StyleAttribute name="statusBarType" value="none" />
+    <StyleAttribute name="position" value="center" />
+    <StyleAttribute name="fontSize"  value=".8em" />
+  </Style>
 
 	<Style name="Window.ordent">
 		<StyleAttribute name="ringMenuPosition" value="none" />

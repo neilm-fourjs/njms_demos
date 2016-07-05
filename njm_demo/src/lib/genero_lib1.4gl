@@ -1377,8 +1377,10 @@ FUNCTION gl_about(gl_ver) --{{{
 		CALL ui.interface.frontCall("standard","feinfo",[ "fepath" ], [ gl_cli_dir ])
 	END IF
 	LET gl_cli_un = gl_cliUserName()
-	CALL gl_addStyle("Window.about")
-	CALL gl_addStyle(".about")
+	IF ui.Interface.getFrontEndName() = "GDC" THEN
+		CALL gl_addStyle("Window.about")
+		CALL gl_addStyle(".about")
+	END IF
 
 	OPEN WINDOW about AT 1,1 WITH 1 ROWS, 1 COLUMNS ATTRIBUTE(STYLE="about")
 	LET n = gl_getWinNode(NULL)
@@ -1398,22 +1400,15 @@ FUNCTION gl_about(gl_ver) --{{{
 		CALL w.setAttribute("posY","0" )
 		CALL w.setAttribute("posX","0" )
 		CALL w.setAttribute("name","logo" )
-		CALL w.setAttribute("style","about")
+		CALL w.setAttribute("style","noborder")
 		CALL w.setAttribute("stretch","both" )
+		CALL w.setAttribute("sizePolicy","fixed")
 		CALL w.setAttribute("autoScale","1" )
 		CALL w.setAttribute("gridWidth","12" )
-		IF m_pics IS NOT NULL THEN
-			CALL w.setAttribute("image",m_pics.trim()||gl_splash )
-		ELSE
-			CALL w.setAttribute("image",gl_splash )
-		END IF
-&ifdef genero13x
-		CALL w.setAttribute("pixelHeight","100" )
-		CALL w.setAttribute("pixelWidth", "290" )
-&else
-		CALL w.setAttribute("height","100px" )
+		CALL w.setAttribute("gridHeight","4" )
+		CALL w.setAttribute("image",gl_splash )
+		CALL w.setAttribute("height","80px" )
 		CALL w.setAttribute("width", "290px" )
-&endif
 
 		LET w = g.createChild("SpacerItem")
 		LET y = 10
@@ -1427,11 +1422,12 @@ FUNCTION gl_about(gl_ver) --{{{
 	CALL g.setAttribute("posX","0" )
 	CALL g.setAttribute("style","about")
 
-	IF gl_app_build IS NOT NULL THEN
-		CALL gl_addLabel(g, 0,y,LSTR("lib.about.application"),"right","black")
-		CALL gl_addLabel(g,10,y,gl_app_name||" - "||gl_app_build,NULL,NULL) LET y = y + 1
+	IF gl_progname IS NULL THEN
+		LET gl_progname = base.Application.getProgramName()
 	END IF
-
+	IF gl_ver IS NULL THEN
+		LET gl_ver = GITVER
+	END IF
 	CALL gl_addLabel(g, 0,y,LSTR("lib.about.program"),"right","black")
 	CALL gl_addLabel(g,10,y,gl_progname||" - "||gl_ver,NULL,"black") LET y = y + 1
 

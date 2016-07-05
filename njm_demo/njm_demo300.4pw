@@ -53,7 +53,7 @@
   </Settings>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group environment="value:FGLDBPATH=$(ProjectDir)/etc||value:TIMELOG=/tmp/time.log||value:BASE=$(HOME)/all||value:STUDIO=1||value:FJS_GL_DBGLEV=3||value:STARTMENU=false||value:REPORTDIR=$(ProjectDir)/etc300/||value:DBNAME=njm_demo||value:FGLIMAGEPATH=$(ProjectDir)/pics:$(ProjectDir)/pics/image2font.txt||value:FGLRESOURCEPATH=$(ProjectDir)/etc" label="njm_demo" language="Genero" targetDirectory="$(ProjectDir)/bin300">
+  <Group environment="value:FGLPROFILE=$(ProjectDir)/etc/profile||value:FGLDBPATH=$(ProjectDir)/etc||value:TIMELOG=/tmp/time.log||value:BASE=$(HOME)/all||value:STUDIO=1||value:FJS_GL_DBGLEV=3||value:STARTMENU=false||value:REPORTDIR=$(ProjectDir)/etc300/||value:DBNAME=njm_demo||value:FGLIMAGEPATH=$(ProjectDir)/pics:$(ProjectDir)/pics/image2font.txt||value:FGLRESOURCEPATH=$(ProjectDir)/etc" label="njm_demo" language="Genero" targetDirectory="$(ProjectDir)/bin300">
     <Group label="db">
       <Library binaryName="libCommon" dependencies="1986" id="483338962" label="libCommon">
         <File filePath="db/db.inc"/>
