@@ -4,26 +4,18 @@
 #+ $Id: webOE.4gl 960 2016-06-13 14:39:50Z neilm $
 
 IMPORT FGL lib_weboe
+IMPORT FGL genero_lib1
+IMPORT FGL gl_db
 
 CONSTANT PRGNAME = "webOE2"
 CONSTANT PRGDESC = "Web Ordering Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
 
-&define ABOUT 		ON ACTION about \
-			CALL gl_about( VER )
-
 &include "schema.inc"
 &include "ordent.inc"
 
-&ifdef CLOUD
-	&include "../lib/varServices.inc"
-	&define m_VARCODE "fjsuk"
-	&define m_VARPASS "12fjsuk"
-	DEFINE m_soapStatus INTEGER
-&endif
-
 DEFINE m_dbtyp STRING
-DEFINE m_arg1,m_arg2 STRING
+DEFINE m_arg1 STRING
 DEFINE m_stock_cats DYNAMIC ARRAY OF RECORD
 		id LIKE stock_cat.catid,
 		desc LIKE stock_cat.cat_name
@@ -46,12 +38,11 @@ DEFINE m_items DYNAMIC ARRAY OF RECORD
 		desc4 STRING,
 		qty4 INTEGER
 	END RECORD
-
+	DEFINE m_form ui.Form
 MAIN
-	DEFINE l_test STRING
-	DEFINE l_em LIKE customer.email
-	DEFINE l_f ui.Form
-	DEFINE l_w ui.Window
+	DEFINE l_cookie STRING
+	DEFINE l_cc LIKE customer.customer_code
+	DEFINE l_win ui.Window
 
 	CALL gl_setInfo(NULL, "njm_demo_logo_256", "njm_demo", PRGNAME, PRGDESC, PRGAUTH)
 	CALL gl_init(ARG_VAL(1),"weboe",TRUE)
@@ -60,35 +51,30 @@ MAIN
 
 	LET m_arg1 = ARG_VAL(1)
 	IF m_arg1 IS NULL OR m_arg1 = " " THEN LET m_arg1 = "SDI" END IF
-	LET m_arg2 = ARG_VAL(2)
-	DISPLAY "webOE2 - arg2:",m_arg2
-	IF m_arg2 IS NULL OR m_arg2 = " " THEN LET m_arg2 = "1" END IF
+
 	LET m_dbtyp = gldb_getDBType()
 
-	IF ui.Interface.getFrontEndName() = "GWC" THEN
-		CALL ui.Interface.FrontCall("session","getvar","login",l_test)
-		LET m_user.user_key = l_test
-		DISPLAY "From cookie:",l_test
-	ELSE
-		LET m_user.username = fgl_getEnv("REALUSER")
-	END IF
-	IF m_user.user_key > 1 THEN
-		LET m_user.fullname = getUserName(m_user.user_key)
-		DISPLAY "User:",m_user.fullname,":",m_user.def_cust
+	IF ui.Interface.getFrontEndName() != "GDC" THEN
+		CALL ui.Interface.FrontCall("session","getvar","login",l_cookie)
+		DISPLAY "From Cookie:",l_cookie
 	END IF
 
 	OPEN FORM weboe FROM "webOE2"
 	DISPLAY FORM weboe
 
-	CALL initAll()
+	LET l_win = ui.Window.getCurrent()
+	LET m_form = l_win.getForm()
 
-	IF m_arg2.getLength() > 0 THEN
-		LET l_em = m_arg2.trim()
-		DISPLAY "selecting cust:",l_em
-		SELECT * INTO g_cust.* FROM customer WHERE email = l_em
+	CALL lib_weboe.initAll()
+
+	IF l_cookie.getLength() > 0 THEN
+		LET l_cc = l_cookie.trim()
+		DISPLAY "Selecting customer_code:",l_cc
+		SELECT * INTO g_cust.* FROM customer WHERE customer_code = l_cc
 		IF STATUS = NOTFOUND THEN
 			LET g_custcode = "Guest"
 			LET g_custname = "Guest"
+			LET g_cust.email = "Guest"
 		ELSE
 			LET g_custcode = g_cust.customer_code
 			LET g_custname = g_cust.customer_name
@@ -96,24 +82,19 @@ MAIN
 		END IF
 	END IF
 
-	DISPLAY "customer:",g_custname
+	CALL lib_weboe.logaccess( FALSE ,g_cust.email )
+	DISPLAY "Customer:",g_custname
 	DISPLAY g_custname TO custname
 
+	CALL lib_weboe.build_sqls()
 	DECLARE stkcur CURSOR FROM "SELECT * FROM stock WHERE stock_cat = ?"
-
-	DECLARE stkcur2 CURSOR FROM "SELECT * FROM stock WHERE stock_code = ?"
-
-	LET l_w = ui.Window.getCurrent()
-	LET l_f = l_w.getForm()
-
 	DECLARE sc_cur CURSOR FOR SELECT UNIQUE stock_cat.* FROM stock_cat, stock 
 		WHERE stock.stock_cat = stock_cat.catid AND stock_cat.catid != "ARMS"
 	FOREACH sc_cur INTO m_stock_cats[ m_stock_cats.getLength() + 1 ].*
 		IF m_stock_cats[ m_stock_cats.getLength() ].desc IS NOT NULL THEN
-			CALL l_f.setElementText("cat"||m_stock_cats.getLength(), m_stock_cats[ m_stock_cats.getLength() ].desc)
-			CALL l_f.setElementImage("cat"||m_stock_cats.getLength(), "products/"||DOWNSHIFT(m_stock_cats[ m_stock_cats.getLength() ].id CLIPPED))
-			CALL l_f.setElementHidden("cat"||m_stock_cats.getLength(), FALSE)
-
+			CALL m_form.setElementText("cat"||m_stock_cats.getLength(), m_stock_cats[ m_stock_cats.getLength() ].desc)
+			CALL m_form.setElementImage("cat"||m_stock_cats.getLength(), "products/"||DOWNSHIFT(m_stock_cats[ m_stock_cats.getLength() ].id CLIPPED))
+			CALL m_form.setElementHidden("cat"||m_stock_cats.getLength(), FALSE)
 		END IF
 	END FOREACH
 	CALL m_stock_cats.deleteElement( m_stock_cats.getLength() )
@@ -184,6 +165,7 @@ MAIN
 
 		ON ACTION viewb CALL lib_weboe.viewb()
 		ON ACTION gotoco CALL gotoco()
+		ON ACTION about CALL genero_lib1.gl_about( NULL )
 		ON ACTION close EXIT DIALOG
 		ON ACTION cancel EXIT DIALOG
 	END DIALOG
@@ -225,30 +207,6 @@ FUNCTION getItems( sc )
 		END CASE
 		LET rec = rec + 1
 	END FOREACH
-END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION detLine(l_sc,l_qty)
-	DEFINE l_sc LIKE stock.stock_code
-	DEFINE l_qty, l_row INTEGER
-	DEFINE l_stk RECORD LIKE stock.*
-
-	FOR l_row = 1 TO g_detailArray.getLength()
-		IF l_sc = g_detailArray[l_row].stock_code THEN
-			EXIT FOR	
-		END IF
-	END FOR
-	IF l_row = 0 THEN LET l_row = 1 END IF
-	IF l_qty = 0 THEN
-		CALL g_detailArray.deleteElement(l_row)
-		RETURN
-	END IF
-	OPEN stkcur2 USING l_sc
-	FETCH stkcur2 INTO l_stk.*
-	LET g_detailArray[l_row].quantity = l_qty
-	LET g_detailArray[l_row].stock_code = l_sc
-	LET g_detailArray[l_row].description = l_stk.description
-	LET g_detailArray[l_row].price = l_stk.price
-	CALL recalcOrder()
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION recalcOrder()

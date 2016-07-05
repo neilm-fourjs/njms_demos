@@ -4,6 +4,9 @@
 
 DEFINE m_pay RECORD LIKE ord_payment.*
 
+FUNCTION build_sqls()
+	DECLARE stkcur2 CURSOR FROM "SELECT * FROM stock WHERE stock_code = ?"
+END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION detLnk(l_sc, l_det, l_img, l_qty )
 	DEFINE l_sc LIKE stock.stock_code
@@ -153,6 +156,31 @@ FUNCTION setSignInAction()
 		CALL f.setElementText("signin","Sign Out")
 	END IF
 	DISPLAY g_custname TO custname
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION detLine(l_sc,l_qty)
+	DEFINE l_sc LIKE stock.stock_code
+	DEFINE l_qty, l_row INTEGER
+	DEFINE l_stk RECORD LIKE stock.*
+
+	DISPLAY "detline:", l_sc, ":",l_qty
+	FOR l_row = 1 TO g_detailArray.getLength()
+		IF l_sc = g_detailArray[l_row].stock_code THEN
+			EXIT FOR	
+		END IF
+	END FOR
+	IF l_row = 0 THEN LET l_row = 1 END IF
+	IF l_qty = 0 THEN
+		CALL g_detailArray.deleteElement(l_row)
+		RETURN
+	END IF
+	OPEN stkcur2 USING l_sc
+	FETCH stkcur2 INTO l_stk.*
+	LET g_detailArray[l_row].quantity = l_qty
+	LET g_detailArray[l_row].stock_code = l_sc
+	LET g_detailArray[l_row].description = l_stk.description
+	LET g_detailArray[l_row].price = l_stk.price
+	CALL recalcOrder()
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION mkDesc( l_stk )

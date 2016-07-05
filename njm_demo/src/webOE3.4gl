@@ -11,21 +11,11 @@ CONSTANT PRGNAME = "webOE3"
 CONSTANT PRGDESC = "Web Ordering Demo"
 CONSTANT PRGAUTH = "Neil J.Martin"
 
-&define ABOUT 		ON ACTION about \
-			CALL gl_about( VER )
-
 &include "schema.inc"
 &include "ordent.inc"
 
-&ifdef CLOUD
-	&include "../lib/varServices.inc"
-	&define m_VARCODE "fjsuk"
-	&define m_VARPASS "12fjsuk"
-	DEFINE m_soapStatus INTEGER
-&endif
-
 DEFINE m_dbtyp STRING
-DEFINE m_arg1,m_arg2 STRING
+DEFINE m_arg1 STRING
 DEFINE m_stock_cats DYNAMIC ARRAY OF RECORD
 		id LIKE stock_cat.catid,
 		desc LIKE stock_cat.cat_name
@@ -48,7 +38,6 @@ MAIN
 	DEFINE l_cookie STRING
 	DEFINE l_cc LIKE customer.customer_code
 	DEFINE l_win ui.Window
-
 	DEFINE l_cat SMALLINT
 
 --	RUN "env | sort > "||base.Application.getProgramName()||".env"
@@ -96,10 +85,8 @@ MAIN
 	DISPLAY "Customer:",g_custname
 	DISPLAY g_custname TO custname
 
+	CALL lib_weboe.build_sqls()
 	DECLARE stkcur CURSOR FROM "SELECT * FROM stock WHERE stock_cat = ?"
-
-	DECLARE stkcur2 CURSOR FROM "SELECT * FROM stock WHERE stock_code = ?"
-
 	DECLARE sc_cur CURSOR FOR SELECT UNIQUE stock_cat.* FROM stock_cat, stock 
 		WHERE stock.stock_cat = stock_cat.catid {AND stock_cat.catid != "ARMS"}
    ORDER BY stock_cat.cat_name
@@ -110,7 +97,6 @@ MAIN
 	CALL build_cats()
 
 	LET l_cat = 1
-
 	WHILE l_cat > 0
 		CALL getItems( m_stock_cats[ l_cat ].id )
 		LET l_cat = dynDiag()
@@ -136,31 +122,6 @@ FUNCTION getItems( sc )
 
 	CALL build_grids()
 
-END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION detLine(l_sc,l_qty)
-	DEFINE l_sc LIKE stock.stock_code
-	DEFINE l_qty, l_row INTEGER
-	DEFINE l_stk RECORD LIKE stock.*
-
-	DISPLAY "detline:", l_sc, ":",l_qty
-	FOR l_row = 1 TO g_detailArray.getLength()
-		IF l_sc = g_detailArray[l_row].stock_code THEN
-			EXIT FOR	
-		END IF
-	END FOR
-	IF l_row = 0 THEN LET l_row = 1 END IF
-	IF l_qty = 0 THEN
-		CALL g_detailArray.deleteElement(l_row)
-		RETURN
-	END IF
-	OPEN stkcur2 USING l_sc
-	FETCH stkcur2 INTO l_stk.*
-	LET g_detailArray[l_row].quantity = l_qty
-	LET g_detailArray[l_row].stock_code = l_sc
-	LET g_detailArray[l_row].description = l_stk.description
-	LET g_detailArray[l_row].price = l_stk.price
-	CALL recalcOrder()
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION build_cats()
@@ -309,6 +270,7 @@ FUNCTION dynDiag()
 	CALL m_dialog.addTrigger("ON ACTION viewb")
 	CALL m_dialog.addTrigger("ON ACTION signin")
 	CALL m_dialog.addTrigger("ON ACTION gotoco")
+	CALL m_dialog.addTrigger("ON ACTION about")
 	CALL m_dialog.addTrigger("ON ACTION cancel")	
 	FOR x = 1 TO m_items.getLength()
 		CALL m_dialog.addTrigger("ON ACTION detlnk"||x)
@@ -364,6 +326,7 @@ FUNCTION dynDiag()
 
 			WHEN "ON ACTION viewb" CALL lib_weboe.viewb()
 			WHEN "ON ACTION gotoco" CALL gotoco()
+			WHEN "ON ACTION about" CALL genero_lib1.gl_about( NULL )
 		END CASE
 	END WHILE
 	IF int_flag THEN LET int_flag = FALSE END IF
