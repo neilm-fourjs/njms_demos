@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" version="3.01">
+<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" gstVersion="3001d" version="5.00">
     <report:Settings RWPageWidth="a4length" RWPageLength="a4width" RWLeftMargin="0.5cm" RWTopMargin="1.0cm" RWRightMargin="0.5cm" RWBottomMargin="1.0cm">
         <report:FormatList>
             <report:Format-SVG/>
@@ -7,16 +7,17 @@
             <report:Format-image/>
         </report:FormatList>
     </report:Settings>
-    <report:Data RWDataLocation="../reports/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Data RWDataLocation="../src/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Conflicts/>
     <rtl:stylesheet>
         <PXML>
-            <rtl:match nameConstraint="Report">
-                <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+            <rtl:match name="Report" nameConstraint="Report">
+                <rtl:match name="Group order_number" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
                     <MINIPAGE name="Page Root" width="max" length="max" alignment="near" fontName="Arial" layoutDirection="topToBottom" swapX="false">
                         <LAYOUTNODE name="Page Header" width="max" length="min" port="firstPageHeader" floatingBehavior="enclosed">
                             <MINIPAGE name="HeadTop" width="min" length="max" bgColor="#c1d4ff" layoutDirection="leftToRight" floatingBehavior="enclosed">
                                 <rtl:input-variable name="m_logo" type="FGLString" expectedLocation="expectedBefore"/>
-                                <IMAGEBOX name="ImageBox3" width="335.671" length="100.106" scaleX=".25" scaleY=".25" floatingBehavior="enclosed" url="{{m_logo}}"/>
+                                <IMAGEBOX name="ImageBox3" width="335.671" length="100.106" scaleX=".25" scaleY=".25" floatingBehavior="enclosed" url="{{m_logo}}" intendedResolution="72"/>
                                 <WORDBOX name="Report Title" x="0" y="max/2" anchorX="0" anchorY="0.5" alignment="baseline" fontSize="25" layoutDirection="topToBottom" swapX="false" baselineType="leftleft" floatingBehavior="enclosed" text="Sales Invoice"/>
                                 <WORDBOX name="printed" x="0" y="675" width="50" anchorX="0" anchorY="0" floatingBehavior="enclosed" textAlignment="right" text="Printed:"/>
                                 <rtl:input-variable name="print_date" type="FGLString" expectedLocation="expectedBefore"/>
@@ -85,11 +86,11 @@
                         <LAYOUTNODE name="Tail" width="max" length="min" anchorY="1" alignment="far" layoutDirection="bottomToTop" baselineType="leftleft" port="anyPageFooter" floatingBehavior="free" borderWidth="0" borderTopWidth="1" borderStyle="dotted">
                             <WORDBOX name="WordBox" x="0" y="10" width="0" anchorX="0" anchorY="0" fontSize="6" fontItalic="true" floatingBehavior="enclosed" text="This is a work of fiction and any resembalance to real people or products is unintentional."/>
                             <WORDBOX name="WordBox1" x="0" y="0" width="0" anchorX="0" anchorY="0" fontSize="5" fontItalic="false" floatingBehavior="enclosed" text="The large print giveth and the small print taketh away - Tom Waits"/>
-                            <IMAGEBOX name="ImageBox3_1" alignment="far" scaleX=".5" scaleY=".5" floatingBehavior="enclosed" url="../pics/poweredBy.png"/>
+                            <IMAGEBOX name="ImageBox3_1" alignment="far" scaleX=".5" scaleY=".5" floatingBehavior="enclosed" url="../pics/poweredBy.png" intendedResolution="72"/>
                         </LAYOUTNODE>
                         <MINIPAGE name="Separator_1" width="1" length="max" alignment="near" bgColor="#000000" layoutDirection="leftToRight" swapX="false" floatingBehavior="enclosed"/>
-                        <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
-                            <rtl:match nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
+                        <rtl:match name="Group pack_flag" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                            <rtl:match name="OnEveryRow" nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
                                 <rtl:input-variable name="line_num" type="FGLNumeric" expectedLocation="expectedHere"/>
                                 <rtl:input-variable name="r_detailline.pack_flag" type="FGLString" expectedLocation="expectedHere"/>
                                 <MINIPAGE name="Detail Lines" rtl:condition="r_detailline.pack_flag.matches(&quot;[NPE]&quot;)" width="min" length="max" bgColor="{{line_num%2&gt;0?Color.fromRGBA(100,200,100,100):Color.WHITE}}" fontSize="12" layoutDirection="leftToRight" swapX="false">

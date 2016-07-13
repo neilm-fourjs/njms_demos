@@ -194,7 +194,7 @@ FUNCTION mk_form()
 		CALL l_n_widget.setAttribute("posX", l_maxlablen+1 )
 		CALL l_n_widget.setAttribute("gridWidth", m_fld_props[x].len )
 		CALL l_n_widget.setAttribute("width", m_fld_props[x].len)
-		CALL l_n_widget.setAttribute("comment", m_fld_props[x].numeric||" "||m_fields[x].type )
+		CALL l_n_widget.setAttribute("comment", "Numeric:"||m_fld_props[x].numeric||" Type:"||m_fields[x].type )
 	END FOR
 END FUNCTION
 --------------------------------------------------------------------------------
@@ -279,13 +279,10 @@ FUNCTION inpt(l_new)
 	LET m_dialog = ui.Dialog.createInputByName(m_fields)
 
 	IF l_new THEN
-		CALL m_dialog.setFieldValue("customer.customer_code","?")
-		CALL m_dialog.setFieldValue("customer.customer_name","type a new name")
-		CALL m_dialog.setFieldValue("customer.credit_limit","10000")
+--
 	ELSE
 		IF m_row_cur = 0 THEN RETURN END IF
 		FOR x = 1 TO m_fields.getLength()
-			--DISPLAY "Field:",m_fields[x].name,":",m_fields[x].type
 			CALL m_dialog.setFieldValue(m_tab||"."||m_fields[x].name, m_sql_handle.getResultValue(x))
 			IF x = m_key_fld THEN
 				CALL m_dialog.setFieldActive(m_fields[x].name, FALSE )

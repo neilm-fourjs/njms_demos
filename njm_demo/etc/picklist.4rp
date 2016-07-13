@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" version="3.00">
+<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" gstVersion="3001d" version="5.00">
     <report:Settings RWPageWidth="a4width" RWPageLength="a4length" RWLeftMargin="1.3cm" RWTopMargin="1.3cm" RWRightMargin="1.3cm" RWBottomMargin="1.3cm">
         <report:FormatList>
             <report:Format-SVG/>
@@ -7,10 +7,11 @@
             <report:Format-image/>
         </report:FormatList>
     </report:Settings>
-    <report:Data RWDataLocation="../reports/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Data RWDataLocation="../src/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Conflicts/>
     <rtl:stylesheet>
         <PXML>
-            <rtl:match nameConstraint="Report">
+            <rtl:match name="Report" nameConstraint="Report">
                 <MINIPAGE name="Page Root" width="max" length="max" alignment="near" layoutDirection="topToBottom" swapX="false">
                     <LAYOUTNODE name="Page Header" width="max" length="min" port="anyPageHeader">
                         <MINIPAGE name="StripeLayouter3" width="min" length="max" layoutDirection="leftToRight" swapX="false">
@@ -18,9 +19,9 @@
                             <PAGENOBOX name="PageNoBox" x="1.23857" y="max" anchorX="0" anchorY="1" alignment="baseline" layoutDirection="topToBottom" swapX="false" baselineType="leftleft" floatingBehavior="enclosed" textAlignment="right"/>
                         </MINIPAGE>
                     </LAYOUTNODE>
-                    <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
-                        <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
-                            <rtl:match nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
+                    <rtl:match name="Group order_number" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                        <rtl:match name="Group pack_flag" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                            <rtl:match name="OnEveryRow" nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
                                 <MINIPAGE name="Table Row" width="73" length="max" alignment="near" bgColor="#e6f4ff" layoutDirection="leftToRight" swapX="false" floatingBehavior="enclosed" paddingTopWidth="1" paddingRightWidth="2" paddingBottomWidth="4" paddingLeftWidth="2">
                                     <WORDBOX name="r_detailline.stock_code Caption" x="30" y="5" anchorX="0" anchorY="0" floatingBehavior="enclosed" text="Stock Code:"/>
                                     <rtl:input-variable name="r_detailline.stock_code" type="FGLString" expectedLocation="expectedHere"/>

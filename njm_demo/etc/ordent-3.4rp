@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" version="3.00">
+<report:Report xmlns:rtl="http://www.4js.com/2004/RTL" xmlns:report="http://www.4js.com/2007/REPORT" xmlns="http://www.4js.com/2004/PXML" gstVersion="3001d" version="5.00">
     <report:Settings RWPageWidth="a4width" RWPageLength="a4length" RWLeftMargin="0.5cm" RWTopMargin="1.0cm" RWRightMargin="0.5cm" RWBottomMargin="1.0cm">
         <report:FormatList>
             <report:Format-SVG/>
@@ -7,15 +7,16 @@
             <report:Format-image/>
         </report:FormatList>
     </report:Settings>
-    <report:Data RWDataLocation="../reports/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Data RWDataLocation="../src/printInvoices.rdd" RWFglReportName="rpt"/>
+    <report:Conflicts/>
     <rtl:stylesheet>
         <PXML>
-            <rtl:match nameConstraint="Report">
-                <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+            <rtl:match name="Report" nameConstraint="Report">
+                <rtl:match name="Group order_number" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
                     <MINIPAGE name="Page Root" width="max" length="max" alignment="near" fontName="Arial" layoutDirection="topToBottom" swapX="false" borderWidth="1">
                         <LAYOUTNODE name="Page Header" width="max" length="215" port="anyPageHeader" floatingBehavior="enclosed">
                             <MINIPAGE name="HeadTop" width="min" length="max" layoutDirection="leftToRight" floatingBehavior="enclosed">
-                                <IMAGEBOX name="ImageBox3" width="1202.42" length="358.592" scaleX=".25" scaleY=".25" floatingBehavior="enclosed" url="../pics/invoice_head.jpg"/>
+                                <IMAGEBOX name="ImageBox3" width="1202.42" length="358.592" scaleX=".25" scaleY=".25" floatingBehavior="enclosed" url="../pics/invoice_head.jpg" intendedResolution="72"/>
                                 <LAYOUTNODE name="HeadDetails" x="5" y="400" width="min" length="min" alignment="near" layoutDirection="leftToRight" floatingBehavior="enclosed" paddingTopWidth="5" paddingRightWidth="max*.05" paddingBottomWidth="5" paddingLeftWidth="max*.05" borderWidth="1" borderStyle="none">
                                     <WORDBOX name="inv_cap" x="-1.212" y="0" width="70" length="20" anchorX="0" anchorY="0" alignment="center" color="#ffffff" bgColor="#000000" fontBold="true" floatingBehavior="enclosed" textAlignment="left" text="INVOICE" borderWidth=".5" borderStyle="solid"/>
                                     <rtl:input-variable name="r_ordhead.order_number" type="FGLNumeric" expectedLocation="expectedHere"/>
@@ -78,7 +79,7 @@
                                     </LAYOUTNODE>
                                 </LAYOUTNODE>
                             </MINIPAGE>
-                            <IMAGEBOX name="ImageBox3_2" x="45" y="max/2" width="700" anchorX="0" anchorY="0.5" alignment="center" scaleX=".5" scaleY=".5" floatingBehavior="enclosed" url="../pics/invoice_tail_bc.jpg"/>
+                            <IMAGEBOX name="ImageBox3_2" x="45" y="max/2" width="700" anchorX="0" anchorY="0.5" alignment="center" scaleX=".5" scaleY=".5" floatingBehavior="enclosed" url="../pics/invoice_tail_bc.jpg" intendedResolution="72"/>
                         </LAYOUTNODE>
                         <LAYOUTNODE name="DetailHeadings" x="10" y="205" width="max-20" length="10" anchorY="0" floatingBehavior="enclosed" borderWidth="1" borderStyle="solid">
                             <MINIPAGE name="Detail Headings13" width="min" length="max" bgColor="{{Color.fromRGBA(193,212,255,200)}}" fontSize="8" layoutDirection="leftToRight" swapX="false" floatingBehavior="enclosed" borderWidth="1" borderBottomStyle="solid">
@@ -97,10 +98,10 @@
                             </MINIPAGE>
                         </LAYOUTNODE>
                         <LAYOUTNODE name="DetailBox" x="10" y="205" width="max-20" length="rest" anchorY="0" floatingBehavior="enclosed" borderWidth="1" borderStyle="solid">
-                            <IMAGEBOX name="ImageBox" width="max" length="max" scaleX=".5" scaleY=".5" floatingBehavior="free" url="../pics/certified.png"/>
+                            <IMAGEBOX name="ImageBox" width="max" length="max" scaleX=".5" scaleY=".5" floatingBehavior="free" url="../pics/certified.png" intendedResolution="72"/>
                         </LAYOUTNODE>
-                        <rtl:match nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
-                            <rtl:match nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
+                        <rtl:match name="Group pack_flag" nameConstraint="Group" minOccurs="0" maxOccurs="unbounded">
+                            <rtl:match name="OnEveryRow" nameConstraint="OnEveryRow" minOccurs="0" maxOccurs="unbounded">
                                 <rtl:input-variable name="line_num" type="FGLNumeric" expectedLocation="expectedHere"/>
                                 <MINIPAGE name="Detail Lines" width="min" length="max-20" alignment="center" bgColor="{{line_num%2&gt;0?Color.fromRGBA(80,250,80,50):Color.fromRGBA(255,255,255,50)}}" fontSize="8" layoutDirection="leftToRight" swapX="false">
                                     <WORDBOX name="Spacer_1" alignment="baseline" layoutDirection="topToBottom" swapX="false" baselineType="leftleft" port="itemSeparator" text=" "/>
