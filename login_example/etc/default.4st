@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ANSI_X3.4-1968"?>
+
+<StyleList>
+  <Style name=".okay">
+    <StyleAttribute name="backgroundColor" value="#D5FFD5" />
+  </Style>
+  <Style name=".error">
+    <StyleAttribute name="backgroundColor" value="#FFD5D5" />
+  </Style>
+  <Style name=".warning">
+    <StyleAttribute name="backgroundColor" value="#FFFFD5" />
+  </Style>
+
+  <Style name=".big">
+    <StyleAttribute name="fontSize" value="16pt" />
+  </Style>
+	<Style name="Group.help">
+		<StyleAttribute name="textColor" value="darkblue" />
+		<StyleAttribute name="fontWeight" value="bold" />
+	</Style>
+
+	<Style name=".disabled">
+		<StyleAttribute name="textColor" value="#B7B7CC" />
+	</Style>
+
+	<Style name="Group.grp1">
+		<StyleAttribute name="backgroundColor"         value="#F7F7FF" />
+		<StyleAttribute name="backgroundGradientType"  value="linear|top|bottom" />
+		<StyleAttribute name="backgroundGradientColor" value="#C5C5CF" />
+	</Style>
+
+	<Style name=".label">
+		<StyleAttribute name="backgroundColor" value="buttonface" />
+	</Style>
+	<Style name=".loading">
+		<StyleAttribute name="backgroundImage" value="loading" />
+	</Style>
+	<Style name="TextEdit.help:inactive">
+		<StyleAttribute name="textFormat" value="html" />
+		<StyleAttribute name="backgroundColor" value="white" />
+		<StyleAttribute name="border" value="none" />
+		<StyleAttribute name="fontWeight" value="normal" />
+		<StyleAttribute name="textColor" value="black" />
+	</Style>
+
+	<Style name="Edit:inactive">
+		<StyleAttribute name="backgroundColor" value="#EEEEFF" />
+	</Style>
+	<Style name="DateEdit:inactive">
+		<StyleAttribute name="backgroundColor" value="#EEEEFF" />
+	</Style>
+
+	<Style name=".titl">
+		<StyleAttribute name="fontWeight" value="bold" />
+		<StyleAttribute name="fontSize" value="1.5em" />
+	</Style>
+
+	<Style name=".required">
+		<StyleAttribute name="fontWeight" value="bold" />
+		<StyleAttribute name="fontSize" value=".8em" />
+		<StyleAttribute name="textColor" value="red" />
+	</Style>
+
+	<!--Style name="Form.autosize">
+		<StyleAttribute name="resetFormSize" value="1" />
+	</Style-->
+
+	<Style name="Table">
+		<StyleAttribute name="headerAlignment" value="auto" />
+	</Style>
+
+	<Style name="Table.vm_arr">
+		<StyleAttribute name="headerAlignment" value="left" />
+	</Style>
+
+	<Style name="Action">
+		<StyleAttribute name="scaleIcon"               value="32px" />
+	</Style>
+	<Style name="Button">
+		<StyleAttribute name="scaleIcon"               value="32px" />
+	</Style>
+	<Style name="Button.small">
+		<StyleAttribute name="scaleIcon" value="12px" />
+	</Style>
+	<Style name=".font8">
+		<StyleAttribute name="fontSize" value="7pt" />
+	</Style>
+	<Style name=".font6">
+		<StyleAttribute name="fontSize" value="6pt" />
+	</Style>
+	<Style name="ToolBar">
+		<StyleAttribute name="scaleIcon"               value="32px" />
+		<!-- StyleAttribute name="backgroundColor"         value="#F2F2F9" />
+		<StyleAttribute name="backgroundGradientType"  value="linear|top|bottom" />
+		<StyleAttribute name="backgroundGradientColor" value="#B7B7CC" /-->
+	</Style>
+
+	<Style name=".top">
+		<StyleAttribute name="backgroundColor" value="transparent" />
+		<StyleAttribute name="backgroundImage" value="top" />
+	</Style>
+	<Style name=".topbar">
+		<StyleAttribute name="backgroundColor" value="transparent" />
+		<StyleAttribute name="backgroundImage" value="topbar" />
+	</Style>
+
+	<Style name="TextEdit.filla">
+		<StyleAttribute name="border" value="none" />
+		<StyleAttribute name="backgroundColor" value="transparent" />
+		<StyleAttribute name="fontSize" value="5pt" />
+		<StyleAttribute name="textFormat" value="html" />
+	</Style>
+
+	<Style name="TextEdit.html">
+		<StyleAttribute name="border" value="none" />
+		<StyleAttribute name="textFormat" value="html" />
+		<StyleAttribute name="showEditToolBox" value="no" />
+	</Style>
+
+
+	<Style name=".f5">
+		<StyleAttribute name="fontSize" value="0.5em" />
+	</Style>
+	<Style name=".f15">
+		<StyleAttribute name="fontSize" value="1.5em" />
+	</Style>
+	<Style name=".f20">
+		<StyleAttribute name="fontSize" value="20pt" />
+	</Style>
+	<Style name=".bold">
+		<StyleAttribute name="fontWeight" value="bold" />
+	</Style>
+
+	<Style name=".grad1">
+		<StyleAttribute name="backgroundColor"         value="#F2F2F9" />
+		<StyleAttribute name="backgroundGradientType"  value="linear|top|bottom" />
+		<StyleAttribute name="backgroundGradientColor" value="#B7B7CC" />
+	</Style>
+
+	<Style name=".grad2">
+		<StyleAttribute name="backgroundColor"         value="#F2F2F9" />
+		<StyleAttribute name="backgroundGradientType"  value="linear|bottom|top" />
+		<StyleAttribute name="backgroundGradientColor" value="#B7B7CC" />
+	</Style>
+
+	<Style name="Button.grpbut">
+		<StyleAttribute name="backgroundColor"         value="#F2F2F9" />
+		<StyleAttribute name="backgroundGradientType"  value="linear|bottom|top" />
+		<StyleAttribute name="backgroundGradientColor" value="#B7B7CC" />
+
+		<StyleAttribute name="border" value="none" />
+		<StyleAttribute name="textColor" value="darkblue" />
+		<StyleAttribute name="fontWeight" value="bold" />
+	</Style>
+
+	<Style name=".noborder">
+		<StyleAttribute name="border" value="none" />
+	</Style>
+
+	<Style name="Label">
+		<StyleAttribute name="textColor" value="darkblue" />
+	</Style>
+
+	<Style name=".white">
+		<StyleAttribute name="textColor" value="white" />
+	</Style>
+	<Style name=".transparent">
+		<StyleAttribute name="backgroundColor" value="transparent" />
+	</Style>
+	<Style name="Window">
+		<StyleAttribute name="windowType" value="normal" />
+		<StyleAttribute name="lookAndFeel"  value="Cleanlooks" />
+    <StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+	</Style>
+	<Style name="Window.main">
+		<StyleAttribute name="windowType" value="normal" />
+		<StyleAttribute name="startMenuPosition" value="menu" />
+	</Style>
+
+	<Style name="Window.main2">
+		<StyleAttribute name="windowType" value="normal" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="sizable" value="yes" />
+		<StyleAttribute name="position" value="center" />
+		<StyleAttribute name="statusBarType" value="panels4" />
+	</Style>
+
+  <Style name="Window.main3">
+    <StyleAttribute name="windowType" value="normal" />
+    <StyleAttribute name="actionPanelPosition" value="none" />
+    <StyleAttribute name="ringMenuPosition" value="none" />
+    <StyleAttribute name="toolBarPosition" value="none" />
+  </Style>
+	<Style name="Window.dialog">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="sizable" value="no" />
+		<StyleAttribute name="position" value="center" />
+		<StyleAttribute name="actionPanelPosition" value="bottom" />
+		<StyleAttribute name="ringMenuPosition" value="bottom" />
+		<StyleAttribute name="toolBarPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+		<StyleAttribute name="errorMessagePosition" value="popup" />
+	</Style>
+	<Style name="Window.dialog2">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="sizable" value="yes" />
+		<StyleAttribute name="position" value="center" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="toolBarPosition" value="top" />
+		<StyleAttribute name="statusBarType" value="none" />
+		<StyleAttribute name="errorMessagePosition" value="popup" />
+	</Style>
+	<Style name="Window.dialog3">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="sizable" value="yes" />
+		<StyleAttribute name="toolBarPosition" value="none" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+		<StyleAttribute name="errorMessagePosition" value="popup" />
+	</Style>
+	<Style name="Window.dialog4">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="sizable" value="yes" />
+		<StyleAttribute name="actionPanelPosition" value="bottom" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+		<StyleAttribute name="errorMessagePosition" value="popup" />
+	</Style>
+	<Style name="Window.naked">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="border" value="tool" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="toolBarPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+	</Style>
+	<Style name="Window.viewer">
+		<StyleAttribute name="windowType" value="modal" />
+		<StyleAttribute name="windowSystemMenu" value="yes" />
+		<StyleAttribute name="windowOptionMinimize" value="no" />
+		<StyleAttribute name="windowOptionMaximize" value="no" />
+		<StyleAttribute name="sizable" value="yes" />
+		<StyleAttribute name="actionPanelPosition" value="none" />
+		<StyleAttribute name="ringMenuPosition" value="none" />
+		<StyleAttribute name="toolBarPosition" value="none" />
+		<StyleAttribute name="statusBarType" value="none" />
+	</Style>
+</StyleList>

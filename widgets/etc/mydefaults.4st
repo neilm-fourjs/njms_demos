@@ -1,4 +1,5 @@
 <StyleList>
+
 	<!-- Style name="ComboBox">
 		<StyleAttribute name="lookAndFeel"  value="WindowsXP" />
 	</Style-->
@@ -13,7 +14,7 @@
   <!-- Style name="Page">
 		<StyleAttribute name="backgroundColor"  value="red" />
   </Style-->
-  <Style name="Window.oxygen">
+  <!-- Style name="Window.oxygen">
 		<StyleAttribute name="lookAndFeel"  value="Oxygen" />
   </Style>
   <Style name="Form.oxygen">
@@ -31,15 +32,19 @@
   <Style name="Window.qtcurve">
 		<StyleAttribute name="lookAndFeel"  value="QTCurve" />
   </Style>
-  <Style name="Form.qtcurve">
-		<StyleAttribute name="lookAndFeel"  value="QTCurve" />
-  </Style>
+
   <Style name='*:focus'>
     <StyleAttribute name="backgroundColor" value="#FFFFFF"/>
+  </Style-->
+
+  <Style name="CheckBox">
+		<StyleAttribute name="lookAndFeel"  value="Windows" />
   </Style>
-  <Style name='*:active'>
+
+  <!-- Style name='*:active'>
     <StyleAttribute name="backgroundColor" value="#E0E0FF"/>
-  </Style>
+  </Style-->
+
   <Style name='Image'>
     <StyleAttribute name="border" value="none"/>
   </Style>
@@ -213,7 +218,6 @@
     <StyleAttribute name='sizable'                  value='yes' />
     <StyleAttribute name='border'                   value='tool' />
     <StyleAttribute name='actionPanelPosition'      value='none' />
-    <StyleAttribute name='showDefaultActions'       value='none'/>
     <StyleAttribute name='ringMenuPosition'         value='none' />
     <StyleAttribute name='startMenuPosition'        value='none' />
     <StyleAttribute name='toolBarPosition'          value='none'/>
@@ -224,17 +228,13 @@
     <StyleAttribute name='startMenuPosition'        value='tree' />
     <StyleAttribute name='startMenuSize'            value='tiny' />
     <StyleAttribute name='actionPanelPosition'      value='none'/>
-    <StyleAttribute name='sizePolicy'               value='dynamic'/>
     <!--StyleAttribute name='backgroundColor'          value='red'/-->
-  </Style>
-  <Style name='StartMenu'>
-    <StyleAttribute name='backgroundColor'          value='red'/>
   </Style>
   <Style name='Window.nosb'>
     <StyleAttribute name='statusBarType'            value='none'/>
     <StyleAttribute name='ringMenuPosition'         value='right'/>
     <StyleAttribute name='actionPanelPosition'      value='bottom'/>
-    <StyleAttribute name='toolBarPostiion'          value='none'/>
+    <StyleAttribute name='toolBarPosition'          value='none'/>
   </Style>
   <Style name='Window.mystyle'>
      <StyleAttribute name='windowType'              value='normal' />
@@ -257,7 +257,6 @@
     <StyleAttribute name='position'                 value='center' />
     <StyleAttribute name='border'                   value='none' />
     <StyleAttribute name='actionPanelPosition'      value='none' />
-    <StyleAttribute name='showDefaultActions'       value='none'/>
     <StyleAttribute name='ringMenuPosition'         value='none' />
     <StyleAttribute name='startMenuPosition'        value='none' />
     <StyleAttribute name='toolBarPosition'          value='none'/>

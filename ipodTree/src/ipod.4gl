@@ -172,6 +172,8 @@ FUNCTION mainDialog()
 				END IF
 			ON ACTION search
 				NEXT FIELD search
+			ON UPDATE
+				CALL upd_tree_item( arr_curr(), scr_line() )
 		END DISPLAY
 
 		INPUT BY NAME r_search, a_search, t_search ATTRIBUTES(WITHOUT DEFAULTS=TRUE)
@@ -239,6 +241,10 @@ FUNCTION mainDialog()
 	END DIALOG
 
 	DISPLAY CURRENT,": Program Finished."
+END FUNCTION
+FUNCTION upd_tree_item( l_row, l_scr )
+	DEFINE l_row, l_scr SMALLINT
+	INPUT tree_a[l_row].name FROM tree[l_scr].name
 END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION dispInfo()

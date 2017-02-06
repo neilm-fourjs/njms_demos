@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="1745728320" gstVersion="3001d" version="3.1">
+<Project defaultApplication="18736" gstVersion="30020" version="3.1">
   <Settings>
     <DynamicProperties version="2">
       <DynamicProperty description="Accent color (Android 5.0 and later)" initialValue="#9575CD" isDefaultInherited="false" isHidden="false" label="Accent color" name="gma-accent-color" readOnly="false" type="COLOR"/>
@@ -53,132 +53,28 @@
   </Settings>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group compilerOptions=" -DSTUDIO -Dgenero3x" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:BASE=$(ProjectDir)||value:FGLIMAGEPATH=$(FGLDIR)/lib/image2font.txt:$(FGLDIR)/lib:../pics" label="demos" language="Genero" targetDirectory="$(ProjectDir)/bin3x">
-    <Application binaryName="dbquery" commandLineArguments="-db custdemo" dependencies="2" environment="value:FJS_GL_DBGLEV=3||value:FGLPROFILE=$(ProjectDir)/dbquery/etc/profile.Borodin||value:FGLDBPATH=$(ProjectDir)/dbquery/etc" id="1011428924" label="dbquery">
-      <VirtualFolder label="etc">
-        <File filePath="dbquery/etc/profile.Borodin"/>
-        <File filePath="dbquery/etc/profile.Demo"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="dbquery/src/build.inc"/>
-        <File filePath="dbquery/src/dbquery.4gl"/>
-        <File filePath="dbquery/src/dbquery.inc"/>
-        <File filePath="dbquery/src/dbquery_lib.4gl"/>
-        <File filePath="dbquery/src/gen_rpt.4gl"/>
-        <File filePath="dbquery/src/sqlfe.4gl"/>
-        <File filePath="dbquery/src/version.inc"/>
-      </VirtualFolder>
-      <File filePath="dbquery/etc/fjs_demos.4db"/>
-    </Application>
-    <Application binaryName="dynMaint" id="45125898" label="dynMaint" targetDirectory="$(ProjectDir)/dynMaint">
-      <File filePath="dynMaint/dynMaint.4gl"/>
-    </Application>
-    <Application binaryName="ipodTree" dependencies="2" id="-954685760" label="ipodTree">
-      <VirtualFolder label="etc">
-        <File filePath="ipodTree/etc/actions.str"/>
-        <File filePath="ipodTree/etc/default.4ad"/>
-        <File filePath="ipodTree/etc/default.4st"/>
-        <File filePath="ipodTree/etc/genero_lib1.str"/>
-        <File filePath="ipodTree/etc/profile.Borodin"/>
-        <File filePath="ipodTree/etc/profile.cloud"/>
-        <File filePath="ipodTree/etc/profile.oak"/>
-      </VirtualFolder>
-      <File filePath="ipodTree/src/ipod.4gl"/>
-      <File filePath="ipodTree/src/ipod.per"/>
-      <File filePath="ipodTree/src/ipod_sax.4gl"/>
-    </Application>
-    <Library binaryName="lib" id="2" label="lib">
-      <File filePath="lib/actions.str"/>
-      <File filePath="lib/fileutil.inc"/>
-      <File filePath="lib/genero_lib1.4gl"/>
-      <File filePath="lib/genero_lib1.inc"/>
-      <File filePath="lib/genero_lib1.str"/>
-      <File filePath="lib/genero_lib2.4gl"/>
-      <File filePath="lib/gl2_lookup.4gl"/>
-      <File filePath="lib/gl_canvas.4gl"/>
-      <File filePath="lib/gl_comlib.4gl"/>
-      <File filePath="lib/gl_db.4gl"/>
-      <File filePath="lib/gl_ddelib.4gl"/>
-      <File filePath="lib/gl_ddelib.inc"/>
-      <File filePath="lib/gl_fileUtils.4gl"/>
-      <File filePath="lib/gl_fileUtils.per"/>
-      <File filePath="lib/gl_grw.4gl"/>
-      <File filePath="lib/gl_grwCfg.per"/>
-      <File filePath="lib/gl_lookup.4gl"/>
-      <File filePath="lib/gl_lookup.inc"/>
-      <File filePath="lib/gl_lookup2.4gl"/>
-      <File filePath="lib/gl_lookup3.4gl"/>
-      <File filePath="lib/gl_xmlcfg.4gl"/>
+  <Group label="LoginDemo" language="Genero">
+    <Library binaryName="Databases" id="1986" label="Databases">
+      <File filePath="etc/logindemo.4db"/>
+      <File filePath="src/schema.inc"/>
     </Library>
-    <Application binaryName="picFlow" environment="value:PICPATH=../pics" id="-1096760640" label="picFlow">
-      <VirtualFolder label="etc">
-        <File filePath="picFlow/etc/default.4ad"/>
-        <File filePath="picFlow/etc/default.4st"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="picFlow/getopts.per"/>
-        <File filePath="picFlow/picflow.per"/>
-      </VirtualFolder>
-      <File filePath="picFlow/picflow.4gl"/>
+    <Library binaryName="etc" id="2084719298" label="etc">
+      <File filePath="etc/default.4ad"/>
+      <File filePath="etc/default.4st"/>
+    </Library>
+    <Library binaryName="general_lib" id="1831529840" label="general_lib">
+      <File filePath="src/gl_lib.4gl"/>
+    </Library>
+    <Library binaryName="lib_security" dependencies="1986" id="14000" label="lib_security">
+      <File filePath="src/lib_secure.4gl"/>
+    </Library>
+    <Application binaryName="loginDemo" dependencies="14000||1986||1831529840||2084719298" id="18736" label="loginDemo">
+      <File filePath="src/login.4gl"/>
+      <File filePath="src/login.per"/>
+      <File filePath="src/new_acct.per"/>
     </Application>
-    <Application binaryName="unicode" dependencies="2" id="1151305190" label="unicode">
-      <VirtualFolder label="etc">
-        <File filePath="unicode/etc/default.4ad"/>
-        <File filePath="unicode/etc/default.4st"/>
-        <File filePath="unicode/etc/default.str"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="unicode/forms/f_unicode.per"/>
-        <File filePath="unicode/forms/f_unicode2.per"/>
-        <File filePath="unicode/forms/lookup.per"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="unicode/src/examples.4gl"/>
-        <File filePath="unicode/src/unicode.4gl"/>
-      </VirtualFolder>
+    <Application binaryName="mk_db" dependencies="1986" id="1319958480" label="mk_db">
+      <File filePath="src/mk_db.4gl"/>
     </Application>
-    <Application binaryName="widgets" dependencies="2" environment="value:FGLRESOURCEPATH=../etc:$(ProjectDir)/widgets/etc||value:FGLPROFILE=$(ProjectDir)/widgets/etc/profile" id="1745728320" label="widgets">
-      <VirtualFolder label="etc">
-        <File filePath="widgets/etc/actions.str"/>
-        <File filePath="widgets/etc/arr.4tb"/>
-        <File filePath="widgets/etc/colours.txt"/>
-        <File filePath="widgets/etc/genero_lib1.str"/>
-        <File filePath="widgets/etc/mydef.4st"/>
-        <File filePath="widgets/etc/mydefaults.4ad"/>
-        <File filePath="widgets/etc/mydefaults.4sm"/>
-        <File filePath="widgets/etc/mydefaults.4st"/>
-        <File filePath="widgets/etc/mydefaults.4tb"/>
-        <File filePath="widgets/etc/mydefaults1.4st"/>
-        <File filePath="widgets/etc/mydefaults2.4st"/>
-        <File filePath="widgets/etc/mydefaults3.4ad"/>
-        <File filePath="widgets/etc/mydefaults3.4st"/>
-        <File filePath="widgets/etc/mydefaults3.4tb"/>
-        <File filePath="widgets/etc/profile"/>
-      </VirtualFolder>
-      <VirtualFolder label="forms">
-        <File filePath="widgets/forms/md_form.per"/>
-        <File filePath="widgets/forms/newwin.per"/>
-        <File filePath="widgets/forms/table.per"/>
-        <File filePath="widgets/forms/webkit.per"/>
-        <File filePath="widgets/forms/widgets.per"/>
-      </VirtualFolder>
-      <VirtualFolder label="src">
-        <File filePath="widgets/src/build.inc"/>
-        <File filePath="widgets/src/charts.4gl"/>
-        <File filePath="widgets/src/clock2.4gl"/>
-        <File filePath="widgets/src/colour.4gl"/>
-        <File filePath="widgets/src/ddeexcel.4gl"/>
-        <File filePath="widgets/src/version.inc"/>
-        <File filePath="widgets/src/widgets.4gl"/>
-        <File filePath="widgets/src/widgets.inc"/>
-        <File filePath="widgets/src/widgets210.4gl"/>
-      </VirtualFolder>
-    </Application>
-    <Group label="widgets_extra">
-      <Application binaryName="editfile" id="1924001392" label="editfile">
-        <File filePath="widgets/src/editfile.4gl"/>
-        <File excludeFromCompilation="true" excludeFromLink="true" filePath="widgets/src/proglaunch.4gl"/>
-      </Application>
-    </Group>
   </Group>
 </Project>
