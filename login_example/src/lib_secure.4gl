@@ -1,4 +1,6 @@
-#+ Handle an encrypted XML config file
+#+ Provide function to:
+#+ * Handle an encrypted XML config file
+#+ * Encrypt / Decrypt a password & salt pair for storing in a databaase
 #+
 #+ This module initially written by: Neil J.Martin ( neilm@4js.com ) 
 #+
@@ -15,6 +17,12 @@ DEFINE m_file STRING
 CONSTANT DEFPASSLEN=16
 CONSTANT c_sym = "!$%^&*,.;@#?<>"
 --------------------------------------------------------------------------------
+#+ Generate a random password that conforms to the follow set of rules:
+#+ Password must be at least DEFPASSLEN chars long
+#+ Password must contain at least one number
+#+ Password must contain at least one symbol
+#+
+#+ @return String - password
 FUNCTION glsec_genPassword()
 	DEFINE l_pass CHAR(DEFPASSLEN)
 	DEFINE x,y SMALLINT
@@ -34,10 +42,16 @@ FUNCTION glsec_genPassword()
 	RETURN l_pass
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Generate a random salt string
 FUNCTION glsec_genSalt()
 	RETURN security.RandomGenerator.CreateRandomString( 16 )
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Generate a hash or a password using a salt string
+#+
+#+ @param l_pass - String - Password
+#+ @param l_salt - String - The salt value
+#+ @return String - An Encrypted string using SHA256
 FUNCTION glsec_genHash(l_pass,l_salt)
 	DEFINE l_pass, l_salt STRING
 	DEFINE l_hash STRING
@@ -56,6 +70,10 @@ FUNCTION glsec_genHash(l_pass,l_salt)
 	RETURN l_hash
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Get a string from base64 string or raise an error prompt
+#+
+#+ @param l_str - String
+#+ @return String or NULL if failed.
 FUNCTION glsec_fromBase64( l_str )
 	DEFINE l_str STRING
 
@@ -70,6 +88,10 @@ FUNCTION glsec_fromBase64( l_str )
 	RETURN l_str
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Get base64 version of a string or raise an error prompt
+#+
+#+ @param l_str - String
+#+ @return String or NULL if failed.
 FUNCTION glsec_toBase64( l_str )
 	DEFINE l_str STRING
 
@@ -84,6 +106,10 @@ FUNCTION glsec_toBase64( l_str )
 	RETURN l_str
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Retrieve a username/password combination from an encrypted xml config file
+#+
+#+ @param l_typ - String - The type of the data to return, eg: EMAIL / SMS provider creds
+#+ @returns - Strings : username, password
 FUNCTION glsec_getCreds(l_typ)
 	DEFINE l_typ, l_user, l_pwd STRING
 	DEFINE l_node xml.DomNode
@@ -206,14 +232,10 @@ FUNCTION glsec_updCreds(l_typ, l_user, l_pass)
 	RETURN TRUE
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION glsec_logWho()
-	CALL gl_logIt("FGL_WEBSERVER_HTTP_REFERER="||NVL(fgl_getEnv("FGL_WEBSERVER_HTTP_REFERER"),"NULL"))
-	CALL gl_logIt("FGL_WEBSERVER_HTTP_USER_AGENT="||NVL(fgl_getEnv("FGL_WEBSERVER_HTTP_USER_AGENT"),"NULL"))
-	CALL gl_logIt("FGL_WEBSERVER_REMOTE_ADDR="||NVL(fgl_getEnv("FGL_WEBSERVER_REMOTE_ADDR"),"NULL"))
-END FUNCTION
---------------------------------------------------------------------------------
 
-#+ Private Functions.
+--------------------------------------------------------------------------------
+--  PRIVATE FUNCTIONS
+--------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------
 -- Obfuscation Code

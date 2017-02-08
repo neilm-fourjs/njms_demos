@@ -1,5 +1,7 @@
 
 #+ Login Demo
+#+ The purpose of this demo is to show an example of how 
+#+ to use the lib_login & lib_secure libraries
 #+
 #+ This module initially written by: Neil J.Martin ( neilm@4js.com ) 
 #+
@@ -35,12 +37,17 @@ MAIN
 
 END MAIN
 --------------------------------------------------------------------------------
+#+ Do the login call
+#+ @returns NULL or valid email address for an account
 FUNCTION do_login()
 	DEFINE l_login STRING
 
 	LET int_flag = FALSE
 	WHILE NOT int_flag
+
+-- CALL THE LOGIN LIBRARY FUNCTION TO GET A VALID LOGIN EMAIL ADDRESS.
 		LET l_login = lib_login.login(APP, VER, TRUE)
+
 		DISPLAY "Login:",l_login
 		IF l_login = "NEW" THEN 
 			CALL new_acct()
@@ -56,6 +63,7 @@ FUNCTION do_login()
 	RETURN NULL
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Create a new account.
 FUNCTION new_acct()
 	DEFINE l_acc RECORD LIKE accounts.*
 
@@ -68,8 +76,7 @@ FUNCTION new_acct()
 
 	INPUT BY NAME l_acc.* ATTRIBUTES(WITHOUT DEFAULTS, FIELD ORDER FORM, UNBUFFERED)
 		AFTER FIELD email
-			SELECT * FROM accounts WHERE email = l_acc.email
-			IF STATUS != NOTFOUND THEN
+			IF lib_login.sql_checkEmail(l_acc.email) THEN
 				CALL gl_lib.gl_winMessage("Error","This Email is already registered.","exclamation")
 				NEXT FIELD email
 			END IF
@@ -95,6 +102,10 @@ FUNCTION new_acct()
 	LET int_flag = FALSE
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Populate the combox objects
+#+ NOTE: This function is normally called by INITIALIZER statement in a per file.
+#+
+#+ @param l_cb A valid ui.ComboBox object
 FUNCTION pop_combo(l_cb)
 	DEFINE l_cb ui.ComboBox
 

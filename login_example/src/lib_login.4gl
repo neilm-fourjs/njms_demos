@@ -1,4 +1,7 @@
 
+#+ This module is designed to present a login window and allow a user to login
+#+
+
 IMPORT FGL lib_secure
 IMPORT FGL gl_lib
 &include "schema.inc"
@@ -9,9 +12,11 @@ CONSTANT c_sym = "!$%^&*,.;@#?<>" -- valid symbols for use in a password
 #+ Login function - One day when this program grows up it will have single signon 
 #+ then hackers only have one password to crack :)
 #+
-#+ @param l_ver Version Resivion for window ID
+#+ @param l_appname - String - the name of the application ( used in the welcome message and window title )
+#+ @param l_ver - String - the version of the application ( used in the window title )
+#+ @param l_allow_new - Boolean - Enable the 'Create New Account' option.
 #+ @return login email address or NULL or 'NEW' for a new account.
-FUNCTION login(l_appname, l_ver, l_allow_new)
+PUBLIC FUNCTION login(l_appname, l_ver, l_allow_new)
 	DEFINE l_appname, l_ver STRING
 	DEFINE l_allow_new BOOLEAN
 	DEFINE l_login, l_pass STRING
@@ -60,7 +65,24 @@ FUNCTION login(l_appname, l_ver, l_allow_new)
 	RETURN l_login
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION validate_login(l_login,l_pass)
+#+ Check to see if email address exists in database
+#+
+#+ @param l_email Email address to check
+#+ @return true if exists else false
+PUBLIC FUNCTION sql_checkEmail(l_email)
+	DEFINE l_email VARCHAR(60)
+	SELECT * FROM accounts WHERE email = l_email
+	IF STATUS = NOTFOUND THEN RETURN FALSE END IF
+	RETURN TRUE
+END FUNCTION
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+--  PRIVATE FUNCTIONS
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+PRIVATE FUNCTION validate_login(l_login,l_pass)
 	DEFINE l_login LIKE accounts.email
 	DEFINE l_pass LIKE accounts.login_pass
 	DEFINE l_acc RECORD LIKE accounts.*
@@ -101,11 +123,9 @@ FUNCTION validate_login(l_login,l_pass)
 END FUNCTION
 --------------------------------------------------------------------------------
 #+ Forgotten password routine.
-#+ TODO: Actually send the email!!   ( need mail server access or new dedicated gmail account? )
 #+
-#+ Need to change to email a url, the url will take you to the login change password screen.
-#+
-FUNCTION forgotten(l_login)
+#+ @param l_login - String - email address to send email to
+PRIVATE FUNCTION forgotten(l_login)
 	DEFINE l_login LIKE accounts.email
 	DEFINE l_acc RECORD LIKE accounts.*
 	DEFINE l_cmd, l_subj, l_body, l_b64 STRING
@@ -162,18 +182,7 @@ FUNCTION forgotten(l_login)
 	
 END FUNCTION
 --------------------------------------------------------------------------------
-#+ Check to see if email address exists in database
-#+
-#+ @param l_email Email address to check
-#+ @return true if exists else false
-FUNCTION sql_checkEmail(l_email)
-	DEFINE l_email VARCHAR(60)
-	SELECT * FROM accounts WHERE email = l_email
-	IF STATUS = NOTFOUND THEN RETURN FALSE END IF
-	RETURN TRUE
-END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION login_ver_title(l_appname,l_ver)
+PRIVATE FUNCTION login_ver_title(l_appname,l_ver)
 	DEFINE l_appname,l_ver STRING
 	DEFINE w ui.Window
 	DEFINE f ui.Form
@@ -188,7 +197,7 @@ FUNCTION login_ver_title(l_appname,l_ver)
 	END IF
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION passchg(l_login)
+PRIVATE FUNCTION passchg(l_login)
 	DEFINE l_login LIKE accounts.email
 	DEFINE l_pass1, l_pass2 LIKE accounts.login_pass
 	DEFINE w ui.Window
@@ -243,7 +252,7 @@ FUNCTION passchg(l_login)
 	RETURN TRUE
 END FUNCTION
 --------------------------------------------------------------------------------
-FUNCTION pass_ok(l_pass)
+PRIVATE FUNCTION pass_ok(l_pass)
 	DEFINE l_pass LIKE accounts.login_pass
 	DEFINE l_gotUp, l_gotLow, l_gotNum, l_gotSym BOOLEAN
 	DEFINE x,y SMALLINT
@@ -291,35 +300,3 @@ FUNCTION pass_ok(l_pass)
 
 	RETURN TRUE
 END FUNCTION
---------------------------------------------------------------------------------
-FUNCTION chk_AutoLogin()
-	DEFINE x SMALLINT
-	DEFINE l_arg, l_login STRING
-	DEFINE l_acc RECORD LIKE accounts.*
-
-	FOR x = 1 TO base.Application.getArgumentCount()
-		LET l_arg = base.Application.getArgument(x) 
-		IF l_arg.subString(1,7) = "__reset" THEN
-			LET l_login = l_arg.subString(8,l_arg.getLength())
-			IF l_login IS NULL THEN
-				--CALL gl_winMessage("Error","Invalid URL","exclamation")
-				CALL gl_logIt("chk_AutoLogin Error: Null")
-				RETURN NULL
-			END IF
-			LET l_acc.pass_hash = lib_secure.glsec_fromBase64( l_login )
-			SELECT * INTO l_acc.* FROM accounts WHERE accounts.pass_hash = l_ac.pass_hash
-			IF STATUS = NOTFOUND THEN
-				--CALL gl_winMessage("Error","Invalid URL!!","exclamation")
-				CALL gl_logIt("chk_AutoLogin Not Found Hash:"||l_acc.pass_hash)
-				CALL lib_secure.glsec_logWho()
-				RETURN NULL
-			END IF
-			IF passchg(l_acc.email) THEN
-				RETURN l_acc.email
-			END IF
-		END IF
-	END FOR
-
-	RETURN NULL
-END FUNCTION
---------------------------------------------------------------------------------
