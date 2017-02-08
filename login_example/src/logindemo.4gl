@@ -25,15 +25,24 @@ MAIN
 	CALL gl_lib.gl_init(TRUE)
 
 	MENU
+		BEFORE MENU
+			--CALL DIALOG.setActionActive("shwcred",FALSE)
+			CALL DIALOG.setActionActive("updcred",FALSE)
 		ON ACTION close EXIT MENU
 		ON ACTION login
 			LET l_login = do_login()
 			IF l_login IS NOT NULL THEN
 				DISPLAY "Welcome "||l_login TO msg
 				CALL DIALOG.setActionActive("login", FALSE)
+				CALL DIALOG.setActionActive("shwcred",TRUE)
+				CALL DIALOG.setActionActive("updcred",TRUE)
 			END IF
+		ON ACTION updcred CALL creds(TRUE)
+		ON ACTION shwcred CALL creds(FALSE)
 		ON ACTION quit EXIT MENU
 	END MENU
+
+	DISPLAY "Program Finished."
 
 END MAIN
 --------------------------------------------------------------------------------
@@ -100,6 +109,16 @@ FUNCTION new_acct()
 	END IF
 
 	LET int_flag = FALSE
+END FUNCTION
+--------------------------------------------------------------------------------
+FUNCTION creds( l_upd )
+	DEFINE l_upd BOOLEAN
+	DEFINE l_type,l_user, l_pass STRING
+	LET l_type = "email"
+	CALL lib_secure.glsec_getCreds(l_type) RETURNING l_user, l_pass
+	DISPLAY l_type TO cred_type
+	DISPLAY l_user TO username
+	DISPLAY l_pass TO password
 END FUNCTION
 --------------------------------------------------------------------------------
 #+ Populate the combox objects

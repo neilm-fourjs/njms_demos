@@ -103,10 +103,7 @@ PRIVATE FUNCTION validate_login(l_login,l_pass)
 		END IF
 	END IF
 
-	DISPLAY "Paas:",l_pass
 	LET l_hash = lib_secure.glsec_genHash(l_pass,l_acc.salt)
-	DISPLAY "DB Hash:",l_acc.pass_hash
-	DISPLAY "cc Hash:",l_hash
 
 	IF l_hash != l_acc.pass_hash THEN
 		DISPLAY "Hash wrong for:",l_login," Password:",l_acc.login_pass

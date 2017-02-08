@@ -54,6 +54,9 @@
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
   <Group label="LoginDemo" language="Genero">
+    <Application binaryName="crypt" dependencies="14000" id="168340406" label="crypt">
+      <File filePath="src/crypt.4gl"/>
+    </Application>
     <Library binaryName="Databases" id="1986" label="Databases">
       <File filePath="etc/logindemo.4db"/>
       <File filePath="src/schema.inc"/>

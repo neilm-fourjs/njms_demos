@@ -127,6 +127,7 @@ FUNCTION gl_logIt( l_mess ) --{{{
 		LET l_mess = CURRENT||"|"||NVL(l_fil,"NULL")||"|"||l_mess
 	END IF
 	
+	DISPLAY "Log:",l_mess
 	CALL c.writeLine(l_mess)
 
 	CALL c.close()

@@ -11,9 +11,11 @@ IMPORT security
 IMPORT util
 IMPORT FGL gl_lib
 
+-- Private variables:
 DEFINE m_doc xml.domDocument
 DEFINE m_user_node, m_pass_node xml.domNode
 DEFINE m_file STRING
+
 CONSTANT DEFPASSLEN=16
 CONSTANT c_sym = "!$%^&*,.;@#?<>"
 --------------------------------------------------------------------------------
@@ -121,7 +123,6 @@ FUNCTION glsec_getCreds(l_typ)
 	IF m_file.getLength() < 2 THEN CALL get_credFile() END IF
 
 	LET l_key = seclogit()
-	--DISPLAY "Key:",l_key
 
 	LET m_doc = xml.DomDocument.Create()
 # Notice that whitespaces are significants in crytography,
@@ -136,14 +137,14 @@ FUNCTION glsec_getCreds(l_typ)
 		IF l_list.getCount()==1 THEN
 			LET l_node = l_list.getItem(1)
 		ELSE
-			CALL gl_logIt( "No encrypted l_node found" )
+			CALL gl_lib.gl_logIt( "No encrypted l_node found" )
 			EXIT PROGRAM 210
 		END IF
 		# Check if symmetric key name matches the expected "MySecretKey" (Not mandatory)
 		--DISPLAY "Looking for key name ..."
 		LET l_list = l_node.selectByXPath("dsig:KeyInfo/dsig:KeyName[position()=1 and text()=\"MySecretKey\"]","dsig","http://www.w3.org/2000/09/xmldsig#")
 		IF l_list.getCount()!=1 THEN
-			CALL gl_logIt( "Key name doesn't match" )
+			CALL gl_lib.gl_logIt( "Key name doesn't match" )
 			EXIT PROGRAM 211
 		END IF
 	CATCH
@@ -165,7 +166,7 @@ FUNCTION glsec_getCreds(l_typ)
 		--DISPLAY l_doc.saveToString()
 		--DISPLAY "Successful decrypted"
 	CATCH
-		CALL gl_logIt("Unable to decrypt XML file :"||STATUS||":"||err_get(STATUS))
+		CALL gl_lib.gl_logIt("Unable to decrypt XML file :"||STATUS||":"||err_get(STATUS))
 		EXIT PROGRAM 213
 	END TRY
 
@@ -179,7 +180,7 @@ FUNCTION glsec_getCreds(l_typ)
 		--DISPLAY l_typ," User:",l_usr
 	END IF
 
-	LET l_list = m_doc.selectByXPath("//"||l_typ||"/"||a(),"")
+	LET l_list = m_doc.selectByXPath("//"||l_typ||"/password","")
 	IF l_list.getCount() < 1 THEN 
 		--DISPLAY "Failed to find:",l_typ
 	ELSE
@@ -212,7 +213,7 @@ FUNCTION glsec_updCreds(l_typ, l_user, l_pass)
 		CALL m_pass_node.setNodeValue( l_pass )
 		# CALL m_doc.save("DecryptedXMLFile.xml")
 		IF NOT os.Path.rename( m_file, m_file||l_dte ) THEN
-			CALL gl_logIt("Failed to backup creds file:"||STATUS||":"||ERR_GET(STATUS))
+			CALL gl_lib.gl_logIt("Failed to backup creds file:"||STATUS||":"||ERR_GET(STATUS))
 			RETURN FALSE
 		END IF
 		# Create symmetric AES256 key for XML encryption purposes
@@ -226,7 +227,7 @@ FUNCTION glsec_updCreds(l_typ, l_user, l_pass)
 		# Save encrypted document back to disk
 		CALL m_doc.save( m_file ) 
 	CATCH
-		CALL gl_logIt("Unable to encrypt XML file :"||STATUS||":"||err_get(STATUS))
+		CALL gl_lib.gl_logIt("Unable to encrypt XML file :"||STATUS||":"||err_get(STATUS))
 		RETURN FALSE
 	END TRY 
 	RETURN TRUE
@@ -239,14 +240,6 @@ END FUNCTION
 
 --------------------------------------------------------------------------------
 -- Obfuscation Code
-PRIVATE FUNCTION a()
-	DEFINE s STRING
---TODO: fixme
-	LET s = ASCII(111),ASCII(111),ASCII(111),ASCII(111),ASCII(111),ASCII(111),ASCII(111),ASCII(111)
-	RETURN s
-END FUNCTION
---------------------------------------------------------------------------------
--- Obfuscation Code
 PRIVATE FUNCTION secchk(l_s)
 	DEFINE l_s,l_e STRING
 	DEFINE x SMALLINT
@@ -257,7 +250,7 @@ PRIVATE FUNCTION secchk(l_s)
 END FUNCTION
 --------------------------------------------------------------------------------
 -- obfuscate our key
-PRIVATE FUNCTION seclogit()
+{PRIVATE} FUNCTION seclogit()
 	DEFINE s1,s2,s3,s4 STRING
 --TODO: fixme
 	LET s1 = ASCII(62),ASCII(68),ASCII(62),ASCII(64),ASCII(66),ASCII(67),ASCII(69),ASCII(68),ASCII(68),ASCII(67),ASCII(66),ASCII(62),ASCII(62),ASCII(60),ASCII(60),ASCII(62)
@@ -282,11 +275,12 @@ PRIVATE FUNCTION b(s)
 	DISPLAY r
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Sets the m_file module variable and validates that the file exists.
 PRIVATE FUNCTION get_credFile()
 	LET m_file = "../etc/.creds.xml"
 	IF NOT os.Path.exists( m_file ) THEN
-		CALL gl_logIt("Creditials File is Missing!")
+		CALL gl_lib.gl_logIt("Creditials File is Missing!")
 	ELSE
-		CALL gl_logIt("Creditials File is "||m_file)
+		CALL gl_lib.gl_logIt("Creditials File is "||m_file)
 	END IF
 END FUNCTION
