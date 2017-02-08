@@ -1,0 +1,17 @@
+
+LAYOUT (TEXT="A Login Demo", WINDOWSTYLE="main2", IMAGE="fa-mortar-board")
+GRID
+{
+This is a simple Login demo program.
+[a]
+[msg                                     ]
+["                 ":login     :quit     ]
+}
+END -- GRID
+
+ATTRIBUTES
+LABEL msg = FORMONLY.msg, SIZEPOLICY=DYNAMIC, STYLE="big";
+IMAGE a : a IMAGE="fa-smile-o", STYLE="noborder", AUTOSCALE;
+
+BUTTON login : login, STYLE="big", TEXT="Login", IMAGE="fa-unlock";
+BUTTON quit : quit, STYLE="big", TEXT="Quit", IMAGE="fa-power-off";

@@ -15,9 +15,28 @@ CONSTANT APP = %"Login Demo"
 MAIN
 	DEFINE l_login STRING
 
-	CLOSE WINDOW SCREEN
+	OPEN FORM ld FROM "logindemo"
+	DISPLAY FORM ld
+
+	DISPLAY "Hello" TO msg
 
 	CALL gl_lib.gl_init(TRUE)
+
+	MENU
+		ON ACTION close EXIT MENU
+		ON ACTION login
+			LET l_login = do_login()
+			IF l_login IS NOT NULL THEN
+				DISPLAY "Welcome "||l_login TO msg
+				CALL DIALOG.setActionActive("login", FALSE)
+			END IF
+		ON ACTION quit EXIT MENU
+	END MENU
+
+END MAIN
+--------------------------------------------------------------------------------
+FUNCTION do_login()
+	DEFINE l_login STRING
 
 	LET int_flag = FALSE
 	WHILE NOT int_flag
@@ -27,12 +46,15 @@ MAIN
 			CALL new_acct()
 			CONTINUE WHILE
 		END IF
-		IF l_login != "Cancelled" THEN
-			CALL gl_lib.gl_winMessage(%"Login Okay",SFMT(%"Login for user %1 accepted.",l_login),"information")
-			EXIT WHILE
-		END IF
+		EXIT WHILE
 	END WHILE
-END MAIN
+
+	IF l_login != "Cancelled" THEN
+		CALL gl_lib.gl_winMessage(%"Login Okay",SFMT(%"Login for user %1 accepted.",l_login),"information")
+		RETURN l_login
+	END IF
+	RETURN NULL
+END FUNCTION
 --------------------------------------------------------------------------------
 FUNCTION new_acct()
 	DEFINE l_acc RECORD LIKE accounts.*

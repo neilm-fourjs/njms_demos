@@ -19,8 +19,10 @@ FUNCTION login(l_appname, l_ver, l_allow_new)
 
 	LET INT_FLAG = FALSE
 	CALL gl_lib.gl_logIt("Allow New:"||l_allow_new||" Ver:"||l_ver)
+	OPTIONS
+		INPUT NO WRAP
+
 	OPEN WINDOW login WITH FORM "login"
-	OPTIONS INPUT NO WRAP
 	CALL login_ver_title(l_appname, l_ver)
 
 	LET l_login = fgl_getenv("OPENID_email")
