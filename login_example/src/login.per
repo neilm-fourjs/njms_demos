@@ -5,7 +5,7 @@
 #+
 #+ $Id: login.per 2642 2014-03-21 15:29:07Z  $
 
-LAYOUT (TEXT=%"Login Demo",WINDOWSTYLE="dialog login", IMAGE="fa-lock")
+LAYOUT (TEXT=%"Login",WINDOWSTYLE="dialog login", IMAGE="fa-lock")
 GRID ( STYLE="grad1" )
 {
 <G grp1                                           >
@@ -40,7 +40,7 @@ ATTRIBUTES
 GROUP grp1 : grp1, GRIDCHILDRENINPARENT, STYLE="grp1";
 
 --GROUP grp2 : grp2, GRIDCHILDRENINPARENT;
-LABEL titl : titl,TEXT=%"Welcome to the Login Demo",JUSTIFY=CENTER,STYLE="titl";
+LABEL titl : titl,TEXT=%"Welcome",JUSTIFY=CENTER,STYLE="titl";
 
 LABEL l001 : lemail,TEXT=%"Email:",COMMENT=%"Your Email address", STYLE="bold";
 LABEL l002 : lpassw,TEXT=%"Password:", STYLE="bold";
@@ -60,6 +60,6 @@ TEXTEDIT l_rules = FORMONLY.l_rules, SCROLLBARS=NONE,STRETCH=BOTH,STYLE="small";
 LABEL br = FORMONLY.browser, STYLE="f5", JUSTIFY=CENTER;
 
 BUTTON accept : accept, TEXT=%"Login",IMAGE="fa-user";
-BUTTON c : cancel, TEXT="",STYLE="small noborder";
+BUTTON c : cancel, TEXT="",STYLE="small noborder",IMAGE="fa-times-circle";
 BUTTON newacc : acct_new, TEXT=%"Create New Account";
-BUTTON forgotten : forgotten, TEXT=%"Reset Password?",STYLE="small noborder";
+BUTTON forgotten : forgotten, TEXT=%"Reset Password?", IMAGE="fa-question-circle";

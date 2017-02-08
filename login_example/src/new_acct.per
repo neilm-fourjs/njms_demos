@@ -9,9 +9,9 @@ END -- Toolbar
 LAYOUT ( TEXT="Your Details", STYLE="main2", IMAGE="fa-user" )
 GRID
 {
-[acct_id   |r1|f001        ]
+[acct_id   |r1|f001        ]  [r                                  ]
 [email     |r6|f007                                               ]
-[salutation|r2|f003        ]  [r                                  ]
+[salutation|r2|f003        ]  
 [forenames |r3|f004                                               ]
 [surname   |r4|f005                              ]
 [position  |r5|f006                                               ]
@@ -30,7 +30,7 @@ TABLES
 accounts
 
 ATTRIBUTES
-LABEL r  : r , TEXT="* Required",STYLE="required",JUSTIFY=CENTER;
+LABEL r  : r , TEXT="( * = Required )",STYLE="required",JUSTIFY=CENTER;
 LABEL r1 : r1, TEXT="",STYLE="required",HIDDEN;
 LABEL r2 : r2, TEXT="",STYLE="required",HIDDEN;
 LABEL r3 : r3, TEXT="*",STYLE="required";
@@ -43,7 +43,7 @@ LABEL ra : ra, TEXT="",STYLE="required";
 LABEL rd : rd, TEXT="",STYLE="required";
 LABEL rp : rp, TEXT="*",STYLE="required";
 
-LABEL acct_id : lc, TEXT=%"Account Id:",JUSTIFY=RIGHT, HIDDEN;
+LABEL acct_id : lc, TEXT=%"Account Id:",JUSTIFY=RIGHT;
 LABEL email			 : em, TEXT=%"Email:",JUSTIFY=RIGHT;
 LABEL salutation : sl, TEXT=%"Saluation:",JUSTIFY=RIGHT;
 LABEL forenames	 : fn, TEXT=%"First Name:",JUSTIFY=RIGHT;
@@ -56,7 +56,7 @@ LABEL forcepwch  : fp, TEXT=%"Force Pass Change:",JUSTIFY=RIGHT;
 
 LABEL passwd : pw, TEXT=%"Password:", JUSTIFY=RIGHT;
 
-f001 = accounts.acct_id, DEFAULT=0, HIDDEN;
+f001 = accounts.acct_id, DEFAULT=0;
 f007 = accounts.email, NOT NULL, REQUIRED, TABINDEX=1;
 f003 = accounts.salutation, TABINDEX=2;
 f004 = accounts.forenames, NOT NULL, REQUIRED, TABINDEX=3;

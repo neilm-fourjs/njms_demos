@@ -65,12 +65,15 @@
     <Library binaryName="general_lib" id="1831529840" label="general_lib">
       <File filePath="src/gl_lib.4gl"/>
     </Library>
+    <Library binaryName="lib_login" dependencies="1831529840||14000||1986" id="1991845598" label="lib_login">
+      <File filePath="src/lib_login.4gl"/>
+      <File filePath="src/login.per"/>
+    </Library>
     <Library binaryName="lib_security" dependencies="1986" id="14000" label="lib_security">
       <File filePath="src/lib_secure.4gl"/>
     </Library>
-    <Application binaryName="loginDemo" dependencies="14000||1986||1831529840||2084719298" id="18736" label="loginDemo">
+    <Application binaryName="loginDemo" dependencies="14000||1986||1831529840||2084719298||1991845598" id="18736" label="loginDemo">
       <File filePath="src/login.4gl"/>
-      <File filePath="src/login.per"/>
       <File filePath="src/new_acct.per"/>
     </Application>
     <Application binaryName="mk_db" dependencies="1986" id="1319958480" label="mk_db">
