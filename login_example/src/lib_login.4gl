@@ -88,34 +88,37 @@ PRIVATE FUNCTION validate_login(l_login,l_pass)
 	DEFINE l_acc RECORD LIKE accounts.*
 	DEFINE l_hash LIKE accounts.pass_hash
 
+-- does account exist?
 	SELECT * INTO l_acc.* FROM accounts WHERE email = l_login
 	IF STATUS = NOTFOUND THEN
 		CALL gl_logIt("No account for:"||l_login)
 		RETURN FALSE
 	END IF
 
-	IF l_acc.pass_expire IS NOT NULL AND l_acc.pass_expire > DATE("01/01/1990") THEN
-		IF l_acc.pass_expire <= TODAY THEN
-			CALL gl_lib.gl_logIt("Your password has expired:"||l_acc.pass_expire)
-			CALL gl_lib.gl_winMessage(%"Error",%"Your password has expired!You will be issued with a new one!","exclamation")
-			CALL forgotten(l_login)
-			RETURN FALSE
-		END IF
-	END IF
-
+-- is password correct?
 	LET l_hash = lib_secure.glsec_genHash(l_pass,l_acc.salt)
-
 	IF l_hash != l_acc.pass_hash THEN
 		DISPLAY "Hash wrong for:",l_login," Password:",l_acc.login_pass
 		RETURN FALSE
 	END IF
 
+-- Has the password expired?
+	IF l_acc.pass_expire IS NOT NULL AND l_acc.pass_expire > DATE("01/01/1990") THEN
+		IF l_acc.pass_expire <= TODAY THEN
+			CALL gl_lib.gl_logIt("Password has expired:"||l_acc.pass_expire)
+			CALL gl_lib.gl_winMessage(%"Error",%"Your password has expired!\nYou will need to create a new one!","exclamation")
+			LET l_acc.forcepwchg = "Y" 
+		END IF
+	END IF
+
+-- do we need to force a password change?
 	IF l_acc.forcepwchg = "Y" THEN
 		IF NOT passchg(l_login) THEN
 			RETURN FALSE
 		END IF
 	END IF
 
+-- all okay
 	RETURN TRUE
 END FUNCTION
 --------------------------------------------------------------------------------

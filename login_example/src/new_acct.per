@@ -24,6 +24,7 @@ GRID
 [forcepwch |rd|b]
 [""]
 [passwd    |rp|p001                              ]
+[passexp   |pe|p002             ]
 }
 END -- GRID
 END -- LAYOUT
@@ -44,8 +45,9 @@ LABEL r8 : r8, TEXT="*",STYLE="required";
 LABEL ra : ra, TEXT="",STYLE="required";
 LABEL rd : rd, TEXT="",STYLE="required";
 LABEL rp : rp, TEXT="*",STYLE="required";
+LABEL pe : pe, TEXT="*",STYLE="required";
 
-LABEL acct_id : lc, TEXT=%"Account Id:",JUSTIFY=RIGHT;
+LABEL acct_id    : lc, TEXT=%"Account Id:",JUSTIFY=RIGHT;
 LABEL email			 : em, TEXT=%"Email:",JUSTIFY=RIGHT;
 LABEL salutation : sl, TEXT=%"Saluation:",JUSTIFY=RIGHT;
 LABEL forenames	 : fn, TEXT=%"First Name:",JUSTIFY=RIGHT;
@@ -55,8 +57,8 @@ LABEL comment		 : cm, TEXT=%"Comment:",JUSTIFY=RIGHT;
 LABEL user_type	 : ut, TEXT=%"User Type:",JUSTIFY=RIGHT;
 LABEL active		 : ac, TEXT=%"Active:",JUSTIFY=RIGHT;
 LABEL forcepwch  : fp, TEXT=%"Force Pass Change:",JUSTIFY=RIGHT;
-
-LABEL passwd : pw, TEXT=%"Password:", JUSTIFY=RIGHT;
+LABEL passwd     : pw, TEXT=%"Password:", JUSTIFY=RIGHT;
+LABEL passexp    : pe, TEXT=%"Password Expires:",JUSTIFY=RIGHT;
 
 f001 = accounts.acct_id, DEFAULT=0;
 f007 = accounts.email, NOT NULL, REQUIRED, TABINDEX=1;
@@ -70,6 +72,8 @@ CHECKBOX a = accounts.active,VALUECHECKED=1,VALUEUNCHECKED=0,DEFAULT=1,NOT NULL;
 CHECKBOX b = accounts.forcepwchg, VALUECHECKED="Y", VALUEUNCHECKED="N",NOT NULL;
 
 BUTTONEDIT p001 = accounts.login_pass, INVISIBLE, VERIFY, NOT NULL, TABINDEX=8, ACTION=generate, IMAGE="fa-cog";
+DATEEDIT p002 = accounts.pass_expire, NOT NULL, TABINDEX=9;
+
 PHANTOM accounts.salt;
 PHANTOM accounts.pass_hash;
-PHANTOM accounts.pass_expire;
+

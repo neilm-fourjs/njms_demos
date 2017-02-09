@@ -32,7 +32,7 @@ MAIN
 		ON ACTION login
 			LET l_login = do_login()
 			IF l_login IS NOT NULL THEN
-				DISPLAY "Welcome "||l_login TO msg
+				DISPLAY SFMT(%"Welcome %1",l_login) TO msg
 				CALL DIALOG.setActionActive("login", FALSE)
 				CALL DIALOG.setActionActive("shwcred",TRUE)
 				CALL DIALOG.setActionActive("updcred",TRUE)
@@ -80,14 +80,20 @@ FUNCTION new_acct()
 	LET l_acc.acct_type = 1
 	LET l_acc.active = TRUE
 	LET l_acc.forcepwchg = "Y"
+	LET l_acc.pass_expire = TODAY + 6 UNITS MONTH
 
 	OPEN WINDOW new_acct WITH FORM "new_acct"
 
 	INPUT BY NAME l_acc.* ATTRIBUTES(WITHOUT DEFAULTS, FIELD ORDER FORM, UNBUFFERED)
 		AFTER FIELD email
 			IF lib_login.sql_checkEmail(l_acc.email) THEN
-				CALL gl_lib.gl_winMessage("Error","This Email is already registered.","exclamation")
+				CALL gl_lib.gl_winMessage(%"Error",%"This Email is already registered.","exclamation")
 				NEXT FIELD email
+			END IF
+		AFTER FIELD pass_expire
+			IF l_acc.pass_expire < (TODAY + 1 UNITS MONTH) THEN
+				ERROR %"Password expire date can not be less than 1 month."
+				NEXT FIELD pass_expire
 			END IF
 		BEFORE INPUT
 			CALL DIALOG.setFieldActive("accounts.acct_id",FALSE)
@@ -104,13 +110,14 @@ FUNCTION new_acct()
 	IF NOT int_flag THEN
 		LET l_acc.salt = lib_secure.glsec_genSalt()
 		LET l_acc.pass_hash = lib_secure.glsec_genHash(l_acc.login_pass ,l_acc.salt)
-		LET l_acc.login_pass = "PasswordEncrypted!"
+		LET l_acc.login_pass = "PasswordEncrypted!" -- we don't store their clear text password!
 		INSERT INTO accounts VALUES l_acc.*
 	END IF
 
 	LET int_flag = FALSE
 END FUNCTION
 --------------------------------------------------------------------------------
+#+ Show the creditials from the encrypted xml file.
 FUNCTION creds( l_upd )
 	DEFINE l_upd BOOLEAN
 	DEFINE l_type,l_user, l_pass STRING
@@ -130,8 +137,8 @@ FUNCTION pop_combo(l_cb)
 
 	CASE l_cb.getColumnName()
 		WHEN "acct_type"
-			CALL l_cb.addItem(1,"Normal User")
-			CALL l_cb.addItem(2,"Admin User")
+			CALL l_cb.addItem(1,%"Normal User")
+			CALL l_cb.addItem(2,%"Admin User")
 	END CASE
 END FUNCTION
 --------------------------------------------------------------------------------
