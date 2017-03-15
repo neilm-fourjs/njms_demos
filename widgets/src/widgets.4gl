@@ -318,7 +318,7 @@ GL_MODULE_ERROR_HANDLER
 				END FOR
 				CALL gl_progBar(3,0,"")
 
-&ifdef genero3x
+&ifndef genero250
 			ON TIMER 2
 				LET timeedit = CURRENT
 				LET datetimeedit = CURRENT
@@ -345,21 +345,21 @@ GL_MODULE_ERROR_HANDLER
 						CONTINUE DIALOG
 					END TRY
 				END IF
-&ifdef genero3x
+&ifndef genero250
 				MENU "" ATTRIBUTES(STYLE="popup")
-					COMMAND "systables2"
+					COMMAND "systables 3"
 						LET tmp = gl_lookup3( "systables",
 							"tabname,created,nrows,rowsize,(nrows*rowsize)",
 							"Name,Created,Rows,RowSize,Total",
 							"tabid>99",
 							"tabname")
-					COMMAND "Stock"
+					COMMAND "Stock 3"
 						LET tmp = gl_lookup3( "stock",
 							"stock_code,description,stock_cat,pack_flag,supp_code,price,cost,physical_stock,allocated_stock,free_stock",
 							"Code,Description,Cat,Pack,Supplier,Price,Cost,Stock,Allocated,Free",
 							"1=1",
 							"stock_code")
-					COMMAND "Customers"
+					COMMAND "Customers 3"
 						LET tmp = gl_lookup3( "customer",
 							"customer_code,customer_name,contact_name,total_invoices,outstanding_amount",
 							"_,Customer,Contact,Invoices,Balance",
