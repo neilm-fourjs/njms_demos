@@ -182,7 +182,7 @@ GL_MODULE_ERROR_HANDLER
 			LET newarr2[cnt].tabc6 = NULL
 		END IF
 	END FOR
-&ifdef genero3x
+&ifndef genero250
 	CALL load_new_imgarr()
 	CALL arr.clear()
 	FOR cnt = 1 TO m_imgrec.getLength()

@@ -302,7 +302,7 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 				END IF
 			BEFORE ROW
 				CALL curr.setAttribute("text",arr_curr() USING "#,##&")
-&ifdef genero3x
+&ifndef genero250
 			ON SORT
 				DISPLAY "Sorted!!"
 &endif

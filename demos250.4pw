@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Project defaultApplication="1745728320" gstVersion="23217" version="3.0">
+<Project defaultApplication="1745728320" gstVersion="2321b" version="3.0">
   <Settings/>
   <LanguageList version="1.0"/>
   <PlatformList version="1.0"/>
-  <Group compilerOptions="-DSTUDIO" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:FGLIMAGEPATH=$(ProjectDir)/pics" label="demos" targetDirectory="$(ProjectDir)/bin25x">
+  <Group compilerOptions=" -DSTUDIO -Dgenero250" environment="value:DBNAME=fjs_demos||value:FJS_GL_DBGLEV=3||value:FGLIMAGEPATH=$(ProjectDir)/pics" label="demos" targetDirectory="$(ProjectDir)/bin25x">
     <Application commandLineArguments="-db custdemo" dependencies="2" environment="value:FJS_GL_DBGLEV=3||value:FGLIMAGEPATH=../pics||value:FGLPROFILE=$(ProjectDir)/dbquery/etc/profile.Borodin||value:FGLDBPATH=$(ProjectDir)/dbquery/etc" id="1011428924" label="dbquery">
       <VirtualFolder label="etc">
         <File filePath="dbquery/etc/profile.Borodin"/>
@@ -51,7 +51,7 @@
       <File filePath="ipodTree/src/ipod_sax.4gl"/>
       <File filePath="ipodTree/music.xml"/>
     </Application>
-    <Library compilerOptions="-DGENLIB" id="2" label="lib">
+    <Library id="2" label="lib">
       <File filePath="lib/actions.str"/>
       <File filePath="lib/fileutil.inc"/>
       <File filePath="lib/genero_lib1.4gl"/>
@@ -101,7 +101,7 @@
         <File filePath="unicode/src/unicode.4gl"/>
       </VirtualFolder>
     </Application>
-    <Application compilerOptions="-DSTUDIO" dependencies="2" environment="value:FGLRESOURCEPATH=../etc:$(ProjectDir)/widgets/etc||value:FGLPROFILE=$(ProjectDir)/widgets/etc/profile" id="1745728320" label="widgets">
+    <Application dependencies="2" environment="value:FGLRESOURCEPATH=../etc:$(ProjectDir)/widgets/etc||value:FGLPROFILE=$(ProjectDir)/widgets/etc/profile" id="1745728320" label="widgets">
       <VirtualFolder label="etc">
         <File filePath="widgets/etc/actions.str"/>
         <File filePath="widgets/etc/arr.4tb"/>

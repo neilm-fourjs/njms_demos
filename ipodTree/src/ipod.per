@@ -49,7 +49,6 @@ TREE mytree ( PARENTIDCOLUMN=pid, IDCOLUMN=id, EXPANDEDCOLUMN=expanded, STYLE="t
 [f001              |f004]
 [f001              |f004]
 }
---[f001          |f004|pid|id|img]
 END -- TREE
 
 VBOX (SPLITTER, STYLE="grad qtcurve")
@@ -141,7 +140,7 @@ PHANTOM FORMONLY.id;
 PHANTOM FORMONLY.image;
 PHANTOM FORMONLY.expanded;
 
--- List
+-- Tracks
 PHANTOM FORMONLY.genre_key;
 PHANTOM FORMONLY.artist_key;
 PHANTOM FORMONLY.album_key;
@@ -155,5 +154,5 @@ PHANTOM FORMONLY.img;
 
 END
 INSTRUCTIONS
-SCREEN RECORD tree [20] ( name, year, pid, id, image, expanded )
-SCREEN RECORD tracks [20] ( FORMONLY.genre_key THRU img )
+SCREEN RECORD tree ( name, year, pid, id, image, expanded )
+SCREEN RECORD tracks ( FORMONLY.genre_key THRU img )

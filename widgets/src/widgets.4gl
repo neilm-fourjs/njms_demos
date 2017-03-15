@@ -179,7 +179,7 @@ GL_MODULE_ERROR_HANDLER
 			LET newarr2[cnt].tabc6 = NULL
 		END IF
 	END FOR
-&ifdef genero3x
+&ifndef genero250
 	CALL load_new_imgarr(FALSE) -- old icons
 	CALL load_new_imgarr(TRUE) -- fa icons
 	CALL arr.clear()
