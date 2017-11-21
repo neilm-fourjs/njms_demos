@@ -4,10 +4,8 @@
 
 dbi.database.spec.ifxemul.dblquotes =false
 
-dbi.default.driver = "dbmads3x"
-
 # Informix
-#dbi.default.driver = "dbmifx9x"
+dbi.default.driver = "dbmifx"
 
 # SQL Server
-#dbi.default.driver = "dbmmsv80"
+#dbi.default.driver = "dbmmsv"

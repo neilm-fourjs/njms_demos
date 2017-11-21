@@ -1323,7 +1323,7 @@ FUNCTION gl_splash() --{{{
 --	LET n = g.createChild("Label")
 
 	CALL ui.interface.refresh()
-	SLEEP 2
+	SLEEP 3
 	CLOSE WINDOW splash
 END FUNCTION --}}}
 ----------------------------------------------------------------------------------
@@ -1915,9 +1915,9 @@ FUNCTION gl_winQuestion(title,message,ans,items,icon) --{{{
 END FUNCTION --}}}
 ----------------------------------------------------------------------------------
 #+ Progressbar Routine.
-#+
+#+ Example call:
 #+ @code 
-#+ CALL gl_progBar(1,10,"Working...")   Open window and set max = 10
+#+ CALL gl_progBar(1,10,"Processing, please wait ...")   Open window and set max = 10
 #+ FOR x = 1 TO 10
 #+ 	CALL gl_progBar(2,x,NULL)  Move the bar to x position
 #+ END FOR
@@ -1928,12 +1928,11 @@ END FUNCTION --}}}
 #+ @param txt Text display below the bar in the window.
 #+ @return Nothing.
 FUNCTION gl_progBar(meth,curval,txt) --{{{
-
 	DEFINE meth INTEGER
 	DEFINE curval INTEGER
 	DEFINE txt STRING
 	DEFINE winnode, frm, g, frmf, pbar om.DomNode
-
+-- open window and create form
 	IF meth = 1 OR meth = 0 THEN
 		OPEN WINDOW progbar WITH 1 ROWS, 50 COLUMNS
 		LET winnode = gl_getWinNode(NULL)
@@ -1965,11 +1964,11 @@ FUNCTION gl_progBar(meth,curval,txt) --{{{
 			LET frmf = g.createChild('SpacerItem')
 		END IF
 	END IF
-
+-- update the progressbar
 	IF meth = 2 THEN
 		DISPLAY curval TO progress
 	END IF
-
+-- close the window
 	IF meth = 3 THEN
 		CLOSE WINDOW progbar
 	END IF
@@ -2150,7 +2149,6 @@ END FUNCTION --}}}
 #+
 #+ @return Nothing.
 FUNCTION gl_error() --{{{
-
   DEFINE l_err,l_mod STRING
   DEFINE l_stat INTEGER
   DEFINE x,y SMALLINT
@@ -2171,7 +2169,6 @@ FUNCTION gl_error() --{{{
   LET l_err = l_stat||":"||l_err||"\n"||l_mod
 --  CALL gl_logIt("Error:"||l_err)
   CALL gl_winMessage("Error",l_err,"exclamation")
-
 
 END FUNCTION --}}}
 ----------------------------------------------------------------------------------
@@ -3643,16 +3640,3 @@ FUNCTION gl_floatKeys(o_c) --{{{
 
 END FUNCTION --}}}
 --------------------------------------------------------------------------------
-&ifndef genero23x
-#+ Special - this function is built in to 2.3x
-FUNCTION fgl_db_driver_type()
-	DEFINE dbname, dbdrv STRING
-
-	LET dbname = fgl_getEnv("DBNAME")
-	IF dbname IS NULL THEN LET dbname = "unknown" END IF
-	GL_DBGMSG(0, "fgl_db_driver_type, dbname:"||dbname)
-	LET dbdrv = fgl_getresource("dbi.database."||dbname||".driver")
-	IF dbdrv IS NULL THEN LET dbdrv = "???" END IF
-	RETURN dbdrv.subString(4,6)
-END FUNCTION
-&endif

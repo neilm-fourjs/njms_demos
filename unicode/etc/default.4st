@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ANSI_X3.4-1968"?>
 <StyleList>
   <Style name=".big">
      <StyleAttribute name="fontSize" value="14pt" />
@@ -9,6 +10,11 @@
      <StyleAttribute name="windowType" value="normal" />
      <StyleAttribute name="startMenuPosition" value="menu" />
   </Style>
+  <Style name="Window.main2">
+     <StyleAttribute name="windowType" value="normal" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+  </Style>
   <Style name="Window.dialog">
      <StyleAttribute name="windowType" value="modal" />
      <StyleAttribute name="sizable" value="no" />
@@ -17,6 +23,34 @@
      <StyleAttribute name="ringMenuPosition" value="bottom" />
      <StyleAttribute name="toolBarPosition" value="none" />
      <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog2">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="no" />
+     <StyleAttribute name="position" value="center" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog3">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="yes" />
+     <StyleAttribute name="toolBarPosition" value="none" />
+     <StyleAttribute name="actionPanelPosition" value="none" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
+  </Style>
+  <Style name="Window.dialog4">
+     <StyleAttribute name="windowType" value="modal" />
+     <StyleAttribute name="sizable" value="yes" />
+     <StyleAttribute name="actionPanelPosition" value="bottom" />
+     <StyleAttribute name="ringMenuPosition" value="none" />
+     <StyleAttribute name="statusBarType" value="none" />
+     <StyleAttribute name="errorMessagePosition" value="popup" />
   </Style>
   <Style name="Window.naked">
      <StyleAttribute name="windowType" value="modal" />
@@ -28,7 +62,7 @@
   </Style>
   <Style name="Window.viewer">
      <StyleAttribute name="windowType" value="modal" />
-     <StyleAttribute name="windowSystemMenu" value="no" />
+     <StyleAttribute name="windowSystemMenu" value="yes" />
      <StyleAttribute name="windowOptionMinimize" value="no" />
      <StyleAttribute name="windowOptionMaximize" value="no" />
      <StyleAttribute name="sizable" value="yes" />
@@ -36,9 +70,5 @@
      <StyleAttribute name="ringMenuPosition" value="none" />
      <StyleAttribute name="toolBarPosition" value="none" />
      <StyleAttribute name="statusBarType" value="none" />
-  </Style>
-  <Style name="Window.maint">
-     <StyleAttribute name="actionPanelPosition" value="none" />
-     <StyleAttribute name="ringMenuPosition" value="none" />
   </Style>
 </StyleList>

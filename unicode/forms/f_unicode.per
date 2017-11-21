@@ -13,13 +13,14 @@ TOOLBAR
 	ITEM unload
 END -- Toolbar
 
-LAYOUT (TEXT=%"Unicode Demo")
+LAYOUT (TEXT=%"Unicode Demo", STYLE="main2")
 VBOX
 GRID
 {
- [l000     |lang                       ] [img   ]
-                                         [      ]
-
+ [l000     |lang                       ] [img   ] LANG:         [e001               ]DBNAME:   [e004               ]
+                                         [      ] CLIENT_LOCALE:[e002               ]DBCOLLATE:[e005               ]
+                                                  DB_LOCALE:    [e003               ]
+																									
 <G grp1                                                                                                  >
  [l001                    |f001                     ][l002                    |f002                     ]
  [l003                    |f003                     ]
@@ -50,6 +51,12 @@ ATTRIBUTES
 LABEL l000 : lab0, TEXT=%"Language";
 COMBOBOX lang = FORMONLY.lang,INITIALIZER=popcombo;
 IMAGE img  = FORMONLY.img, AUTOSCALE;
+
+e001 = FORMONLY.env_lang;
+e002 = FORMONLY.cli_locale;
+e003 = FORMONLY.db_locale;
+e004 = FORMONLY.db_name;
+e005 = FORMONLY.db_collate;
 
 GROUP grp1 : grp1, TEXT=%"Label";
 

@@ -1,5 +1,6 @@
 
 IMPORT os
+IMPORT FGL gl_db
 
 GLOBALS
 	DEFINE langs DYNAMIC ARRAY OF RECORD
@@ -49,6 +50,7 @@ DEFINE envlang, envlocale STRING
 MAIN
 	DEFINE x SMALLINT
 	DEFINE l_mode, l_file STRING
+	DEFINE l_collate VARCHAR(32)
 
 	CALL gldb_connect(NULL)
 	DISPLAY "FGLPROFILE=",fgl_getEnv("FGLPROFILE")
@@ -66,7 +68,7 @@ MAIN
 	END IF
 	
 	LET cur_row = 1
-	LET m_path = "../unicode/etc/"
+	LET m_path = "../etc/"
 
 	TRY
 		SELECT COUNT(*) FROM uc_langs
@@ -106,6 +108,15 @@ MAIN
 	OPEN FORM test FROM "f_unicode"
 	DISPLAY FORM test
 	CALL fgl_setTitle("Unicode Demo - LANG="||envlang||" LOCALE="||envlocale )
+
+	DISPLAY envlang TO env_lang
+	DISPLAY fgl_getEnv("CLIENT_LOCALE") TO cli_locale
+	DISPLAY fgl_getEnv("DB_LOCALE") TO db_locale
+	DISPLAY gl_db.m_dbnam TO db_name
+	IF gl_db.gldb_getDBType() = "ifx" THEN
+		SELECT dbs_collate INTO l_collate FROM sysmaster:sysdbslocale WHERE dbs_dbsname = gl_db.m_dbnam
+	END IF
+	DISPLAY l_collate TO db_collate
 
 	LET rec.lang = envlang
 	FOR x = 1 TO langs.getLength()
@@ -515,8 +526,8 @@ FUNCTION cre_db()
 	DEFINE stat SMALLINT
 
 	LET quot = "  "
-	
-	LET db = "db_ads+driver='dbmads380',source='"||dsn||"',username='SYSTEM',password='SYSTEM',resource='spec'"
+	LET dsn = "unicode.db"
+	LET db = "db_sqt+driver='dbmsqt',source='"||dsn||"',username='SYSTEM',password='SYSTEM',resource='spec'"
 
 	DISPLAY 'dB:',db CLIPPED
 	DATABASE db

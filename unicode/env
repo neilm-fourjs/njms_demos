@@ -1,9 +1,17 @@
 
-export FGLIMAGEPATH=./pics
+export FGLIMAGEPATH=../pics:$FGLDIR/lib/image2font.txt
+export FGLRESOURCEPATH=../etc
 
-unset CLIENT_LOCALE
+export DBNAME=unicode
+
+export CLIENT_LOCALE=en_gb.utf8
+
 unset SERVER_LOCALE
 unset DB_LOCALE
 unset LC_CTYPE
 
-echo Lang: $LANG Locale: $LOCALE
+echo CLIENT_LOCALE=$CLIENT_LOCALE
+echo SERVER_LOCALE=$SERVER_LOCALE
+echo DB_LOCALE=$DB_LOCALE
+
+echo Lang: $LANG
