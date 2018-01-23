@@ -15,8 +15,8 @@
 &include "gl_lookup.inc"
 
 GLOBALS
-  DEFINE xml_sch om.domdocument
-  DEFINE xml_root om.domnode
+	DEFINE xml_sch om.domdocument
+	DEFINE xml_root om.domnode
 	DEFINE gl_currRow INTEGER -- Can be used to set current row.
 END GLOBALS
 
@@ -31,19 +31,19 @@ DEF_DATA_AR
 #+ @code LET key = gl_lookup( tabnam, cols, colts, ftyp, wher, ordby )
 #+
 #+ @param tabnam table name
-#+ @param cols  columns names up to MAX_COLS ( comma seperated )
+#+ @param cols	columns names up to MAX_COLS ( comma seperated )
 #+ @param colts columns titles up to MAX_COLS ( comma seperated )
 #+					can be NULL to use column names
 #+					can be _ to have a hidden column - ie 1st col if it's a key
-#+          can include ~X to set column width - ie Code~8 ( width=8 )
-#+ @param ftyp  types of columns D=Date, C=Char, N=Numeric/Decimal, I=Integer
+#+					can include ~X to set column width - ie Code~8 ( width=8 )
+#+ @param ftyp	types of columns D=Date, C=Char, N=Numeric/Decimal, I=Integer
 #+					can be ?,?,? etc for default of column type from xml sch
-#+ @param wher  The WHERE clause, 1=1 means all, or use result of construct
+#+ @param wher	The WHERE clause, 1=1 means all, or use result of construct
 #+ @param ordby The ORDER BY clause
 FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 	DEFINE tabnam, cols, colts, wher, ordby STRING
 	DEFINE ftyp CHAR(MAX_COLS)
-	DEFINE win, frm, grid, tabl, tabc, edit, curr  om.DomNode
+	DEFINE win, frm, grid, tabl, tabc, edit, curr	om.DomNode
 	DEFINE hb,sp,titl om.DomNode
 	DEFINE fn CHAR(4)
 	DEFINE col_cnt SMALLINT
@@ -61,10 +61,10 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 
 	GL_MODULE_ERROR_HANDLER
 	GL_DBGMSG(2,"gl_lookup: table(s)="||tabnam)
-	GL_DBGMSG(2,"gl_lookup: cols    ="||cols)
-	GL_DBGMSG(2,"gl_lookup: titles  ="||colts)
-	GL_DBGMSG(2,"gl_lookup: ftypes  ="||ftyp)
-	GL_DBGMSG(2,"gl_lookup: where   ="||wher)
+	GL_DBGMSG(2,"gl_lookup: cols		="||cols)
+	GL_DBGMSG(2,"gl_lookup: titles	="||colts)
+	GL_DBGMSG(2,"gl_lookup: ftypes	="||ftyp)
+	GL_DBGMSG(2,"gl_lookup: where	 ="||wher)
 	GL_DBGMSG(2,"gl_lookup: orderby ="||ordby)
 
 	LET int_flag = FALSE
@@ -165,27 +165,27 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 	
 -- Get column length from xml schema if xml_root is not null
 	IF xml_root IS NOT NULL THEN
-  	FOR x = 1 TO col_cnt
-    	LET xml_col[x] = gl_findXmlCol(tabnam,col_titles[x],xml_root)
-    	LET col_len[x] = xml_col[x].getAttribute("collen")
+		FOR x = 1 TO col_cnt
+			LET xml_col[x] = gl_findXmlCol(tabnam,col_titles[x],xml_root)
+			LET col_len[x] = xml_col[x].getAttribute("collen")
 			IF ftyp[x] = "?" THEN
-    		LET ttype = xml_col[x].getAttribute("type")
+				LET ttype = xml_col[x].getAttribute("type")
 				CASE 
 					WHEN ttype[1,7] = "DECIMAL"
-    				LET ftyp[x] = "N"
+						LET ftyp[x] = "N"
 					WHEN ttype[1,7] = "INTEGER"
-    				LET ftyp[x] = "I"
+						LET ftyp[x] = "I"
 					WHEN ttype[1,8] = "SMALLINT"
-    				LET ftyp[x] = "I"
+						LET ftyp[x] = "I"
 					WHEN ttype[1,4] = "DATE"
-    				LET ftyp[x] = "D"
+						LET ftyp[x] = "D"
 					WHEN ttype[1,4] = "CHAR"
-    				LET ftyp[x] = "C"
+						LET ftyp[x] = "C"
 					WHEN ttype[1,7] = "VARCHAR"
-    				LET ftyp[x] = "C"
+						LET ftyp[x] = "C"
 				END CASE
 			END IF
-  	END FOR
+		END FOR
 	END IF
 
 -- Setup column titles if supplied.
@@ -220,7 +220,7 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 			LET tabc = tabl.createChild('TableColumn')
 			CALL tabc.setAttribute("colName",fn)
 			LET edit = tabc.createChild('Edit')
-			IF ftyp[i] != "C" AND ftyp[i] != "D"  THEN
+			IF ftyp[i] != "C" AND ftyp[i] != "D"	THEN
 				CALL edit.setAttribute("justify","right")
 				IF ftyp[i] = "I" THEN
 					IF tlen > 5 THEN
@@ -247,11 +247,11 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 -- Create centered buttons.
 	LET hb = grid.createChild('HBox')
 	CALL hb.setAttribute("posY","3")
-  LET curr = hb.createChild('Label')
-  CALL curr.setAttribute("text","Row:")
-  LET curr = hb.createChild('Label')
-  CALL curr.setAttribute("name","cur_row")
-  CALL curr.setAttribute("sizePolicy","dynamic")
+	LET curr = hb.createChild('Label')
+	CALL curr.setAttribute("text","Row:")
+	LET curr = hb.createChild('Label')
+	CALL curr.setAttribute("name","cur_row")
+	CALL curr.setAttribute("sizePolicy","dynamic")
 	LET sp = hb.createChild('SpacerItem')
 	LET titl = hb.createChild('Button')
 	CALL titl.setAttribute("name","firstrow")
@@ -276,7 +276,7 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 	LET sp = hb.createChild('SpacerItem')
 	LET titl = hb.createChild('Label')
 	CALL titl.setAttribute("text",tot_recs USING "###,###,##&"||" Rows")
-  CALL titl.setAttribute("sizePolicy","dynamic")
+	CALL titl.setAttribute("sizePolicy","dynamic")
 
 -- If less than MAX_RECS records then use a normal display array.
 -- else use a paged array
@@ -302,10 +302,6 @@ FUNCTION gl_lookup( tabnam, cols, colts, ftyp, wher, ordby ) --{{{
 				END IF
 			BEFORE ROW
 				CALL curr.setAttribute("text",arr_curr() USING "#,##&")
-&ifndef genero250
-			ON SORT
-				DISPLAY "Sorted!!"
-&endif
 		END DISPLAY
 		IF arr_curr() > 0 THEN
 			LET ret_key = m_data_ar[ arr_curr() ].cf1
